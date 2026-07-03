@@ -6,7 +6,7 @@ public class RobotMoveModule : RobotBaseModule
 {
     [SerializeField] private NavMeshAgent agent;
 
-    public event Action OnDestinationReached;
+    private Action onReachCallback;
 
     private bool isMoving;
 
@@ -28,37 +28,36 @@ public class RobotMoveModule : RobotBaseModule
             (!agent.hasPath || agent.velocity.sqrMagnitude < 0.01f))
         {
             isMoving = false;
-            OnDestinationReached?.Invoke();
+            onReachCallback?.Invoke();
+            onReachCallback = null;
         }
     }
 
     #region Move
 
-    /// <summary>
-    /// Di chuyển tới một vị trí.
-    /// </summary>
-    public bool MoveTo(Vector3 destination)
+    public bool MoveTo(Vector3 destination, Action onReach = null)
     {
         if (!agent.isOnNavMesh)
             return false;
+
+        onReachCallback = onReach;
 
         bool success = agent.SetDestination(destination);
 
         if (success)
             isMoving = true;
+        else
+            onReachCallback = null;
 
         return success;
     }
 
-    /// <summary>
-    /// Di chuyển tới Transform.
-    /// </summary>
-    public bool MoveTo(Transform target)
+    public bool MoveTo(Transform target, Action onReach = null)
     {
         if (target == null)
             return false;
 
-        return MoveTo(target.position);
+        return MoveTo(target.position, onReach);
     }
 
     /// <summary>

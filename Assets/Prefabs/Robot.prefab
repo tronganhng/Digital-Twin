@@ -190,6 +190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5484175746274008119}
+  - component: {fileID: 2391941451109943700}
   - component: {fileID: 2700367765720274895}
   m_Layer: 6
   m_Name: Robot
@@ -216,6 +217,19 @@ Transform:
   - {fileID: 4720132550162384938}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2391941451109943700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3192773503860658194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8fd77054e855944d97dc0b71e604eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Robot
+  <MoveModule>k__BackingField: {fileID: 1448802909522321459}
 --- !u!195 &2700367765720274895
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -484,6 +498,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1015140541547332270}
+  - component: {fileID: 1448802909522321459}
   m_Layer: 6
   m_Name: Module
   m_TagString: Untagged
@@ -506,3 +521,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5484175746274008119}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1448802909522321459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8348339900805200891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08b06d5a364d82e47b0b5f54f7d1b06c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RobotMoveModule
+  agent: {fileID: 2700367765720274895}
