@@ -41,7 +41,7 @@ public class Robot : MonoBehaviour
 
         Vector3 target = FleetManager.Instance.MapManager.GetPoint(task.PickupPoint).Position;
 
-        MoveModule.MoveTo(target);
+        MoveModule.MoveTo(target, OnDestinationReached);
 
         return true;
     }

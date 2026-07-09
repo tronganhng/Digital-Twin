@@ -33,8 +33,33 @@ public class RobotManager : FleetBaseModule
         _robots.Remove(robotId);
     }
 
+    private void ClearAllRobots()
+    {
+        for (int i = robotRoot.childCount - 1; i >= 0; i--)
+        {
+            DestroyImmediate(robotRoot.GetChild(i).gameObject);
+        }
+
+        _robots.Clear();
+    }
+
     public IReadOnlyDictionary<int, Robot> GetAllRobots()
     {
         return _robots;
+    }
+
+    [Button, PropertySpace(5, 10)]
+    private void SpawnRobotBy(GridDrawer grid)
+    {
+        ClearAllRobots();
+
+        var positions = grid.GetAllPositions();
+        if (positions.Count == 0)
+            return;
+
+        for (int i = 0; i < positions.Count; i++)
+        {
+            GetRobot(i).transform.position = positions[i];
+        }
     }
 }

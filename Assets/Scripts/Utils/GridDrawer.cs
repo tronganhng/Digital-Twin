@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [ExecuteAlways]
 public class GridDrawer : MonoBehaviour
@@ -37,15 +38,25 @@ public class GridDrawer : MonoBehaviour
         }
     }
 
-    public Vector3 GetCellCenter(int rowIndex, int columnIndex)
+    public List<Vector3> GetAllPositions()
     {
+        List<Vector3> positions = new List<Vector3>(row * column);
+
         Vector3 origin = transform.position;
         origin.x -= column * size * 0.5f;
         origin.z -= row * size * 0.5f;
 
-        return origin + new Vector3(
-            columnIndex * size + size * 0.5f,
-            0f,
-            rowIndex * size + size * 0.5f);
+        for (int r = 0; r < row; r++)
+        {
+            for (int c = 0; c < column; c++)
+            {
+                positions.Add(origin + new Vector3(
+                    c * size + size * 0.5f,
+                    0f,
+                    r * size + size * 0.5f));
+            }
+        }
+
+        return positions;
     }
 }

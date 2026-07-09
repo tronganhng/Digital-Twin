@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class FleetManager : MonoSingleton<FleetManager>
@@ -16,5 +17,20 @@ public class FleetManager : MonoSingleton<FleetManager>
         Scheduler.Init(this);
         MapManager.Init(this);
         TrafficManager.Init(this);
+    }
+
+    [SerializeField] private RobotTask task;
+    [Button]
+    private void AssignTask()
+    {
+        Robot bestRobot = Scheduler.FindBestRobot(task);
+        if (bestRobot != null)
+        {
+            bestRobot.AssignTask(task);
+        }
+        else
+        {
+            Debug.LogWarning("No suitable robot found for the task.");
+        }
     }
 }
