@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
-using System;
+using UnityEngine.Rendering;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class TaskManager : FleetBaseModule
 {
-    private readonly Dictionary<int, RobotTask> _tasks = new();
+    [SerializeField, ReadOnly] private SerializedDictionary<int, RobotTask> _tasks = new();
 
     private readonly Queue<RobotTask> _pendingTasks = new();
 
@@ -110,20 +111,4 @@ public class TaskManager : FleetBaseModule
     }
 
     #endregion
-}
-
-[Serializable]
-public class RobotTask
-{
-    public int Id;
-
-    public string PickupPoint;
-
-    public string DestinationPoint;
-
-    public int? AssignedRobotId;
-
-    public TaskStatus Status;
-
-    public float CreateTime;
 }

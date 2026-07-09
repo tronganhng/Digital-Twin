@@ -1,11 +1,12 @@
-using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class MapManager : FleetBaseModule
 {
     [SerializeField] private Transform mapRoot;
 
-    private readonly Dictionary<string, MapPoint> _points = new();
+    [SerializeField, ReadOnly] private SerializedDictionary<string, MapPoint> _points = new();
 
     public override void Init(FleetManager fleetManager)
     {
@@ -31,21 +32,11 @@ public class MapManager : FleetBaseModule
         }
     }
 
-    public Vector3 GetPoint(string pointName)
-    {
-        if (_points.TryGetValue(pointName, out MapPoint point))
-            return point.Position;
-
-        Debug.LogError($"MapPoint '{pointName}' not found.");
-
-        return Vector3.zero;
-    }
-
-    public bool TryGetPoint(string pointName, out Vector3 position)
+    public bool TryGetPoint(string pointName, out MapPoint position)
     {
         if (_points.TryGetValue(pointName, out MapPoint point))
         {
-            position = point.Position;
+            position = point;
             return true;
         }
 
@@ -53,17 +44,9 @@ public class MapManager : FleetBaseModule
         return false;
     }
 
-    public MapPoint GetMapPoint(string pointName)
+    public MapPoint GetPoint(string pointName)
     {
         _points.TryGetValue(pointName, out MapPoint point);
         return point;
     }
-}
-
-public class MapPoint : MonoBehaviour
-{
-    [SerializeField] private string pointName;
-
-    public string PointName => pointName;
-    public Vector3 Position => transform.position;
 }

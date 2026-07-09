@@ -36,8 +36,10 @@ public class Scheduler : FleetBaseModule
 
     private float CalculateScore(Robot robot, RobotTask task)
     {
-        Vector3 target = fleet.MapManager.GetPoint(task.PickupPoint);
+        MapPoint target = fleet.MapManager.GetPoint(task.PickupPoint);
 
-        return Vector3.Distance(robot.transform.position, target);
+        if (target == null) return float.MaxValue;
+
+        return Vector3.Distance(robot.transform.position, target.Position);
     }
 }
