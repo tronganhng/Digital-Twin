@@ -1,9 +1,12 @@
 public enum RobotStatus
 {
     Idle,
-    Moving,
+    MovingToPickup,
+    Loading,
+    MovingToDestination,
+    Unloading,
     Charging,
-    PerformingTask
+    Error
 }
 
 public enum TaskStatus

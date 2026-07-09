@@ -31,7 +31,7 @@ public class Scheduler : FleetBaseModule
 
     private bool CanAssign(Robot robot)
     {
-        return robot.status == RobotStatus.Idle && robot.battery > 20f;
+        return robot.Status == RobotStatus.Idle && robot.Battery > 20f;
     }
 
     private float CalculateScore(Robot robot, RobotTask task)
