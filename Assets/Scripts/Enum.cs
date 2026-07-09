@@ -1,11 +1,17 @@
-public enum PointType
+public enum RobotStatus
 {
-    Pharmacy,
-    PatientRoom,
-    Elevator,
-    ChargingStation,
-    Warehouse,
-    Reception,
-    Corridor,
-    Door
+    Idle,
+    Moving,
+    Charging,
+    PerformingTask
+}
+
+public enum TaskStatus
+{
+    Pending,
+    Assigned,
+    Running,
+    Completed,
+    Failed,
+    Cancelled
 }
