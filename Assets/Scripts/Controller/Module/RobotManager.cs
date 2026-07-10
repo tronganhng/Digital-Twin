@@ -11,6 +11,16 @@ public class RobotManager : FleetBaseModule
 
     [SerializeField, ReadOnly] private SerializedDictionary<int, Robot> _robots = new();
 
+    public override void Init(FleetManager fleet)
+    {
+        base.Init(fleet);
+        
+        foreach (var kvp in _robots)
+        {
+            kvp.Value.Init(kvp.Key);
+        }
+    }
+
     public Robot GetRobot(int robotId)
     {
         if (_robots.TryGetValue(robotId, out var robot))
@@ -22,15 +32,6 @@ public class RobotManager : FleetBaseModule
         _robots.Add(robotId, robot);
 
         return robot;
-    }
-
-    public void RemoveRobot(int robotId)
-    {
-        if (!_robots.TryGetValue(robotId, out var robot))
-            return;
-
-        Destroy(robot.gameObject);
-        _robots.Remove(robotId);
     }
 
     private void ClearAllRobots()

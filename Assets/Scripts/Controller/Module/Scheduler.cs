@@ -14,7 +14,7 @@ public class Scheduler : FleetBaseModule
         {
             Robot robot = pair.Value;
 
-            if (!CanAssign(robot))
+            if (!robot.StatModule.IsAvailableForTask())
                 continue;
 
             float score = CalculateScore(robot, task);
@@ -27,11 +27,6 @@ public class Scheduler : FleetBaseModule
         }
 
         return bestRobot;
-    }
-
-    private bool CanAssign(Robot robot)
-    {
-        return robot.Status == RobotStatus.Idle && robot.Battery > 20f;
     }
 
     private float CalculateScore(Robot robot, RobotTask task)

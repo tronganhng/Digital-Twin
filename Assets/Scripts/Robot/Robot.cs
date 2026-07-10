@@ -2,26 +2,15 @@ using UnityEngine;
 
 public class Robot : MonoBehaviour
 {
-    [Header("State")]
-    [SerializeField] private RobotStatus status = RobotStatus.Idle;
-    [SerializeField] private float battery = 100;
-
-    [field: SerializeField]
-    public RobotMoveModule MoveModule { get; private set; }
-
-    public int RobotId { get; private set; }
+    [field: SerializeField] public RobotMoveModule MoveModule { get; private set; }
+    [field: SerializeField] public RobotStatModule StatModule { get; private set; }
 
     public RobotTask CurrentTask { get; private set; }
 
-    public RobotStatus Status => status;
-    public float Battery => battery;
-
-    private bool _pickupCompleted;
-
     public void Init(int robotId)
     {
-        RobotId = robotId;
         MoveModule.Init(this);
+        StatModule.Init(this, robotId);
     }
 
     public void ApplyState(RobotStateDto state)
@@ -31,13 +20,12 @@ public class Robot : MonoBehaviour
 
     public bool AssignTask(RobotTask task)
     {
-        if (status != RobotStatus.Idle)
+        if (StatModule.Status != RobotStatus.Idle)
             return false;
 
         CurrentTask = task;
-        _pickupCompleted = false;
 
-        status = RobotStatus.MovingToPickup;
+        StatModule.Status = RobotStatus.MovingToPickup;
 
         Vector3 target = FleetManager.Instance.MapManager.GetPoint(task.PickupPoint).Position;
 
@@ -46,13 +34,13 @@ public class Robot : MonoBehaviour
         return true;
     }
 
-    public void OnDestinationReached()
+    private void OnDestinationReached()
     {
-        switch (status)
+        switch (StatModule.Status)
         {
             case RobotStatus.MovingToPickup:
 
-                status = RobotStatus.Loading;
+                StatModule.Status = RobotStatus.Loading;
 
                 // Demo: load xong ngay
                 FinishLoading();
@@ -61,7 +49,7 @@ public class Robot : MonoBehaviour
 
             case RobotStatus.MovingToDestination:
 
-                status = RobotStatus.Unloading;
+                StatModule.Status = RobotStatus.Unloading;
 
                 // Demo: unload xong ngay
                 FinishUnloading();
@@ -72,9 +60,7 @@ public class Robot : MonoBehaviour
 
     private void FinishLoading()
     {
-        _pickupCompleted = true;
-
-        status = RobotStatus.MovingToDestination;
+        StatModule.Status = RobotStatus.MovingToDestination;
 
         Vector3 target = FleetManager.Instance.MapManager.GetPoint(CurrentTask.DestinationPoint).Position;
 
@@ -83,7 +69,7 @@ public class Robot : MonoBehaviour
 
     private void FinishUnloading()
     {
-        status = RobotStatus.Idle;
+        StatModule.Status = RobotStatus.Idle;
 
         CurrentTask = null;
     }

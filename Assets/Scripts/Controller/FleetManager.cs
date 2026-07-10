@@ -19,14 +19,18 @@ public class FleetManager : MonoSingleton<FleetManager>
         TrafficManager.Init(this);
     }
 
-    [SerializeField] private RobotTask task;
+    [Title("Test")]
+    [SerializeField] string pickupPoint;
+    [SerializeField] string destinationPoint;
+
     [Button]
     private void AssignTask()
     {
+        RobotTask task = TaskManager.CreateTask(pickupPoint, destinationPoint);
         Robot bestRobot = Scheduler.FindBestRobot(task);
-        if (bestRobot != null)
+        if (bestRobot != null && bestRobot.AssignTask(task))
         {
-            bestRobot.AssignTask(task);
+            TaskManager.AssignTask(task.Id, bestRobot.StatModule.RobotId);
         }
         else
         {
