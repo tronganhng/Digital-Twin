@@ -1,12 +1,10 @@
 public enum RobotStatus
 {
     Idle,
-    MovingToPickup,
-    Loading,
-    MovingToDestination,
-    Unloading,
+    Moving,
     Charging,
-    Error
+    Error,
+    Offline
 }
 
 public enum TaskStatus
@@ -17,4 +15,10 @@ public enum TaskStatus
     Completed,
     Failed,
     Cancelled
+}
+
+public enum SocketMessageType
+{
+    RegisterRobot,
+    RobotState,
 }

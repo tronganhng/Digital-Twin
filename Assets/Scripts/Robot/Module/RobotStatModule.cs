@@ -9,8 +9,6 @@ public class RobotStatModule : RobotBaseModule
 
     private RobotStateDto _robotState;
 
-    public string RobotId { get { return _robotState.RobotId; } private set { _robotState.RobotId = value; } }
-
     public bool IsRegistered { get; private set; }
 
     public override void Init(Robot robot)
@@ -24,9 +22,6 @@ public class RobotStatModule : RobotBaseModule
         };
 
         UpdateState();
-
-        // Bắt đầu quá trình đăng ký nhưng không block Unity
-        _ = RegisterAsync();
     }
 
     private void UpdateState()
@@ -38,37 +33,6 @@ public class RobotStatModule : RobotBaseModule
         _robotState.LastHeartbeat = DateTime.UtcNow;
     }
 
-    private async Task RegisterAsync()
-    {
-        try
-        {
-            statusTmp.text = "Registering...";
-
-            UpdateState();
-
-            RegisterRobotResponse response = await SimulationManager.Instance.WebSocket.RegisterRobotAsync(_robotState);
-
-            RobotId = response.RobotId;
-
-            IsRegistered = true;
-
-            statusTmp.text = $"Online ({RobotId})";
-
-            OnRegistered();
-        }
-        catch (Exception e)
-        {
-            Debug.LogException(e);
-
-            statusTmp.text = "Register Failed";
-        }
-    }
-
-    private void OnRegistered()
-    {
-        // Thông báo cho Robot rằng đã được backend chấp nhận
-    }
-
     public async Task SendStateAsync()
     {
         if (!IsRegistered)
@@ -76,6 +40,6 @@ public class RobotStatModule : RobotBaseModule
 
         UpdateState();
 
-        await SimulationManager.Instance.WebSocket.SendRobotStateAsync(_robotState);
+        await SimulationManager.Instance.WebSocket.SendMessageAsync(SocketMessageType.RobotState, _robotState);
     }
 }

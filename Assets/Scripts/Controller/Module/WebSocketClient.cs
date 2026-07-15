@@ -1,14 +1,17 @@
 using System;
+using System.Collections.Generic;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using Newtonsoft.Json;
+using Sirenix.OdinInspector;
 
 public class WebSocketClient : SimulationBaseService
 {
     ClientWebSocket socket;
+    readonly Dictionary<string, TaskCompletionSource<string>> pendingResponses = new Dictionary<string, TaskCompletionSource<string>>();
 
     public async Task InitWebSocket(SimulationManager manager)
     {
@@ -25,58 +28,73 @@ public class WebSocketClient : SimulationBaseService
 
     async void ReceiveLoop()
     {
-        byte[] buffer = new byte[1024];
+        byte[] buffer = new byte[4096];
 
         while (socket.State == WebSocketState.Open)
         {
             var result = await socket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-
             string json = Encoding.UTF8.GetString(buffer, 0, result.Count);
+
+            var baseMessage = JsonConvert.DeserializeObject<SocketMessage<object>>(json);
+            if (baseMessage?.RequestId != null && pendingResponses.TryGetValue(baseMessage.RequestId, out var tcs))
+            {
+                tcs.TrySetResult(json);
+                pendingResponses.Remove(baseMessage.RequestId);
+                continue;
+            }
 
             // Debug.Log(json);
         }
     }
 
-    public async Task SendRobotStateAsync(RobotStateDto state)
+    public async Task SendMessageAsync<T>(SocketMessageType type, T payload)
     {
         if (socket == null || socket.State != WebSocketState.Open)
             return;
 
-        var message = new SocketMessage<RobotStateDto>
+        var message = new SocketMessage<T>
         {
-            Type = "RobotState",
-            Payload = state
+            Type = type.ToString(),
+            RequestId = Guid.NewGuid().ToString(),
+            Payload = payload
         };
 
         string json = JsonConvert.SerializeObject(message);
-
         byte[] bytes = Encoding.UTF8.GetBytes(json);
 
         await socket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, CancellationToken.None);
     }
 
-    public async Task<RegisterRobotResponse> RegisterRobotAsync(RobotStateDto state)
+    public async Task<TResponse> SendRequestAsync<TRequest, TResponse>(SocketMessageType type, TRequest payload)
     {
-        var request = new SocketMessage<RobotStateDto>
+        if (socket == null || socket.State != WebSocketState.Open)
+            return default!;
+
+        var requestId = Guid.NewGuid().ToString();
+        var request = new SocketMessage<TRequest>
         {
-            Type = "RegisterRobot",
-            Payload = state
+            Type = type.ToString(),
+            RequestId = requestId,
+            Payload = payload
         };
 
+        var tcs = new TaskCompletionSource<string>(TaskCreationOptions.RunContinuationsAsynchronously);
+        pendingResponses[requestId] = tcs;
+
         string json = JsonConvert.SerializeObject(request);
-
         byte[] bytes = Encoding.UTF8.GetBytes(json);
+        await socket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, CancellationToken.None);
 
-        await socket.SendAsync(bytes, WebSocketMessageType.Text, true, CancellationToken.None);
+        string responseJson = await tcs.Task;
+        var responseMessage = JsonConvert.DeserializeObject<SocketMessage<TResponse>>(responseJson);
+        return responseMessage.Payload;
+    }
 
-        byte[] buffer = new byte[4096];
-
-        WebSocketReceiveResult result = await socket.ReceiveAsync(buffer, CancellationToken.None);
-
-        string responseJson = Encoding.UTF8.GetString(buffer, 0, result.Count);
-
-        var response = JsonConvert.DeserializeObject<SocketMessage<RegisterRobotResponse>>(responseJson);
-
-        return response.Payload;
+    [Button]
+    private async void TestSend()
+    {
+        var robot = new RobotStateDto { RobotId = "latgoto" };
+        var response = await SendRequestAsync<RobotStateDto, RegisterRobotResponse>(SocketMessageType.RegisterRobot, robot);
+        Debug.Log("Get RobotID from Server: " + response.RobotId);
     }
 }
