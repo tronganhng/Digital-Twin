@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
+using Newtonsoft.Json;
 
 public class WebSocketClient : SimulationBaseService
 {
@@ -32,7 +33,50 @@ public class WebSocketClient : SimulationBaseService
 
             string json = Encoding.UTF8.GetString(buffer, 0, result.Count);
 
-            Debug.Log(json);
+            // Debug.Log(json);
         }
+    }
+
+    public async Task SendRobotStateAsync(RobotStateDto state)
+    {
+        if (socket == null || socket.State != WebSocketState.Open)
+            return;
+
+        var message = new SocketMessage<RobotStateDto>
+        {
+            Type = "RobotState",
+            Payload = state
+        };
+
+        string json = JsonConvert.SerializeObject(message);
+
+        byte[] bytes = Encoding.UTF8.GetBytes(json);
+
+        await socket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, CancellationToken.None);
+    }
+
+    public async Task<RegisterRobotResponse> RegisterRobotAsync(RobotStateDto state)
+    {
+        var request = new SocketMessage<RobotStateDto>
+        {
+            Type = "RegisterRobot",
+            Payload = state
+        };
+
+        string json = JsonConvert.SerializeObject(request);
+
+        byte[] bytes = Encoding.UTF8.GetBytes(json);
+
+        await socket.SendAsync(bytes, WebSocketMessageType.Text, true, CancellationToken.None);
+
+        byte[] buffer = new byte[4096];
+
+        WebSocketReceiveResult result = await socket.ReceiveAsync(buffer, CancellationToken.None);
+
+        string responseJson = Encoding.UTF8.GetString(buffer, 0, result.Count);
+
+        var response = JsonConvert.DeserializeObject<SocketMessage<RegisterRobotResponse>>(responseJson);
+
+        return response.Payload;
     }
 }

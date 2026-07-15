@@ -17,19 +17,19 @@ public class RobotManager : SimulationBaseService
         
         foreach (var kvp in _robots)
         {
-            kvp.Value.Init(kvp.Key);
+            kvp.Value.Init();
         }
     }
 
-    public Robot GetRobot(int robotId)
+    public Robot GetRobot(int robotIndex)
     {
-        if (_robots.TryGetValue(robotId, out var robot))
+        if (_robots.TryGetValue(robotIndex, out var robot))
             return robot;
 
         robot = Instantiate(robotPrefab, Vector3.zero, Quaternion.identity, robotRoot);
-        robot.Init(robotId);
+        robot.Init();
 
-        _robots.Add(robotId, robot);
+        _robots.Add(robotIndex, robot);
 
         return robot;
     }
@@ -42,11 +42,6 @@ public class RobotManager : SimulationBaseService
         }
 
         _robots.Clear();
-    }
-
-    public IReadOnlyDictionary<int, Robot> GetAllRobots()
-    {
-        return _robots;
     }
 
     [Button, PropertySpace(5, 10)]

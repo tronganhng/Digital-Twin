@@ -7,14 +7,9 @@ public class Robot : MonoBehaviour
 
     public RobotTask CurrentTask { get; private set; }
 
-    public void Init(int robotId)
+    public void Init()
     {
         MoveModule.Init(this);
-        StatModule.Init(this, robotId);
-    }
-
-    public void ApplyState(RobotStateDto state)
-    {
-        
+        StatModule.Init(this);
     }
 }
