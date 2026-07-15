@@ -6,6 +6,7 @@ public class TaskManager : SimulationBaseService
     [Title("Test")]
     [SerializeField] string pickupPoint;
     [SerializeField] string destinationPoint;
+    [SerializeField] int priority;
 
     [Button]
     private void AssignTask()
@@ -14,6 +15,7 @@ public class TaskManager : SimulationBaseService
         {
             PickupLocation = pickupPoint,
             Destination = destinationPoint,
+            Priority = priority,
         };
 
     }
