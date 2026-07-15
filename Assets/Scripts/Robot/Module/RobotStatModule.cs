@@ -38,7 +38,7 @@ public class RobotStatModule : RobotBaseModule
     {
         UpdateState();
 
-        var res = await SimulationManager.Instance.WebSocket.SendRequestAsync<RobotStateDto, RegisterRobotResponse>(SocketMessageType.RegisterRobot, _robotState);
+        var res = await SimulationManager.Instance.WebSocket.SendRequestAsync<RobotStateDto, RobotStateDto>(SocketMessageType.RegisterRobot, _robotState);
         _robotState.RobotId = res.RobotId;
         IsRegistered = true;
     }

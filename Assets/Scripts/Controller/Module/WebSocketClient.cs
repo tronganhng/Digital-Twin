@@ -21,7 +21,7 @@ public class WebSocketClient : SimulationBaseService
 
         await socket.ConnectAsync(new Uri("ws://localhost:5055/ws"), CancellationToken.None);
 
-        Debug.Log("Websocket Connected!");
+        ExtraLog.LogWithColor("Websocket Connected!", Color.turquoise);
 
         ReceiveLoop();
     }
@@ -94,7 +94,7 @@ public class WebSocketClient : SimulationBaseService
     private async void TestSend()
     {
         var robot = new RobotStateDto { RobotId = "latgoto" };
-        var response = await SendRequestAsync<RobotStateDto, RegisterRobotResponse>(SocketMessageType.RegisterRobot, robot);
+        var response = await SendRequestAsync<RobotStateDto, RobotStateDto>(SocketMessageType.RegisterRobot, robot);
         Debug.Log("Get RobotID from Server: " + response.RobotId);
     }
 }
