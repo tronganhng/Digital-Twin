@@ -607,5 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d819fcbcbaccd4e99482fa4551aa1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RobotStatModule
+  statusTmp: {fileID: 6825552535319812475}
+  robotId: 0
   status: 0
   battery: 100
