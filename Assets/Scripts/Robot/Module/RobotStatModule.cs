@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ public class RobotStatModule : RobotBaseModule
 {
     [SerializeField] private TextMeshPro statusTmp;
 
-    private RobotStateDto _robotState;
+    [SerializeField, ReadOnly] private RobotStateDto _robotState;
 
     public bool IsRegistered { get; private set; }
 
@@ -21,7 +22,7 @@ public class RobotStatModule : RobotBaseModule
             Status = RobotStatus.Idle
         };
 
-        UpdateState();
+        _ = TryRegister();
     }
 
     private void UpdateState()
@@ -31,6 +32,15 @@ public class RobotStatModule : RobotBaseModule
         _robotState.Rotation = robot.transform.eulerAngles.y;
         _robotState.Battery = 100;
         _robotState.LastHeartbeat = DateTime.UtcNow;
+    }
+
+    public async Task TryRegister()
+    {
+        UpdateState();
+
+        var res = await SimulationManager.Instance.WebSocket.SendRequestAsync<RobotStateDto, RegisterRobotResponse>(SocketMessageType.RegisterRobot, _robotState);
+        _robotState.RobotId = res.RobotId;
+        IsRegistered = true;
     }
 
     public async Task SendStateAsync()

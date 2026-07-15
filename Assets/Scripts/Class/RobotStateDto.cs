@@ -1,14 +1,15 @@
 using System;
 using UnityEngine;
 
+[Serializable]
 public class RobotStateDto
 {
-    public string RobotId { get; set; } = string.Empty;
-    public double X { get; set; }
-    public double Y { get; set; }
-    public double Rotation { get; set; }
-    public double Battery { get; set; }
-    public RobotStatus Status { get; set; }
-    public string CurrentTaskId { get; set; }
-    public DateTime LastHeartbeat { get; set; }
+    [field: SerializeField] public string RobotId { get; set; } = string.Empty;
+    [field: SerializeField] public double X { get; set; }
+    [field: SerializeField] public double Y { get; set; }
+    [field: SerializeField] public double Rotation { get; set; }
+    [field: SerializeField] public double Battery { get; set; }
+    [field: SerializeField] public RobotStatus Status { get; set; }
+    [field: SerializeField] public string CurrentTaskId { get; set; }
+    [field: SerializeField] public DateTime LastHeartbeat { get; set; }
 }
