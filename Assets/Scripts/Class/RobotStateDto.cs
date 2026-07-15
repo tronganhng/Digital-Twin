@@ -1,16 +1,14 @@
+using System;
 using UnityEngine;
 
 public class RobotStateDto
 {
-    public int robotId;
-
-    public Vector3 position;
-
-    public Quaternion rotation;
-
-    public float battery;
-
-    public RobotStatus status;
-
-    public string currentTask;
+    public string RobotId { get; set; } = string.Empty;
+    public double X { get; set; }
+    public double Y { get; set; }
+    public double Rotation { get; set; }
+    public double Battery { get; set; }
+    public RobotStatus Status { get; set; }
+    public string CurrentTaskId { get; set; }
+    public DateTime LastHeartbeat { get; set; }
 }

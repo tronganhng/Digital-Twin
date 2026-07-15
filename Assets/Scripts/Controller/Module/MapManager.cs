@@ -2,13 +2,13 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class MapManager : FleetBaseModule
+public class MapManager : SimulationBaseService
 {
     [SerializeField] private Transform mapRoot;
 
     [SerializeField, ReadOnly] private SerializedDictionary<string, MapPoint> _points = new();
 
-    public override void Init(FleetManager fleetManager)
+    public override void Init(SimulationManager fleetManager)
     {
         base.Init(fleetManager);
         CachePoints();

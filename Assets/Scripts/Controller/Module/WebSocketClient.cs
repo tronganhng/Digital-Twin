@@ -2,19 +2,22 @@ using System;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 
-public class WebSocketClient : MonoBehaviour
+public class WebSocketClient : SimulationBaseService
 {
     ClientWebSocket socket;
 
-    async void Start()
+    public async Task InitWebSocket(SimulationManager manager)
     {
+        base.Init(manager);
+
         socket = new ClientWebSocket();
 
-        await socket.ConnectAsync(new Uri("ws://localhost:5151/ws"), CancellationToken.None);
+        await socket.ConnectAsync(new Uri("ws://localhost:5055/ws"), CancellationToken.None);
 
-        Debug.Log("Connected");
+        Debug.Log("Websocket Connected!");
 
         ReceiveLoop();
     }

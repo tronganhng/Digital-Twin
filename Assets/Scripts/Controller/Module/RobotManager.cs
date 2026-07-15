@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Rendering;
 using Sirenix.OdinInspector;
 
-public class RobotManager : FleetBaseModule
+public class RobotManager : SimulationBaseService
 {
     [Header("References")]
     [SerializeField] private Robot robotPrefab;
@@ -11,7 +11,7 @@ public class RobotManager : FleetBaseModule
 
     [SerializeField, ReadOnly] private SerializedDictionary<int, Robot> _robots = new();
 
-    public override void Init(FleetManager fleet)
+    public override void Init(SimulationManager fleet)
     {
         base.Init(fleet);
         
