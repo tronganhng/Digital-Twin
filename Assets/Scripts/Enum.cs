@@ -19,6 +19,7 @@ public enum TaskStatus
 
 public enum SocketMessageType
 {
+    None,
     RegisterRobot,
     RobotState,
 }

@@ -54,7 +54,7 @@ public class WebSocketClient : SimulationBaseService
 
         var message = new SocketMessage<T>
         {
-            Type = type.ToString(),
+            Type = type,
             RequestId = Guid.NewGuid().ToString(),
             Payload = payload
         };
@@ -73,7 +73,7 @@ public class WebSocketClient : SimulationBaseService
         var requestId = Guid.NewGuid().ToString();
         var request = new SocketMessage<TRequest>
         {
-            Type = type.ToString(),
+            Type = type,
             RequestId = requestId,
             Payload = payload
         };
