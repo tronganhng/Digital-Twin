@@ -22,4 +22,5 @@ public enum SocketMessageType
     None,
     RegisterRobot,
     RobotState,
+    CreateTask,
 }

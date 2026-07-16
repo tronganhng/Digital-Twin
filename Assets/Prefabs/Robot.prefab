@@ -277,6 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Robot
   <MoveModule>k__BackingField: {fileID: 1448802909522321459}
   <StatModule>k__BackingField: {fileID: 2053839858729314878}
+  <RobotTaskModule>k__BackingField: {fileID: 7361335647768366212}
 --- !u!114 &2964052912074700902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,6 +561,7 @@ GameObject:
   - component: {fileID: 1015140541547332270}
   - component: {fileID: 1448802909522321459}
   - component: {fileID: 2053839858729314878}
+  - component: {fileID: 7361335647768366212}
   m_Layer: 6
   m_Name: Module
   m_TagString: Untagged
@@ -608,6 +610,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RobotStatModule
   statusTmp: {fileID: 6825552535319812475}
-  robotId: 0
-  status: 0
-  battery: 100
+  _robotState:
+    <RobotId>k__BackingField: 
+    <X>k__BackingField: 0
+    <Y>k__BackingField: 0
+    <Rotation>k__BackingField: 0
+    <Battery>k__BackingField: 0
+    <Status>k__BackingField: 0
+    <CurrentTaskId>k__BackingField: 
+--- !u!114 &7361335647768366212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8348339900805200891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06084d54d0343b94e8b7a60f59fdfad7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RobotTaskModule
+  <CurrentTask>k__BackingField:
+    <TaskId>k__BackingField: 
+    <PickupLocation>k__BackingField: 
+    <Destination>k__BackingField: 
+    <Priority>k__BackingField: 0
+    <AssignedRobotId>k__BackingField: 
+    <Status>k__BackingField: 0

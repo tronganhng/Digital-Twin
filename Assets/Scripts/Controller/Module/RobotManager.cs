@@ -1,7 +1,9 @@
 using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.Rendering;
 using Sirenix.OdinInspector;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class RobotManager : SimulationBaseService
 {
@@ -14,7 +16,7 @@ public class RobotManager : SimulationBaseService
     public override void Init(SimulationManager fleet)
     {
         base.Init(fleet);
-        
+
         foreach (var kvp in _robots)
         {
             kvp.Value.Init();
@@ -26,8 +28,13 @@ public class RobotManager : SimulationBaseService
         if (_robots.TryGetValue(robotIndex, out var robot))
             return robot;
 
-        robot = Instantiate(robotPrefab, Vector3.zero, Quaternion.identity, robotRoot);
-        robot.Init();
+#if UNITY_EDITOR
+        robot = (Robot)PrefabUtility.InstantiatePrefab(robotPrefab, robotRoot);
+        robot.transform.localPosition = Vector3.zero;
+        robot.transform.localRotation = Quaternion.identity;
+#else
+    robot = Instantiate(robotPrefab, Vector3.zero, Quaternion.identity, robotRoot);
+#endif
 
         _robots.Add(robotIndex, robot);
 

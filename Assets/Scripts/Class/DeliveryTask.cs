@@ -1,9 +1,22 @@
+using System;
+using UnityEngine;
+
+[Serializable]
 public class DeliveryTask
 {
-    public string TaskId { get; set; } = string.Empty;
-    public string PickupLocation { get; set; } = string.Empty;
-    public string Destination { get; set; } = string.Empty;
-    public int Priority { get; set; }
-    public string AssignedRobotId { get; set; }
-    public TaskStatus Status { get; set; } = TaskStatus.Pending;
+    [field : SerializeField] public string TaskId { get; set; } = string.Empty;
+    [field : SerializeField] public string PickupLocation { get; set; } = string.Empty;
+    [field : SerializeField] public string Destination { get; set; } = string.Empty;
+    [field : SerializeField] public int Priority { get; set; }
+    [field : SerializeField] public string AssignedRobotId { get; set; }
+    [field : SerializeField] public TaskStatus Status { get; set; } = TaskStatus.Pending;
+
+    public void CopyFrom(DeliveryTask other)
+    {
+        Status = other.Status;
+        AssignedRobotId = other.AssignedRobotId;
+        Priority = other.Priority;
+        PickupLocation = other.PickupLocation;
+        Destination = other.Destination;
+    }
 }
