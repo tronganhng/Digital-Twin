@@ -1016,6 +1016,7 @@ Transform:
   - {fileID: 622929323}
   - {fileID: 1406964231}
   - {fileID: 298831917}
+  - {fileID: 2009817380}
   m_Father: {fileID: 1740557123}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &880135402
@@ -1033,6 +1034,7 @@ MonoBehaviour:
   <RobotManager>k__BackingField: {fileID: 1884775782}
   <TaskManager>k__BackingField: {fileID: 1406964232}
   <MapManager>k__BackingField: {fileID: 622929324}
+  <Router>k__BackingField: {fileID: 2009817381}
   <WebSocket>k__BackingField: {fileID: 298831918}
 --- !u!1 &907760353
 GameObject:
@@ -1960,6 +1962,99 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5369285435795787545, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
   m_PrefabInstance: {fileID: 1937434513}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2009817379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2009817380}
+  - component: {fileID: 2009817381}
+  m_Layer: 0
+  m_Name: Router
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2009817380
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009817379}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2084462758}
+  m_Father: {fileID: 880135401}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2009817381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009817379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd49abc18c762b4d9378f6d1d510a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MessageRouter
+  _handlers:
+    m_Keys: 04000000
+    m_Values:
+    - {fileID: 2084462759}
+--- !u!1 &2084462757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2084462758}
+  - component: {fileID: 2084462759}
+  m_Layer: 0
+  m_Name: Assigned Task
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2084462758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084462757}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2009817380}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2084462759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084462757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1888558768ddff0408dca570ff18d63d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AssignedTaskHandler
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

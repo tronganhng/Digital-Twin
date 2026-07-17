@@ -53,37 +53,13 @@ public class WebSocketClient : SimulationBaseService
                     continue;
                 }
 
-                RouteIncomingMessage(message);
+                manager.Router.Route(message);
             }
             catch (Exception ex)
             {
                 Debug.LogWarning($"Failed to parse socket message: {ex.Message}\n{json}");
             }
         }
-    }
-
-    private void RouteIncomingMessage(SocketMessage<JObject> message)
-    {
-        switch (message.Type)
-        {
-            case SocketMessageType.TaskAssigned:
-                HandleTaskAssigned(message.Payload?.ToObject<DeliveryTask>());
-                break;
-            default:
-                Debug.LogWarning($"Unhandled socket message type: {message.Type}");
-                break;
-        }
-    }
-
-    private void HandleTaskAssigned(DeliveryTask task)
-    {
-        if (task == null)
-            return;
-
-        manager.TaskManager.UpdateTaskInfo(task);
-        var robot = manager.RobotManager.GetRobotBy(task.AssignedRobotId);
-        robot.TaskModule.DoTask(task);
-        ExtraLog.LogWithColor($"Task assigned: {task.TaskId}", Color.cyan);
     }
 
     public async Task SendMessageAsync<T>(SocketMessageType type, T payload)
