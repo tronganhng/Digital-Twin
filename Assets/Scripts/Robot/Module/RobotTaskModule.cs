@@ -8,5 +8,6 @@ public class RobotTaskModule : RobotBaseModule
     public void DoTask(DeliveryTask task)
     {
         CurrentTask = task;
+        robot.StatModule.SetTaskId(task.TaskId);
     }
 }

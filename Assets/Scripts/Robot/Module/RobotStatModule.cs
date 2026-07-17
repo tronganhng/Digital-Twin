@@ -10,6 +10,7 @@ public class RobotStatModule : RobotBaseModule
 
     [SerializeField, ReadOnly] private RobotStateDto _robotState;
 
+    public string RobotId => _robotState.RobotId;
     public bool IsRegistered { get; private set; }
 
     public override void Init(Robot robot)
@@ -51,5 +52,10 @@ public class RobotStatModule : RobotBaseModule
         UpdateState();
 
         await SimulationManager.Instance.WebSocket.SendMessageAsync(SocketMessageType.RobotState, _robotState);
+    }
+
+    public void SetTaskId(string id)
+    {
+        _robotState.CurrentTaskId = id;
     }
 }

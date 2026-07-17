@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Newtonsoft.Json;
 using Sirenix.OdinInspector;
+using Newtonsoft.Json.Linq;
 
 public class WebSocketClient : SimulationBaseService
 {
@@ -35,16 +36,54 @@ public class WebSocketClient : SimulationBaseService
             var result = await socket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
             string json = Encoding.UTF8.GetString(buffer, 0, result.Count);
 
-            var baseMessage = JsonConvert.DeserializeObject<SocketMessage<object>>(json);
-            if (baseMessage?.RequestId != null && pendingResponses.TryGetValue(baseMessage.RequestId, out var tcs))
-            {
-                tcs.TrySetResult(json);
-                pendingResponses.Remove(baseMessage.RequestId);
-                continue;
-            }
+            string prettyJson = JToken.Parse(json).ToString(Formatting.Indented);
+            Debug.Log(prettyJson);
 
-            // Debug.Log(json);
+            try
+            {
+                var message = JsonConvert.DeserializeObject<SocketMessage<JObject>>(json);
+                if (message == null)
+                    continue;
+
+                if (!string.IsNullOrWhiteSpace(message.RequestId) &&
+                    pendingResponses.TryGetValue(message.RequestId, out var tcs))
+                {
+                    tcs.TrySetResult(json);
+                    pendingResponses.Remove(message.RequestId);
+                    continue;
+                }
+
+                RouteIncomingMessage(message);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogWarning($"Failed to parse socket message: {ex.Message}\n{json}");
+            }
         }
+    }
+
+    private void RouteIncomingMessage(SocketMessage<JObject> message)
+    {
+        switch (message.Type)
+        {
+            case SocketMessageType.TaskAssigned:
+                HandleTaskAssigned(message.Payload?.ToObject<DeliveryTask>());
+                break;
+            default:
+                Debug.LogWarning($"Unhandled socket message type: {message.Type}");
+                break;
+        }
+    }
+
+    private void HandleTaskAssigned(DeliveryTask task)
+    {
+        if (task == null)
+            return;
+
+        manager.TaskManager.UpdateTaskInfo(task);
+        var robot = manager.RobotManager.GetRobotBy(task.AssignedRobotId);
+        robot.TaskModule.DoTask(task);
+        ExtraLog.LogWithColor($"Task assigned: {task.TaskId}", Color.cyan);
     }
 
     public async Task SendMessageAsync<T>(SocketMessageType type, T payload)
@@ -65,10 +104,13 @@ public class WebSocketClient : SimulationBaseService
         await socket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, CancellationToken.None);
     }
 
-    public async Task<TResponse> SendRequestAsync<TRequest, TResponse>(SocketMessageType type, TRequest payload)
+    public async Task<TResponse> SendRequestAsync<TRequest, TResponse>(SocketMessageType type, TRequest payload, CancellationToken cancellationToken = default, int timeoutMilliseconds = 10000)
     {
+        // Kiểm tra trạng thái socket an toàn
         if (socket == null || socket.State != WebSocketState.Open)
-            return default!;
+        {
+            throw new InvalidOperationException("WebSocket chưa được kết nối hoặc đã đóng.");
+        }
 
         var requestId = Guid.NewGuid().ToString();
         var request = new SocketMessage<TRequest>
@@ -81,13 +123,46 @@ public class WebSocketClient : SimulationBaseService
         var tcs = new TaskCompletionSource<string>(TaskCreationOptions.RunContinuationsAsynchronously);
         pendingResponses[requestId] = tcs;
 
-        string json = JsonConvert.SerializeObject(request);
-        byte[] bytes = Encoding.UTF8.GetBytes(json);
-        await socket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, CancellationToken.None);
+        try
+        {
+            string json = JsonConvert.SerializeObject(request);
+            byte[] bytes = Encoding.UTF8.GetBytes(json);
 
-        string responseJson = await tcs.Task;
-        var responseMessage = JsonConvert.DeserializeObject<SocketMessage<TResponse>>(responseJson);
-        return responseMessage.Payload;
+            // 2. Đồng bộ hóa việc gửi tin nhắn (Bảo vệ luồng nếu cần)
+            // Nếu hệ thống gọi hàm này rất nhiều, bạn nên bọc socket.SendAsync bằng một SemaphoreSlim để tránh lỗi đồng thời.
+            await socket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, cancellationToken);
+
+            // 3. Cơ chế tạo Timeout kết hợp với CancellationToken
+            using (var cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken))
+            {
+                cts.CancelAfter(timeoutMilliseconds);
+
+                // Đăng ký hành động nếu bị hủy hoặc hết hạn thì hủy bỏ Task tương ứng
+                using (cts.Token.Register(() => tcs.TrySetCanceled()))
+                {
+                    // Chờ phản hồi từ Server
+                    string responseJson = await tcs.Task;
+
+                    // 4. Khắc phục việc Deserialize an toàn
+                    var responseMessage = JsonConvert.DeserializeObject<SocketMessage<TResponse>>(responseJson);
+
+                    if (responseMessage == null || responseMessage.Payload == null)
+                    {
+                        throw new JsonException("Phản hồi từ Server không đúng cấu trúc kì vọng.");
+                    }
+
+                    return responseMessage.Payload;
+                }
+            }
+        }
+        catch (TaskCanceledException)
+        {
+            throw new TimeoutException($"Yêu cầu loại {type} (ID: {requestId}) đã quá hạn {timeoutMilliseconds}ms hoặc bị hủy.");
+        }
+        finally
+        {
+            pendingResponses.Remove(requestId, out _);
+        }
     }
 
     [Button]
