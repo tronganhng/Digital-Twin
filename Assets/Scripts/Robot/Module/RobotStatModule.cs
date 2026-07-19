@@ -35,7 +35,7 @@ public class RobotStatModule : RobotBaseModule
         _robotState.LastHeartbeat = DateTime.UtcNow;
     }
 
-    public async Task TryRegister()
+    private async Task TryRegister()
     {
         UpdateState();
 
@@ -44,7 +44,7 @@ public class RobotStatModule : RobotBaseModule
         IsRegistered = true;
     }
 
-    public async Task SendStateAsync()
+    private async Task SendStateAsync()
     {
         if (!IsRegistered)
             return;

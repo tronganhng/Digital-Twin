@@ -43,10 +43,4 @@ public class MapManager : SimulationBaseService
         position = default;
         return false;
     }
-
-    public MapPoint GetPoint(string pointName)
-    {
-        _points.TryGetValue(pointName, out MapPoint point);
-        return point;
-    }
 }
