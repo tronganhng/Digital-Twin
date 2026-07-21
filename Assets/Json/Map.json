@@ -1,85 +1,85 @@
 {
   "Points": [
     {
-      "pointName": "room_1",
-      "position": [
+      "PointName": "room_1",
+      "Position": [
         17.21,
         20.33
       ]
     },
     {
-      "pointName": "room_2",
-      "position": [
+      "PointName": "room_2",
+      "Position": [
         17.21,
         10.48
       ]
     },
     {
-      "pointName": "room_3",
-      "position": [
+      "PointName": "room_3",
+      "Position": [
         17.21,
         -1.11
       ]
     },
     {
-      "pointName": "room_4",
-      "position": [
+      "PointName": "room_4",
+      "Position": [
         17.21,
         -12.16
       ]
     },
     {
-      "pointName": "room_5",
-      "position": [
+      "PointName": "room_5",
+      "Position": [
         17.21,
         -21.99
       ]
     },
     {
-      "pointName": "room_6",
-      "position": [
+      "PointName": "room_6",
+      "Position": [
         -19.42,
         20.85
       ]
     },
     {
-      "pointName": "room_7",
-      "position": [
+      "PointName": "room_7",
+      "Position": [
         -19.42,
         10.24
       ]
     },
     {
-      "pointName": "room_8",
-      "position": [
+      "PointName": "room_8",
+      "Position": [
         -19.42,
         -11.65
       ]
     },
     {
-      "pointName": "junction_1",
-      "position": [
+      "PointName": "junction_1",
+      "Position": [
         7.53,
         15.29
       ]
     },
     {
-      "pointName": "junction_2",
-      "position": [
+      "PointName": "junction_2",
+      "Position": [
         -7.93,
         15.29
       ]
     },
     {
-      "pointName": "junction_3",
-      "position": [
+      "PointName": "junction_3",
+      "Position": [
         -7.93,
         -12.8
       ]
     },
     {
-      "pointName": "junction_4",
-      "position": [
+      "PointName": "junction_4",
+      "Position": [
         7.9,
         -12.8
       ]
@@ -87,34 +87,34 @@
   ],
   "Lanes": [
     {
-      "startPoint": "room_1",
-      "endPoint": "junction_1",
-      "distance": 10.913476
+      "StartPoint": "room_1",
+      "EndPoint": "junction_1",
+      "Distance": 10.913476
     },
     {
-      "startPoint": "room_2",
-      "endPoint": "junction_1",
-      "distance": 10.809185
+      "StartPoint": "room_2",
+      "EndPoint": "junction_1",
+      "Distance": 10.809185
     },
     {
-      "startPoint": "junction_1",
-      "endPoint": "junction_2",
-      "distance": 15.46
+      "StartPoint": "junction_1",
+      "EndPoint": "junction_2",
+      "Distance": 15.46
     },
     {
-      "startPoint": "junction_3",
-      "endPoint": "junction_2",
-      "distance": 28.09
+      "StartPoint": "junction_3",
+      "EndPoint": "junction_2",
+      "Distance": 28.09
     },
     {
-      "startPoint": "junction_3",
-      "endPoint": "junction_4",
-      "distance": 15.83
+      "StartPoint": "junction_3",
+      "EndPoint": "junction_4",
+      "Distance": 15.83
     },
     {
-      "startPoint": "junction_1",
-      "endPoint": "junction_4",
-      "distance": 28.0924377
+      "StartPoint": "junction_1",
+      "EndPoint": "junction_4",
+      "Distance": 28.0924377
     }
   ]
 }

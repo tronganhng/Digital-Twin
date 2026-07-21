@@ -13,9 +13,9 @@ public class MapLane : MonoBehaviour
     {
         return new MapLaneDto
         {
-            startPoint = startPoint.PointName,
-            endPoint = endPoint.PointName,
-            distance = distance,
+            StartPoint = startPoint.PointName,
+            EndPoint = endPoint.PointName,
+            Distance = distance,
         };
     }
 

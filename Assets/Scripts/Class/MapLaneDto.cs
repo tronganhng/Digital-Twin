@@ -1,6 +1,6 @@
 public class MapLaneDto
 {
-    public string startPoint;
-    public string endPoint;
-    public float distance;
+    public string StartPoint { get; set; } = string.Empty;
+    public string EndPoint { get; set; } = string.Empty;
+    public float Distance { get; set; }
 }

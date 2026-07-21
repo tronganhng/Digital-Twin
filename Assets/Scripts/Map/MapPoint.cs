@@ -19,15 +19,15 @@ public class MapPoint : MonoBehaviour
     {
         return new MapPointDto
         {
-            pointName = pointName,
-            position = new float[] { Position.x, Position.z }
+            PointName = pointName,
+            Position = new float[] { Position.x, Position.z }
         };
     }
 
     public void FromData(MapPointDto data)
     {
-        var pos = new Vector3(data.position[0], 0, data.position[1]);
-        pointName = data.pointName;
+        var pos = new Vector3(data.Position[0], 0, data.Position[1]);
+        pointName = data.PointName;
         transform.position = pos;
     }
 
