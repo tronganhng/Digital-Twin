@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -8,19 +9,22 @@ public class MapManager : SimulationBaseService
     [SerializeField] private Transform mapRoot;
 
     [SerializeField, ReadOnly] private SerializedDictionary<string, MapPoint> _points = new();
+    [SerializeField, ReadOnly] private List<MapLane> _lanes = new();
 
     public override void Init(SimulationManager fleetManager)
     {
         base.Init(fleetManager);
-        CachePoints();
+        SetupData();
     }
 
     [Button]
-    private void CachePoints()
+    private void SetupData()
     {
         _points.Clear();
+        _lanes.Clear();
 
         MapPoint[] points = mapRoot.GetComponentsInChildren<MapPoint>(true);
+        MapLane[] lanes = mapRoot.GetComponentsInChildren<MapLane>(true);
 
         foreach (MapPoint point in points)
         {
@@ -31,6 +35,11 @@ public class MapManager : SimulationBaseService
             }
 
             _points.Add(point.PointName, point);
+        }
+
+        foreach (var lane in lanes)
+        {
+            _lanes.Add(lane);
         }
     }
 
@@ -51,7 +60,8 @@ public class MapManager : SimulationBaseService
     {
         SaveLoad.Save("Map", new MapDto
         {
-            Points = _points.Values.Select(p => p.ToData()).ToList()
+            Points = _points.Values.Select(p => p.ToData()).ToList(),
+            Lanes = _lanes.Select(p => p.ToData()).ToList()
         });
     }
 }

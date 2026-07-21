@@ -38,9 +38,83 @@
     {
       "pointName": "room_6",
       "position": [
-        -8.05,
-        -0.67
+        -19.42,
+        20.85
       ]
+    },
+    {
+      "pointName": "room_7",
+      "position": [
+        -19.42,
+        10.24
+      ]
+    },
+    {
+      "pointName": "room_8",
+      "position": [
+        -19.42,
+        -11.65
+      ]
+    },
+    {
+      "pointName": "junction_1",
+      "position": [
+        7.53,
+        15.29
+      ]
+    },
+    {
+      "pointName": "junction_2",
+      "position": [
+        -7.93,
+        15.29
+      ]
+    },
+    {
+      "pointName": "junction_3",
+      "position": [
+        -7.93,
+        -12.8
+      ]
+    },
+    {
+      "pointName": "junction_4",
+      "position": [
+        7.9,
+        -12.8
+      ]
+    }
+  ],
+  "Lanes": [
+    {
+      "startPoint": "room_1",
+      "endPoint": "junction_1",
+      "distance": 10.913476
+    },
+    {
+      "startPoint": "room_2",
+      "endPoint": "junction_1",
+      "distance": 10.809185
+    },
+    {
+      "startPoint": "junction_1",
+      "endPoint": "junction_2",
+      "distance": 15.46
+    },
+    {
+      "startPoint": "junction_3",
+      "endPoint": "junction_2",
+      "distance": 28.09
+    },
+    {
+      "startPoint": "junction_3",
+      "endPoint": "junction_4",
+      "distance": 15.83
+    },
+    {
+      "startPoint": "junction_1",
+      "endPoint": "junction_4",
+      "distance": 28.0924377
     }
   ]
 }

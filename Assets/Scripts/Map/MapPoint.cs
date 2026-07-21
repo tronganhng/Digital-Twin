@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 
@@ -28,5 +29,12 @@ public class MapPoint : MonoBehaviour
         var pos = new Vector3(data.position[0], 0, data.position[1]);
         pointName = data.pointName;
         transform.position = pos;
+    }
+
+    [Button]
+    private void SetName()
+    {
+        gameObject.name = pointName;
+        label.text = pointName;
     }
 }
