@@ -36,8 +36,8 @@ public class WebSocketClient : SimulationBaseService
             var result = await socket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
             string json = Encoding.UTF8.GetString(buffer, 0, result.Count);
 
-            string prettyJson = JToken.Parse(json).ToString(Formatting.Indented);
-            Debug.Log(prettyJson);
+            // string prettyJson = JToken.Parse(json).ToString(Formatting.Indented);
+            // Debug.Log(prettyJson);
 
             try
             {
