@@ -1,3 +1,4 @@
+using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -14,6 +15,7 @@ public class MapManager : SimulationBaseService
         CachePoints();
     }
 
+    [Button]
     private void CachePoints()
     {
         _points.Clear();
@@ -42,5 +44,14 @@ public class MapManager : SimulationBaseService
 
         position = default;
         return false;
+    }
+
+    [Button]
+    public void Save()
+    {
+        SaveLoad.Save("Map", new MapDto
+        {
+            Points = _points.Values.Select(p => p.ToData()).ToList()
+        });
     }
 }

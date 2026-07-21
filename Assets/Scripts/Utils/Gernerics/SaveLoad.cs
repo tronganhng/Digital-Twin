@@ -19,6 +19,7 @@ public static class SaveLoad
 
         string json = JsonConvert.SerializeObject(data, Settings);
         File.WriteAllText(path, json);
+        ExtraLog.LogWithColor($"Save: {fileName}", Color.cyan);
     }
 
     public static T Load<T>(string fileName)
@@ -51,6 +52,15 @@ public static class SaveLoad
         if (!fileName.EndsWith(".json"))
             fileName += ".json";
 
-        return Path.Combine(Application.persistentDataPath, fileName);
+#if UNITY_EDITOR
+        string folder = Path.Combine(Application.dataPath, "Json");
+#else
+        string folder = Application.persistentDataPath;
+#endif
+
+        if (!Directory.Exists(folder))
+            Directory.CreateDirectory(folder);
+
+        return Path.Combine(folder, fileName);
     }
 }

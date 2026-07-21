@@ -641,6 +641,17 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!114 &608281648 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+  m_PrefabInstance: {fileID: 359690957}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5eb951bd422de4c9088d5eaee6fc72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HospitalPoint
 --- !u!1 &622929322
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,8 +698,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MapManager
   mapRoot: {fileID: 1891844436}
   _points:
-    m_Keys: []
-    m_Values: []
+    m_Keys:
+    - room_1
+    - room_2
+    - room_3
+    - room_4
+    - room_5
+    - room_6
+    m_Values:
+    - {fileID: 1519493264}
+    - {fileID: 1126813940}
+    - {fileID: 682480184}
+    - {fileID: 1646722460}
+    - {fileID: 608281648}
+    - {fileID: 1937434515}
 --- !u!1 &647107467
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,6 +1005,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5369285435795787545, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
   m_PrefabInstance: {fileID: 682480182}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &682480184 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+  m_PrefabInstance: {fileID: 682480182}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5eb951bd422de4c9088d5eaee6fc72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HospitalPoint
 --- !u!1 &880135400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,6 +1262,17 @@ Transform:
   - {fileID: 261759928}
   m_Father: {fileID: 1507638917}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1126813940 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+  m_PrefabInstance: {fileID: 206565085}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5eb951bd422de4c9088d5eaee6fc72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HospitalPoint
 --- !u!1 &1406964230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,6 +1426,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5369285435795787545, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
   m_PrefabInstance: {fileID: 1519493262}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1519493264 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+  m_PrefabInstance: {fileID: 1519493262}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5eb951bd422de4c9088d5eaee6fc72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HospitalPoint
 --- !u!1 &1532637226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1743,6 +1799,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5369285435795787545, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
   m_PrefabInstance: {fileID: 1646722458}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1646722460 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+  m_PrefabInstance: {fileID: 1646722458}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5eb951bd422de4c9088d5eaee6fc72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HospitalPoint
 --- !u!1 &1740557122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,6 +2029,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5369285435795787545, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
   m_PrefabInstance: {fileID: 1937434513}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1937434515 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+  m_PrefabInstance: {fileID: 1937434513}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5eb951bd422de4c9088d5eaee6fc72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HospitalPoint
 --- !u!1 &2009817379
 GameObject:
   m_ObjectHideFlags: 0
