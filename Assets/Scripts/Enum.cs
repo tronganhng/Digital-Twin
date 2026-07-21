@@ -19,7 +19,7 @@ public enum TaskStatus
 
 public enum SocketMessageType
 {
-    None,
+    ServerResponse,
     RegisterRobot,
     RobotState,
     CreateTask,
