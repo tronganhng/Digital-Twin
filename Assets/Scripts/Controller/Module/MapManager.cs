@@ -47,7 +47,7 @@ public class MapManager : SimulationBaseService
     }
 
     [Button]
-    public void Save()
+    private void Save()
     {
         SaveLoad.Save("Map", new MapDto
         {
