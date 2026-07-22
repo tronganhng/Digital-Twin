@@ -5,7 +5,7 @@ public abstract class RobotState : IState
     protected readonly RobotStateMachineModule StateMachine;
     protected readonly Robot Robot;
 
-    protected virtual RobotStatus Status { get; }
+    protected abstract RobotStatus Status { get; }
 
     protected RobotState(RobotStateMachineModule stateMachine)
     {
