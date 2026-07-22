@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 
 public class MapManager : SimulationBaseService
 {
+    [SerializeField] private ChargingStation chargingStation;
     [SerializeField] private Transform mapRoot;
 
     [SerializeField, ReadOnly] private SerializedDictionary<string, MapPoint> _points = new();
