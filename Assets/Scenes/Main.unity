@@ -2841,7 +2841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TaskManager
   tasks: []
   map: {fileID: 622929324}
-  pickupPoint: room_1
+  pickupPoint: junction_4
   destinationPoint: room_2
   priority: 0
 --- !u!1 &1478531801

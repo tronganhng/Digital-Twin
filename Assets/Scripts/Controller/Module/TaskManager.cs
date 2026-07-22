@@ -1,7 +1,6 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
-using System;
 using System.Linq;
 
 public class TaskManager : SimulationBaseService
@@ -16,10 +15,34 @@ public class TaskManager : SimulationBaseService
 
     private IEnumerable<string> GetPointNames()
     {
-        return map.GetPointNames(); 
+        return map.GetPointNames();
     }
 
-    [Button]
+    [Button(ButtonSizes.Medium)]
+    private void PickRandom()
+    {
+        var names = map.GetPointNames().ToList();
+
+        if (names.Count < 2)
+        {
+            Debug.LogWarning("Need at least 2 map points.");
+            return;
+        }
+
+        int pickupIndex = Random.Range(0, names.Count);
+
+        int destinationIndex;
+        do
+        {
+            destinationIndex = Random.Range(0, names.Count);
+        }
+        while (destinationIndex == pickupIndex);
+
+        pickupPoint = names[pickupIndex];
+        destinationPoint = names[destinationIndex];
+    }
+
+    [Button(ButtonSizes.Medium)]
     private async void AssignTask()
     {
         var task = new DeliveryTask
