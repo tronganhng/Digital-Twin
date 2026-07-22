@@ -23,6 +23,11 @@ public class TaskManager : SimulationBaseService
         };
 
         var res = await SimulationManager.Instance.WebSocket.SendRequestAsync<DeliveryTask, DeliveryTask>(SocketMessageType.CreateTask, task);
+        if (string.IsNullOrEmpty(res.TaskId))
+        {
+            ExtraLog.LogWithColor("Invalid Pickup & Destination", Color.yellow);
+            return;
+        }
         if (res != null) tasks.Add(res);
     }
 
