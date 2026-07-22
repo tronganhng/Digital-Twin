@@ -9,9 +9,9 @@ public class Robot : MonoBehaviour
 
     public void Init()
     {
-        StateMachine.Init(this);
         MoveModule.Init(this);
         StatModule.Init(this);
         TaskModule.Init(this);
+        StateMachine.Init(this);
     }
 }

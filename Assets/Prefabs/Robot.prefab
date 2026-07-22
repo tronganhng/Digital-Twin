@@ -80,7 +80,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2, y: 1}
+  m_SizeDelta: {x: 3, y: 1.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &7849163077958208499
 MeshRenderer:
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: active
+  m_text: idle
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -160,8 +160,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278255400
-  m_fontColor: {r: 0.15622401, g: 1, b: 0, a: 1}
+    rgba: 4284809202
+  m_fontColor: {r: 0.9475998, g: 1, b: 0.3915094, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6.7
+  m_fontSize: 13.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -598,6 +598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee291488708936c499e8eaca44f542f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RobotStateMachineModule
+  stateName: None
 --- !u!114 &1448802909522321459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,3 +654,5 @@ MonoBehaviour:
     <AssignedRobotId>k__BackingField: 
     <Status>k__BackingField: 0
     createdAtString: 
+  PickupPoint: {fileID: 0}
+  DesPoint: {fileID: 0}

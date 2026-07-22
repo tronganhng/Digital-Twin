@@ -62,7 +62,10 @@ public class RobotStatModule : RobotBaseModule
 
     public void SetStatus(RobotStatus status)
     {
+        statusTmp.text = status.ToString();
         _robotState.Status = status;
+        UpdateState();
+        _ = SendStateAsync();
     }
 
     public void SetTaskId(string id)

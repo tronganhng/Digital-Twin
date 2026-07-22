@@ -2,6 +2,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public class TaskManager : SimulationBaseService
 {
@@ -28,15 +29,19 @@ public class TaskManager : SimulationBaseService
             ExtraLog.LogWithColor("Invalid Pickup & Destination", Color.yellow);
             return;
         }
-        if (res != null) tasks.Add(res);
+        if (res != null && !tasks.Any(t => t.TaskId == res.TaskId)) tasks.Add(res);
     }
 
     public void UpdateTaskInfo(DeliveryTask newTaskInfo)
     {
-        var task = tasks.Find(t => t.TaskId == newTaskInfo.TaskId);
-        if (task == null)
-            return;
+        int index = tasks.FindIndex(t => t.TaskId == newTaskInfo.TaskId);
 
-        task.CopyFrom(newTaskInfo);
+        if (index == -1)
+        {
+            tasks.Add(newTaskInfo);
+            return;
+        }
+
+        tasks[index] = newTaskInfo;
     }
 }

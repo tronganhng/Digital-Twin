@@ -278,7 +278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7062169437767304132, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: m_fontSize
-      value: 3.8
+      value: 9.55
       objectReference: {fileID: 0}
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: pointName
@@ -467,7 +467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7062169437767304132, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: m_fontSize
-      value: 5.25
+      value: 13.2
       objectReference: {fileID: 0}
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: pointName
@@ -2129,7 +2129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7062169437767304132, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: m_fontSize
-      value: 3.8
+      value: 9.55
       objectReference: {fileID: 0}
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: pointName
@@ -2217,7 +2217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7062169437767304132, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: m_fontSize
-      value: 3.8
+      value: 9.55
       objectReference: {fileID: 0}
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: pointName
@@ -2460,7 +2460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7062169437767304132, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: m_fontSize
-      value: 5.25
+      value: 5.9
       objectReference: {fileID: 0}
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: pointName
@@ -2840,8 +2840,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TaskManager
   tasks: []
-  pickupPoint: 
-  destinationPoint: 
+  pickupPoint: room_1
+  destinationPoint: room_2
   priority: 0
 --- !u!1 &1478531801
 GameObject:
@@ -3050,7 +3050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7062169437767304132, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: m_fontSize
-      value: 5.25
+      value: 13.2
       objectReference: {fileID: 0}
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: pointName
@@ -3729,7 +3729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7062169437767304132, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: m_fontSize
-      value: 3.8
+      value: 9.55
       objectReference: {fileID: 0}
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: pointName

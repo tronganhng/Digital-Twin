@@ -23,7 +23,12 @@ public class RobotTaskModule : RobotBaseModule
         }
         else
         {
-
+            ExtraLog.LogWithColor("Invalid Point! Maybe u forgot sync Map on client & server", Color.red);
         }
+    }
+
+    public void SetTaskStatus(TaskStatus status)
+    {
+        CurrentTask.Status = status;
     }
 }
