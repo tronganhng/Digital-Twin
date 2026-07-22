@@ -36,7 +36,7 @@ public class RobotFuelModule : RobotBaseModule
 
         if (battery <= 0)
         {
-            robot.StatModule.SetStatus(RobotStatus.Error);
+            robot.StateMachine.ChangeState(new OfflineState(robot.StateMachine));
         }
     }
 

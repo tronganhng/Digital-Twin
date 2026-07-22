@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class IdleState : RobotState
 {
+    protected override RobotStatus Status => RobotStatus.Idle;
+
     public IdleState(RobotStateMachineModule stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
-        Robot.StatModule.SetStatus(RobotStatus.Idle);
+        base.Enter();
         Robot.TaskModule.OnTaskStart.AddOnce(OnTaskStart);
     }
 

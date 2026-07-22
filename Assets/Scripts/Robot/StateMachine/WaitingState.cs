@@ -5,12 +5,14 @@ public class WaitingState : RobotState
     private const int WAIT_TIME = 3;
 
     private float _timer;
+    
+    protected override RobotStatus Status => RobotStatus.Moving;
 
     public WaitingState(RobotStateMachineModule stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
-        Robot.StatModule.SetStatus(RobotStatus.Moving);
+        base.Enter();
         _timer = 0;
     }
 
