@@ -1,3 +1,4 @@
+using Sigtrap.Relays;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -5,7 +6,10 @@ public class RobotTaskModule : RobotBaseModule
 {
     [field: SerializeField, ReadOnly] public DeliveryTask CurrentTask { get; private set; }
 
-    private MapPoint _pickupPoint, _desPoint;
+    public MapPoint PickupPoint;
+    public MapPoint DesPoint;
+
+    public Relay OnTaskStart = new();
 
     public void DoTask(DeliveryTask task)
     {
@@ -13,9 +17,9 @@ public class RobotTaskModule : RobotBaseModule
         robot.StatModule.SetTaskId(task.TaskId);
 
         var mapManager = SimulationManager.Instance.MapManager;
-        if (mapManager.TryGetPoint(task.PickupLocation, out _pickupPoint) && mapManager.TryGetPoint(task.Destination, out _desPoint))
+        if (mapManager.TryGetPoint(task.PickupLocation, out PickupPoint) && mapManager.TryGetPoint(task.Destination, out DesPoint))
         {
-            robot.MoveModule.MoveTo(_pickupPoint.Position, OnReachPickupPos);
+            robot.MoveModule.MoveTo(PickupPoint.Position, OnReachPickupPos);
         }
         else
         {
@@ -25,6 +29,6 @@ public class RobotTaskModule : RobotBaseModule
 
     private void OnReachPickupPos()
     {
-        robot.MoveModule.MoveTo(_desPoint.Position);
+        robot.MoveModule.MoveTo(DesPoint.Position);
     }
 }
