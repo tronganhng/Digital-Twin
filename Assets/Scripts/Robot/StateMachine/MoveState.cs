@@ -1,0 +1,20 @@
+using System;
+using UnityEngine;
+
+public class MoveState : RobotState
+{
+    private Vector3 _des;
+    private Action _onReach;
+
+    public MoveState(RobotStateMachineModule stateMachine, Vector3 destination, Action onReach = null) : base(stateMachine)
+    {
+        _des = destination;
+        _onReach = onReach;
+    }
+
+    public override void Enter()
+    {
+        Robot.StatModule.SetStatus(RobotStatus.Moving);
+        Robot.MoveModule.MoveTo(_des, _onReach);
+    }
+}

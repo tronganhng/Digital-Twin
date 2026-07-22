@@ -19,16 +19,11 @@ public class RobotTaskModule : RobotBaseModule
         var mapManager = SimulationManager.Instance.MapManager;
         if (mapManager.TryGetPoint(task.PickupLocation, out PickupPoint) && mapManager.TryGetPoint(task.Destination, out DesPoint))
         {
-            robot.MoveModule.MoveTo(PickupPoint.Position, OnReachPickupPos);
+            OnTaskStart.Dispatch();
         }
         else
         {
 
         }
-    }
-
-    private void OnReachPickupPos()
-    {
-        robot.MoveModule.MoveTo(DesPoint.Position);
     }
 }

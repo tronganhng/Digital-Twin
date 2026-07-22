@@ -60,6 +60,11 @@ public class RobotStatModule : RobotBaseModule
         await SimulationManager.Instance.WebSocket.SendMessageAsync(SocketMessageType.RobotState, _robotState);
     }
 
+    public void SetStatus(RobotStatus status)
+    {
+        _robotState.Status = status;
+    }
+
     public void SetTaskId(string id)
     {
         _robotState.CurrentTaskId = id;
