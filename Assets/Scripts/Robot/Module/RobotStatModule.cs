@@ -15,9 +15,10 @@ public class RobotStatModule : RobotBaseModule
     private Coroutine _sendDataCrt;
 
     public string RobotId => _robotState.RobotId;
+    public double Battery { get { return _robotState.Battery; } set { _robotState.Battery = value; } }
     public bool IsRegistered { get; private set; }
 
-    public override void Init(Robot robot)
+    public async Task InitStat(Robot robot)
     {
         base.Init(robot);
 
@@ -27,7 +28,7 @@ public class RobotStatModule : RobotBaseModule
             Status = RobotStatus.Idle
         };
 
-        _ = TryRegister();
+        await TryRegister();
         _sendDataCrt = StartCoroutine(SendDataCrt());
     }
 
@@ -36,7 +37,6 @@ public class RobotStatModule : RobotBaseModule
         _robotState.X = robot.transform.position.x;
         _robotState.Y = robot.transform.position.z;
         _robotState.Rotation = robot.transform.eulerAngles.y;
-        _robotState.Battery = 100;
         _robotState.LastHeartbeat = DateTime.UtcNow;
     }
 

@@ -7,8 +7,8 @@ public class RobotTaskModule : RobotBaseModule
 {
     [field: SerializeField, ReadOnly] public DeliveryTask CurrentTask { get; private set; }
 
-    public MapPoint PickupPoint;
-    public MapPoint DesPoint;
+    [ReadOnly] public MapPoint PickupPoint;
+    [ReadOnly] public MapPoint DesPoint;
 
     public Relay OnTaskStart = new();
 

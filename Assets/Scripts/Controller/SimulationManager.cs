@@ -14,7 +14,7 @@ public class SimulationManager : MonoSingleton<SimulationManager>
         await WebSocket.InitWebSocket(this);
         Router.Init(this);
         MapManager.Init(this);
-        RobotManager.Init(this);
+        await RobotManager.InitRobot(this);
         TaskManager.Init(this);
         ExtraLog.LogWithColor("All service init success!", Color.green);
     }

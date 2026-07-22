@@ -531,6 +531,7 @@ MonoBehaviour:
   <MoveModule>k__BackingField: {fileID: 1448802909522321459}
   <StatModule>k__BackingField: {fileID: 2053839858729314878}
   <TaskModule>k__BackingField: {fileID: 7361335647768366212}
+  <FuelModule>k__BackingField: {fileID: 666597020984300591}
 --- !u!114 &2964052912074700902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,6 +789,7 @@ GameObject:
   - component: {fileID: 1448802909522321459}
   - component: {fileID: 2053839858729314878}
   - component: {fileID: 7361335647768366212}
+  - component: {fileID: 666597020984300591}
   m_Layer: 6
   m_Name: Module
   m_TagString: Untagged
@@ -880,6 +882,20 @@ MonoBehaviour:
     createdAtString: 
   PickupPoint: {fileID: 0}
   DesPoint: {fileID: 0}
+--- !u!114 &666597020984300591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8348339900805200891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c48fc25c76cc3c647b31f933531f2a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RobotFuelModule
+  batteryFill: {fileID: 2183099765897558595}
+  batteryTmp: {fileID: 1437380826764341347}
 --- !u!1001 &4585627270012048536
 PrefabInstance:
   m_ObjectHideFlags: 0

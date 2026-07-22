@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -14,13 +16,13 @@ public class RobotManager : SimulationBaseService
 
     [SerializeField, ReadOnly] private List<Robot> _robots = new();
 
-    public override void Init(SimulationManager fleet)
+    public async Task InitRobot(SimulationManager fleet)
     {
         base.Init(fleet);
 
         foreach (var robot in _robots)
         {
-            robot.Init();
+            await robot.Init();
         }
     }
 
