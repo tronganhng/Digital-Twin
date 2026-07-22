@@ -64,4 +64,9 @@ public class MapManager : SimulationBaseService
             Lanes = _lanes.Select(p => p.ToData()).ToList()
         });
     }
+
+    public IEnumerable<string> GetPointNames()
+    {
+        return _points.Keys;
+    }
 }

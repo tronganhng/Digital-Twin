@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Sigtrap.Relays;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -30,5 +31,11 @@ public class RobotTaskModule : RobotBaseModule
     public void SetTaskStatus(TaskStatus status)
     {
         CurrentTask.Status = status;
+        _ = SendTaskAsync();
+    }
+
+    private async Task SendTaskAsync()
+    {
+        await SimulationManager.Instance.WebSocket.SendMessageAsync(SocketMessageType.UpdateTask, CurrentTask);
     }
 }

@@ -24,4 +24,5 @@ public enum SocketMessageType
     RobotState,
     CreateTask,
     TaskAssigned,
+    UpdateTask,
 }

@@ -9,9 +9,15 @@ public class TaskManager : SimulationBaseService
     [SerializeField, ReadOnly] private List<DeliveryTask> tasks;
 
     [Title("Test")]
-    [SerializeField] string pickupPoint;
-    [SerializeField] string destinationPoint;
+    [SerializeField] private MapManager map;
+    [SerializeField, ValueDropdown(nameof(GetPointNames))] string pickupPoint;
+    [SerializeField, ValueDropdown(nameof(GetPointNames))] string destinationPoint;
     [SerializeField] int priority;
+
+    private IEnumerable<string> GetPointNames()
+    {
+        return map.GetPointNames(); 
+    }
 
     [Button]
     private async void AssignTask()
