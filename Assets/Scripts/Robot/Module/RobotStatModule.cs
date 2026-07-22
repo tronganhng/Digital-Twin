@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class RobotStatModule : RobotBaseModule
 {
-    [SerializeField] private TextMeshPro statusTmp;
+    [SerializeField] private TextMeshPro idTmp, statusTmp;
     [SerializeField] private float sendDataInterval = 0.5f;
 
     [SerializeField, ReadOnly] private RobotStateDto _robotState;
@@ -46,6 +46,7 @@ public class RobotStatModule : RobotBaseModule
 
         var res = await SimulationManager.Instance.WebSocket.SendRequestAsync<RobotStateDto, RobotStateDto>(SocketMessageType.RegisterRobot, _robotState);
         _robotState.RobotId = res.RobotId;
+        idTmp.text = res.RobotId;
         IsRegistered = true;
 
     }

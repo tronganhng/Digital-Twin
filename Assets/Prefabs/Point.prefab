@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8277980656692099630}
   - component: {fileID: 739344432865047361}
   - component: {fileID: 6327803856644345418}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 2364653542385137006}
   - component: {fileID: 5801099765370873055}
   - component: {fileID: 7062169437767304132}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Name Tmp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5369285435795787545}
   - component: {fileID: 8501239312193278701}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
