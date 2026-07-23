@@ -8,6 +8,7 @@ public class RobotFuelModule : RobotBaseModule
     [SerializeField] private float drainPerSecond = 0.5f;
     [SerializeField] private float chargePerSecond = 5f;
     [SerializeField] private float needChargeThreshold = 20;
+    [SerializeField] private float fullChargeThreshold = 100;
 
     [Header("UI")]
     [SerializeField] private Image batteryFill;
@@ -16,6 +17,7 @@ public class RobotFuelModule : RobotBaseModule
     private bool _isCharging;
 
     public bool NeedCharge => robot.StatModule.Battery <= needChargeThreshold;
+    public bool IsFull => robot.StatModule.Battery >= fullChargeThreshold;
 
     public override void Tick()
     {
@@ -65,10 +67,6 @@ public class RobotFuelModule : RobotBaseModule
         if (battery <= 0)
         {
             robot.StateMachine.ChangeState(new OfflineState(robot.StateMachine));
-        }
-        else if (battery <= needChargeThreshold)
-        {
-
         }
     }
 }

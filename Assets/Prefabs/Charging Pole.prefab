@@ -47,6 +47,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChargingPole
   chargePoint: {fileID: 2596466900977964030}
+  lightningMeshs:
+  - {fileID: 872812400739438155}
+  - {fileID: 6656596226014201769}
+  availableColor: {r: 0, g: 1, b: 0, a: 1}
+  occupiedColor: {r: 1, g: 0, b: 0, a: 1}
+  isOccupied: 0
 --- !u!1 &4720126997657984426
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,8 +245,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
+--- !u!23 &872812400739438155 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -2488210596037059938, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
+  m_PrefabInstance: {fileID: 5865028000599790805}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6264078929599214398 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
+  m_PrefabInstance: {fileID: 5865028000599790805}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6656596226014201769 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8285434623279754372, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
   m_PrefabInstance: {fileID: 5865028000599790805}
   m_PrefabAsset: {fileID: 0}

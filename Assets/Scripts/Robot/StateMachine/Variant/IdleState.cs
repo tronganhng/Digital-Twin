@@ -18,7 +18,8 @@ public class IdleState : RobotState
         if (Robot.FuelModule.NeedCharge)
         {
             var pole = SimulationManager.Instance.MapManager.GetFreeChargingPole();
-            if (pole) StateMachine.ChangeState(new MoveState(StateMachine, pole.ChargePoint.position));
+            var des = pole.ChargePoint.position;
+            if (pole) StateMachine.ChangeState(new MoveState(StateMachine, des, () => StateMachine.ChangeState(new ChargingState(StateMachine, pole))));
         }
     }
 
