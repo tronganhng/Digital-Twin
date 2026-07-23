@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6105795408731962354}
   - component: {fileID: 6465300178977030963}
   - component: {fileID: 2530783137127606304}
+  - component: {fileID: 4447889824967008903}
   m_Layer: 5
   m_Name: Task Item
   m_TagString: Untagged
@@ -76,6 +77,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4447889824967008903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818339871440908358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe996db35d28004bba052909b699cc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TaskItemUI
 --- !u!1 &6287631663710047727
 GameObject:
   m_ObjectHideFlags: 0
