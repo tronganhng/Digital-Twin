@@ -16,6 +16,7 @@ public class RobotStatModule : RobotBaseModule
     private Coroutine _sendDataCrt;
 
     public string RobotId => _robotState.RobotId;
+    public string TaskId => _robotState.CurrentTaskId;
     public double Battery { get { return _robotState.Battery; } set { _robotState.Battery = value; } }
     public bool IsRegistered { get; private set; }
 

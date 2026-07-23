@@ -35,6 +35,15 @@ public class RobotManager : SimulationBaseService
         return null;
     }
 
+    public Robot GetRobotByTask(string taskId)
+    {
+        foreach (var robot in _robots)
+        {
+            if (robot.StatModule.TaskId == taskId) return robot;
+        }
+        return null;
+    }
+
     private void ClearAllRobots()
     {
         for (int i = robotRoot.childCount - 1; i >= 0; i--)

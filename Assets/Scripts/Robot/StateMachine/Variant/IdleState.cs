@@ -9,6 +9,7 @@ public class IdleState : RobotState
     public override void Enter()
     {
         base.Enter();
+        Robot.MoveModule.Stop();
         Robot.TaskModule.OnTaskStart.AddOnce(OnTaskStart);
     }
 

@@ -35,11 +35,13 @@ public class RobotTaskModule : RobotBaseModule
         CurrentTask.Status = status;
         _ = SendTaskAsync();
 
-        if (status == TaskStatus.Completed)
+        if (status == TaskStatus.Completed || status == TaskStatus.Cancelled)
         {
+            robot.StatModule.SetTaskId(null);
             CurrentTask = null;
             PickupPoint = null;
             DesPoint = null;
+            robot.StateMachine.ChangeState(new IdleState(robot.StateMachine));
         }
     }
 

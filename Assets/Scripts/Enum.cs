@@ -25,4 +25,5 @@ public enum SocketMessageType
     CreateTask,
     TaskAssigned,
     UpdateTask,
+    CancelTask,
 }

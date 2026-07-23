@@ -7,18 +7,18 @@ public class TaskManager : SimulationBaseService
 {
     [SerializeField, ReadOnly] private List<DeliveryTask> tasks;
 
-    [Title("Test")]
-    [SerializeField] private MapManager map;
-    [SerializeField, ValueDropdown(nameof(GetPointNames))] string pickupPoint;
-    [SerializeField, ValueDropdown(nameof(GetPointNames))] string destinationPoint;
-    [SerializeField] int priority;
+    [SerializeField, TabGroup("Create")] private MapManager map;
+    [SerializeField, TabGroup("Create"), ValueDropdown(nameof(GetPointNames))] string pickupPoint;
+    [SerializeField, TabGroup("Create"), ValueDropdown(nameof(GetPointNames))] string destinationPoint;
+    [SerializeField, TabGroup("Create")] int priority;
+    [SerializeField, TabGroup("Cancel"), ValueDropdown(nameof(GetTaskIds))] private string cancelTaskId;
 
     private IEnumerable<string> GetPointNames()
     {
         return map.GetPointNames();
     }
 
-    [Button(ButtonSizes.Medium)]
+    [Button(ButtonSizes.Medium), TabGroup("Create")]
     private void PickRandom()
     {
         var names = map.GetPointNames().ToList();
@@ -42,7 +42,7 @@ public class TaskManager : SimulationBaseService
         destinationPoint = names[destinationIndex];
     }
 
-    [Button(ButtonSizes.Medium)]
+    [Button(ButtonSizes.Medium), TabGroup("Create"), GUIColor(0.2f, 1f, 0.3f)]
     private async void AssignTask()
     {
         var task = new DeliveryTask
@@ -59,6 +59,31 @@ public class TaskManager : SimulationBaseService
             return;
         }
         if (res != null && !tasks.Any(t => t.TaskId == res.TaskId)) tasks.Add(res);
+    }
+
+    private IEnumerable<string> GetTaskIds()
+    {
+        return tasks.Select(t => t.TaskId);
+    }
+
+    [Button(ButtonSizes.Medium), TabGroup("Cancel"), GUIColor(1f, 0.4f, 0.4f)]
+    private async void CancelTask()
+    {
+        var simulator = SimulationManager.Instance;
+        var task = tasks.Find(t => t.TaskId == cancelTaskId);
+        if (task == null) return;
+        var res = await simulator.WebSocket.SendRequestAsync<DeliveryTask, DeliveryTask>(SocketMessageType.CancelTask, task);
+        if (res == null) return;
+
+        var robot = simulator.RobotManager.GetRobotByTask(res.TaskId);
+        if (robot != null)
+        {
+            robot.TaskModule.SetTaskStatus(TaskStatus.Cancelled);
+        }
+        else
+        {
+            UpdateTaskInfo(res);
+        }
     }
 
     public void UpdateTaskInfo(DeliveryTask newTaskInfo)

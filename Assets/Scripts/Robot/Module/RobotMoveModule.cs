@@ -42,6 +42,7 @@ public class RobotMoveModule : RobotBaseModule
         if (!agent.isOnNavMesh)
             return false;
 
+        Resume();
         onReachCallback = onReach;
 
         bool success = agent.SetDestination(destination);

@@ -26,7 +26,6 @@ public class WaitingState : RobotState
             StateMachine.ChangeState(new MoveState(StateMachine, des, () =>
             {
                 Robot.TaskModule.SetTaskStatus(TaskStatus.Completed);
-                StateMachine.ChangeState(new IdleState(StateMachine));
             }));
         }
     }
