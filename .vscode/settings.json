@@ -67,6 +67,6 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Digital Twin.slnx",
+    "dotnet.defaultSolution": "Digital-Twin.slnx",
     "git.ignoreLimitWarning": true
 }
