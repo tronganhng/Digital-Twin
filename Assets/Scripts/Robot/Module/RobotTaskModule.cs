@@ -30,8 +30,17 @@ public class RobotTaskModule : RobotBaseModule
 
     public void SetTaskStatus(TaskStatus status)
     {
+        if (CurrentTask == null) return;
+
         CurrentTask.Status = status;
         _ = SendTaskAsync();
+
+        if (status == TaskStatus.Completed)
+        {
+            CurrentTask = null;
+            PickupPoint = null;
+            DesPoint = null;
+        }
     }
 
     private async Task SendTaskAsync()

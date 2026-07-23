@@ -39,7 +39,11 @@ public class ChargingStation : MonoBehaviour
     {
         foreach (var pole in _poles)
         {
-            if (!pole.IsOccupied) return pole;
+            if (!pole.IsOccupied)
+            {
+                pole.IsOccupied = true;
+                return pole;
+            }
         }
         return null;
     }

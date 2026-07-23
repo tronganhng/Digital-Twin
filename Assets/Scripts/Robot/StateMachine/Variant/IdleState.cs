@@ -12,6 +12,16 @@ public class IdleState : RobotState
         Robot.TaskModule.OnTaskStart.AddOnce(OnTaskStart);
     }
 
+    public override void Update()
+    {
+        base.Update();
+        if (Robot.FuelModule.NeedCharge)
+        {
+            var pole = SimulationManager.Instance.MapManager.GetFreeChargingPole();
+            if (pole) StateMachine.ChangeState(new MoveState(StateMachine, pole.ChargePoint.position));
+        }
+    }
+
     private void OnTaskStart()
     {
         Robot.TaskModule.SetTaskStatus(TaskStatus.Running);

@@ -5,5 +5,7 @@ public class ChargingPole : MonoBehaviour
 {
     [SerializeField] private Transform chargePoint;
 
-    [field: SerializeField, ReadOnly] public bool IsOccupied { get; private set; }
+    [field: SerializeField, ReadOnly] public bool IsOccupied { get; set; }
+
+    public Transform ChargePoint => chargePoint;
 }

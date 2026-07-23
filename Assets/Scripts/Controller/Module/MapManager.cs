@@ -56,6 +56,8 @@ public class MapManager : SimulationBaseService
         return false;
     }
 
+    public ChargingPole GetFreeChargingPole() => chargingStation.GetFreePole();
+
     [Button]
     private void Save()
     {

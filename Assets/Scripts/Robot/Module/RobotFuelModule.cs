@@ -7,7 +7,7 @@ public class RobotFuelModule : RobotBaseModule
     [Header("Config")]
     [SerializeField] private float drainPerSecond = 0.5f;
     [SerializeField] private float chargePerSecond = 5f;
-    [SerializeField] private float needChargeThreshold = 20; 
+    [SerializeField] private float needChargeThreshold = 20;
 
     [Header("UI")]
     [SerializeField] private Image batteryFill;
@@ -15,10 +15,12 @@ public class RobotFuelModule : RobotBaseModule
 
     private bool _isCharging;
 
+    public bool NeedCharge => robot.StatModule.Battery <= needChargeThreshold;
+
     public override void Tick()
     {
         base.Tick();
-        
+
         UpdateBattery();
         RefreshUI();
     }
@@ -44,6 +46,7 @@ public class RobotFuelModule : RobotBaseModule
         float percent = (float)robot.StatModule.Battery / 100f;
 
         batteryFill.fillAmount = percent;
+        batteryFill.color = percent > needChargeThreshold / 100 ? Color.green : Color.red;
         batteryTmp.text = $"{robot.StatModule.Battery:0}%";
     }
 
@@ -65,7 +68,7 @@ public class RobotFuelModule : RobotBaseModule
         }
         else if (battery <= needChargeThreshold)
         {
-            
+
         }
     }
 }
