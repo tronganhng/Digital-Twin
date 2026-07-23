@@ -9,6 +9,8 @@ public class Robot : MonoBehaviour
     [field: SerializeField] public RobotTaskModule TaskModule { get; private set; }
     [field: SerializeField] public RobotFuelModule FuelModule { get; private set; }
 
+    private bool _isInited;
+
     public async Task Init()
     {
         await StatModule.InitStat(this);
@@ -16,5 +18,16 @@ public class Robot : MonoBehaviour
         TaskModule.Init(this);
         FuelModule.Init(this);
         StateMachine.Init(this);
+
+        _isInited = true;
+    }
+
+    void Update()
+    {
+        if (!_isInited) return;
+
+        MoveModule.Tick();
+        StateMachine.Tick();
+        FuelModule.Tick();
     }
 }

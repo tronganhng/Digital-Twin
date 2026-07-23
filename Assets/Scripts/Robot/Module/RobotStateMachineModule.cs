@@ -17,8 +17,10 @@ public class RobotStateMachineModule : RobotBaseModule
         ChangeState(new IdleState(this));
     }
 
-    private void Update()
+    public override void Tick()
     {
+        base.Tick();
+        
         _currentState?.Update();
     }
 

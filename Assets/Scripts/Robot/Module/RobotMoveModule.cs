@@ -18,8 +18,10 @@ public class RobotMoveModule : RobotBaseModule
             agent = GetComponent<NavMeshAgent>();
     }
 
-    private void Update()
+    public override void Tick()
     {
+        base.Tick();
+
         if (!isMoving)
             return;
 
