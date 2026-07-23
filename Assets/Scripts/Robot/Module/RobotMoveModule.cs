@@ -54,14 +54,6 @@ public class RobotMoveModule : RobotBaseModule
         return success;
     }
 
-    public bool MoveTo(Transform target, Action onReach = null)
-    {
-        if (target == null)
-            return false;
-
-        return MoveTo(target.position, onReach);
-    }
-
     /// <summary>
     /// Dừng tại chỗ.
     /// </summary>

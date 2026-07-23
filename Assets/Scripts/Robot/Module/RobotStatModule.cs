@@ -12,6 +12,7 @@ public class RobotStatModule : RobotBaseModule
 
     [SerializeField, ReadOnly] private RobotStateDto _robotState;
 
+    private bool _disable;
     private Coroutine _sendDataCrt;
 
     public string RobotId => _robotState.RobotId;
@@ -53,7 +54,7 @@ public class RobotStatModule : RobotBaseModule
 
     private async Task SendStateAsync()
     {
-        if (!IsRegistered)
+        if (!IsRegistered || _disable)
             return;
 
         UpdateState();
@@ -82,5 +83,11 @@ public class RobotStatModule : RobotBaseModule
             _ = SendStateAsync();
             yield return new WaitForSeconds(sendDataInterval);
         }
+    }
+
+    public void Disable()
+    {
+        _disable = true;
+        StopCoroutine(_sendDataCrt);
     }
 }

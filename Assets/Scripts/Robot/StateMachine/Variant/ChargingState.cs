@@ -21,7 +21,6 @@ public class ChargingState : RobotState
         if (Robot.FuelModule.IsFull)
         {
             StateMachine.ChangeState(new IdleState(StateMachine));
-            _chargingPole.IsOccupied = false;
         }
     }
 
@@ -29,5 +28,6 @@ public class ChargingState : RobotState
     {
         base.Exit();
         Robot.FuelModule.StopCharging();
+        _chargingPole.IsOccupied = false;
     }
 }
