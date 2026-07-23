@@ -9,7 +9,9 @@ public class ChargingStation : MonoBehaviour
 {
     [SerializeField] private GridDrawer grid;
     [SerializeField] private Transform poleContainer;
-    [SerializeField] private GameObject polePrefab;
+    [SerializeField] private ChargingPole polePrefab;
+
+    [SerializeField, ReadOnly] private List<ChargingPole> _poles = new();
 
     [Button(ButtonSizes.Medium)]
     public void SpawnPoles()
@@ -26,9 +28,19 @@ public class ChargingStation : MonoBehaviour
 
         for (int i = 0; i < positions.Count; i++)
         {
-            var pole = (GameObject)PrefabUtility.InstantiatePrefab(polePrefab, poleContainer);
-            pole.transform.position = positions[i] + new Vector3(0, 0, grid.size/2 + 0.5f);
+            var pole = (ChargingPole)PrefabUtility.InstantiatePrefab(polePrefab, poleContainer);
+            pole.transform.position = positions[i] + new Vector3(0, 0, grid.size / 2 + 0.5f);
+            _poles.Add(pole);
         }
 #endif
+    }
+
+    public ChargingPole GetFreePole()
+    {
+        foreach (var pole in _poles)
+        {
+            if (!pole.IsOccupied) return pole;
+        }
+        return null;
     }
 }

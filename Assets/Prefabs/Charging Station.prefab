@@ -48,7 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChargingStation
   grid: {fileID: 7913721309925061527}
   poleContainer: {fileID: 8341218533841597818}
-  polePrefab: {fileID: 3773368895025820463, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
+  polePrefab: {fileID: 7378356244632311757, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
+  _poles:
+  - {fileID: 8882835290794034229}
+  - {fileID: 5287742727869662910}
 --- !u!1 &7027239742708276842
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,8 +81,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5362657630442606427}
-  - {fileID: 3152898076695096196}
+  - {fileID: 1396686205291074562}
+  - {fileID: 2397596055674197641}
   m_Father: {fileID: 3814226170712912361}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7835875923133748164
@@ -130,69 +133,7 @@ MonoBehaviour:
   row: 1
   column: 2
   gizmoColor: {r: 0, g: 1, b: 0, a: 1}
---- !u!1001 &2702259724789836926
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 8341218533841597818}
-    m_Modifications:
-    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.7999992
-      objectReference: {fileID: 0}
-    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3773368895025820463, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
-      propertyPath: m_Name
-      value: Charging Pole
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
---- !u!4 &3152898076695096196 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
-  m_PrefabInstance: {fileID: 2702259724789836926}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &4912017947348486305
+--- !u!1001 &2099526574432654328
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -210,7 +151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.7999992
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
       propertyPath: m_LocalRotation.w
@@ -249,8 +190,92 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
---- !u!4 &5362657630442606427 stripped
+--- !u!4 &1396686205291074562 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
-  m_PrefabInstance: {fileID: 4912017947348486305}
+  m_PrefabInstance: {fileID: 2099526574432654328}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8882835290794034229 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7378356244632311757, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
+  m_PrefabInstance: {fileID: 2099526574432654328}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe5ad67ca2134df4b915e2d4386650bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChargingPole
+--- !u!1001 &3388107797551616371
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8341218533841597818}
+    m_Modifications:
+    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3773368895025820463, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
+      propertyPath: m_Name
+      value: Charging Pole
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
+--- !u!4 &2397596055674197641 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1027105486817527802, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
+  m_PrefabInstance: {fileID: 3388107797551616371}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5287742727869662910 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7378356244632311757, guid: 32608fc36a6bd2a45a146e24b4587d26, type: 3}
+  m_PrefabInstance: {fileID: 3388107797551616371}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe5ad67ca2134df4b915e2d4386650bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChargingPole
