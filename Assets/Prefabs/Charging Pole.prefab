@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1027105486817527802}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Charging Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8715079266148045912}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.68
+      value: 2.08
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -112,6 +112,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8009679049956632881, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -5531414001336848624, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.65
@@ -136,6 +140,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -3163770439380494374, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -2327653872402347000, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.65
@@ -159,10 +167,26 @@ PrefabInstance:
     - target: {fileID: -2327653872402347000, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 398082660942130971, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
       propertyPath: m_Name
       value: Maruti
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299534335721187760, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4398699354431751714, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

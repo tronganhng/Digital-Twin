@@ -27,7 +27,7 @@ public class ChargingStation : MonoBehaviour
         for (int i = 0; i < positions.Count; i++)
         {
             var pole = (GameObject)PrefabUtility.InstantiatePrefab(polePrefab, poleContainer);
-            pole.transform.position = positions[i] + new Vector3(0, 0, grid.size/2 + 0.3f);
+            pole.transform.position = positions[i] + new Vector3(0, 0, grid.size/2 + 0.5f);
         }
 #endif
     }

@@ -8,6 +8,6 @@ public class RobotTest : MonoBehaviour
     [Button]
     private void Move(Transform des)
     {
-        robot.MoveModule.MoveTo(des);
+        robot.MoveModule.MoveTo(des.position);
     }
 }
