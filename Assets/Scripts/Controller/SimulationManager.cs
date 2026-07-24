@@ -8,6 +8,7 @@ public class SimulationManager : MonoSingleton<SimulationManager>
     [field: SerializeField] public MapManager MapManager { get; private set; }
     [field: SerializeField] public MessageRouter Router { get; private set; }
     [field: SerializeField] public WebSocketClient WebSocket { get; private set; }
+    [field: SerializeField] public GUIManager GUI { get; private set; }
 
     private async void Start()
     {
@@ -16,6 +17,7 @@ public class SimulationManager : MonoSingleton<SimulationManager>
         MapManager.Init(this);
         await RobotManager.InitRobot(this);
         TaskManager.Init(this);
+        GUI.Init(this);
         ExtraLog.LogWithColor("All service init success!", Color.green);
     }
 }

@@ -44,6 +44,11 @@ public class RobotManager : SimulationBaseService
         return null;
     }
 
+    public List<Robot> GetAllRobot()
+    {
+        return _robots;
+    }
+
     private void ClearAllRobots()
     {
         for (int i = robotRoot.childCount - 1; i >= 0; i--)
