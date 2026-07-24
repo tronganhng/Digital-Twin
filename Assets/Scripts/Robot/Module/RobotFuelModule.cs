@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,6 +31,8 @@ public class RobotFuelModule : RobotBaseModule
     private void UpdateBattery()
     {
         double battery = robot.StatModule.Battery;
+        
+        if (battery <= 0) return;
 
         if (_isCharging)
             battery += chargePerSecond * Time.deltaTime;
@@ -68,5 +71,12 @@ public class RobotFuelModule : RobotBaseModule
         {
             robot.StateMachine.ChangeState(new OfflineState(robot.StateMachine));
         }
+    }
+
+    [Button(ButtonSizes.Medium)]
+    private void FillFuel()
+    {
+        robot.StatModule.Battery = 100;
+        robot.StateMachine.ChangeState(new IdleState(robot.StateMachine));
     }
 }

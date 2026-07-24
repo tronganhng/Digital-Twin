@@ -16,6 +16,7 @@ public class RobotStatModule : RobotBaseModule
     private Coroutine _sendDataCrt;
 
     public string RobotId => _robotState.RobotId;
+    public RobotStatus Status => _robotState.Status;
     public string TaskId => _robotState.CurrentTaskId;
     public double Battery { get { return _robotState.Battery; } set { _robotState.Battery = value; } }
     public bool IsRegistered { get; private set; }
@@ -90,5 +91,11 @@ public class RobotStatModule : RobotBaseModule
     {
         _disable = true;
         StopCoroutine(_sendDataCrt);
+    }
+
+    public void Enable()
+    {
+        _disable = false;
+        _sendDataCrt = StartCoroutine(SendDataCrt());
     }
 }

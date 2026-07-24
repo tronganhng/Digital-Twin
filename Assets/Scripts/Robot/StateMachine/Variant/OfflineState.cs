@@ -10,4 +10,10 @@ public class OfflineState : RobotState
         base.Enter();
         Robot.MoveModule.Stop();
     }
+
+    public override void Exit()
+    {
+        base.Exit();
+        Robot.StatModule.Enable();
+    }
 }
