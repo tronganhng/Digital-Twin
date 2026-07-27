@@ -52,7 +52,7 @@ public class TaskManager : SimulationBaseService
             Priority = priority,
         };
 
-        var res = await SimulationManager.Instance.WebSocket.SendRequestAsync<DeliveryTask, DeliveryTask>(SocketMessageType.CreateTask, task);
+        var res = await manager.WebSocket.SendRequestAsync<DeliveryTask, DeliveryTask>(SocketMessageType.CreateTask, task);
         if (string.IsNullOrEmpty(res.TaskId))
         {
             ExtraLog.LogWithColor("Invalid Pickup & Destination", Color.yellow);
@@ -60,7 +60,7 @@ public class TaskManager : SimulationBaseService
         }
         if (res != null && !tasks.Any(t => t.TaskId == res.TaskId))
         {
-            SimulationManager.Instance.GUI.Dashboard.AddTask(res);
+            manager.GUI.Dashboard.AddTask(res);
             tasks.Add(res);
         }
     }
@@ -73,13 +73,12 @@ public class TaskManager : SimulationBaseService
     [Button(ButtonSizes.Medium), TabGroup("Cancel"), GUIColor(1f, 0.4f, 0.4f)]
     private async void CancelTask()
     {
-        var simulator = SimulationManager.Instance;
         var task = tasks.Find(t => t.TaskId == cancelTaskId);
         if (task == null) return;
-        var res = await simulator.WebSocket.SendRequestAsync<DeliveryTask, DeliveryTask>(SocketMessageType.CancelTask, task);
+        var res = await manager.WebSocket.SendRequestAsync<DeliveryTask, DeliveryTask>(SocketMessageType.CancelTask, task);
         if (res == null) return;
 
-        var robot = simulator.RobotManager.GetRobotByTask(res.TaskId);
+        var robot = manager.RobotManager.GetRobotByTask(res.TaskId);
         if (robot != null)
         {
             robot.TaskModule.SetTaskStatus(TaskStatus.Cancelled);
@@ -96,12 +95,31 @@ public class TaskManager : SimulationBaseService
 
         if (index == -1)
         {
-            SimulationManager.Instance.GUI.Dashboard.AddTask(newTaskInfo);
+            manager.GUI.Dashboard.AddTask(newTaskInfo);
             tasks.Add(newTaskInfo);
             return;
         }
 
-        SimulationManager.Instance.GUI.Dashboard.ReplaceTask(newTaskInfo);
+        manager.GUI.Dashboard.ReplaceTask(newTaskInfo);
         tasks[index] = newTaskInfo;
+    }
+
+    public async void CancelTask(DeliveryTask task)
+    {
+        if (task == null || !tasks.Contains(task)) return;
+
+        var res = await manager.WebSocket.SendRequestAsync<DeliveryTask, DeliveryTask>(SocketMessageType.CancelTask, task);
+        
+        if (res == null) return;
+
+        var robot = manager.RobotManager.GetRobotByTask(res.TaskId);
+        if (robot != null)
+        {
+            robot.TaskModule.SetTaskStatus(TaskStatus.Cancelled);
+        }
+        else
+        {
+            UpdateTaskInfo(res);
+        }
     }
 }

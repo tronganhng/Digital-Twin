@@ -101,7 +101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Cancel
+  m_text: Create
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1789fe794c1ac4ce89f189a37342d7ef, type: 2}
   m_sharedMaterial: {fileID: -3815791607483727697, guid: 1789fe794c1ac4ce89f189a37342d7ef, type: 2}
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 1990376491454586327}
   - component: {fileID: 848605747307657811}
   m_Layer: 5
-  m_Name: Cancel Btn
+  m_Name: Create Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -559,7 +559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.24056602, b: 0.24056602, a: 1}
+  m_Color: {r: 0.25767434, g: 1, b: 0.23921567, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

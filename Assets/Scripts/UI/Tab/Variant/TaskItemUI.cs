@@ -1,9 +1,11 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TaskItemUI : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI statusTmp, assignedRobot;
+    [SerializeField] private TextMeshProUGUI statusTmp, assignedRobot, locationTmp;
+    [SerializeField] private Button cancelBtn;
 
     private DeliveryTask _task;
 
@@ -19,7 +21,14 @@ public class TaskItemUI : MonoBehaviour
 
     private void UpdateUI()
     {
+        cancelBtn.interactable = _task.Status != TaskStatus.Cancelled && _task.Status != TaskStatus.Completed;
         statusTmp.text = _task.Status.ToString();
         assignedRobot.text = _task.AssignedRobotId;
+        locationTmp.text = $"{_task.PickupLocation} to {_task.Destination}";
+    }
+
+    public void CancelTask()
+    {
+        SimulationManager.Instance.TaskManager.CancelTask(_task);
     }
 }
