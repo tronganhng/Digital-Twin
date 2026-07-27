@@ -14,4 +14,6 @@ public class Dashboard : MonoBehaviour
     }
 
     public void AddTask(DeliveryTask task) => taskListUI.AddTaskItem(task);
+
+    public void ReplaceTask(DeliveryTask task) => taskListUI.ReplaceTaskItem(task);
 }

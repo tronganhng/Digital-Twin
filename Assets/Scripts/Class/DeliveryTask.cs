@@ -15,8 +15,8 @@ public class DeliveryTask
     [field: SerializeField] public TaskStatus Status { get; set; } = TaskStatus.Pending;
     [field: SerializeField] public DateTime CreatedAt { get; set; }
 
-    public Relay OnDataChanged = new();
 
+    public Relay OnDataChanged = new();
 
     [JsonIgnore, SerializeField] private string createdAtString;
 

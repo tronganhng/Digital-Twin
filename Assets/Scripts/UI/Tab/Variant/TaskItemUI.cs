@@ -7,12 +7,13 @@ public class TaskItemUI : MonoBehaviour
 
     private DeliveryTask _task;
 
+    public string TaskId => _task.TaskId;
+
     public void Init(DeliveryTask task)
     {
+        if (_task != null) _task.OnDataChanged.RemoveListener(UpdateUI);
         _task = task;
-
         _task.OnDataChanged.AddListener(UpdateUI);
-
         UpdateUI();
     }
 

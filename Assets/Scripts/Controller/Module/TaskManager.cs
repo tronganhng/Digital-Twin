@@ -101,6 +101,7 @@ public class TaskManager : SimulationBaseService
             return;
         }
 
+        SimulationManager.Instance.GUI.Dashboard.ReplaceTask(newTaskInfo);
         tasks[index] = newTaskInfo;
     }
 }

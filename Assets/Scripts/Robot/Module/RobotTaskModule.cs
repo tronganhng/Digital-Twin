@@ -33,6 +33,7 @@ public class RobotTaskModule : RobotBaseModule
         if (CurrentTask == null) return;
 
         CurrentTask.Status = status;
+        CurrentTask.OnDataChanged.Dispatch();
         _ = SendTaskAsync();
 
         if (status == TaskStatus.Completed || status == TaskStatus.Cancelled)
