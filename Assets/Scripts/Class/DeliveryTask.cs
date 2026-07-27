@@ -17,15 +17,6 @@ public class DeliveryTask
 
     [JsonIgnore, SerializeField] private string createdAtString;
 
-    public void CopyFrom(DeliveryTask other)
-    {
-        Status = other.Status;
-        AssignedRobotId = other.AssignedRobotId;
-        Priority = other.Priority;
-        PickupLocation = other.PickupLocation;
-        Destination = other.Destination;
-    }
-
     [OnDeserialized]
     internal void OnDeserialized(StreamingContext context)
     {

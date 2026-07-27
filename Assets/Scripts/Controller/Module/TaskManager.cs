@@ -58,7 +58,11 @@ public class TaskManager : SimulationBaseService
             ExtraLog.LogWithColor("Invalid Pickup & Destination", Color.yellow);
             return;
         }
-        if (res != null && !tasks.Any(t => t.TaskId == res.TaskId)) tasks.Add(res);
+        if (res != null && !tasks.Any(t => t.TaskId == res.TaskId))
+        {
+            SimulationManager.Instance.GUI.Dashboard.AddTask(res);
+            tasks.Add(res);
+        }
     }
 
     private IEnumerable<string> GetTaskIds()
@@ -92,6 +96,7 @@ public class TaskManager : SimulationBaseService
 
         if (index == -1)
         {
+            SimulationManager.Instance.GUI.Dashboard.AddTask(newTaskInfo);
             tasks.Add(newTaskInfo);
             return;
         }

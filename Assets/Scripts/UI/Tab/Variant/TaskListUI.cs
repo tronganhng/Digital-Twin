@@ -5,8 +5,9 @@ public class TaskListUI : TabContent
     [SerializeField] private TaskItemUI itemPrefab;
     [SerializeField] private Transform container;
 
-    public void AddTaskItem()
+    public void AddTaskItem(DeliveryTask task)
     {
-        Instantiate(itemPrefab, container);
+        var newTask = Instantiate(itemPrefab, container);
+        newTask.Init(task);
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using Sigtrap.Relays;
 using UnityEngine;
 
 [Serializable]
@@ -12,4 +13,6 @@ public class RobotStateDto
     [field: SerializeField] public RobotStatus Status { get; set; }
     [field: SerializeField] public string CurrentTaskId { get; set; }
     [field: SerializeField] public DateTime LastHeartbeat { get; set; }
+
+    public Relay OnStatChanged = new();
 }

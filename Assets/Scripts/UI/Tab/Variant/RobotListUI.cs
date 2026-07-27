@@ -12,7 +12,7 @@ public class RobotListUI : TabContent
         foreach (var robot in robots)
         {
             var itemUI = Instantiate(itemPrefab, container);
-            itemUI.Init(robot);
+            itemUI.Init(robot.StatModule.StateDto);
         }
     }
 }

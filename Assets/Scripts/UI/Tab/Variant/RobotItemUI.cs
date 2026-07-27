@@ -6,14 +6,21 @@ public class RobotItemUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI idTmp, statusTmp, batteryTmp;
 
-    private Robot _robot;
+    private RobotStateDto _robot;
 
-    public void Init(Robot robot)
+    public void Init(RobotStateDto robot)
     {
         _robot = robot;
 
-        idTmp.text = robot.StatModule.RobotId;
-        statusTmp.text = robot.StatModule.Status.ToString();
-        batteryTmp.text = $"{Math.Round(robot.StatModule.Battery, 1)}%";
+        _robot.OnStatChanged.AddListener(UpdateUI);
+
+        UpdateUI();
+    }
+
+    private void UpdateUI()
+    {
+        idTmp.text = _robot.RobotId;
+        statusTmp.text = _robot.Status.ToString();
+        batteryTmp.text = $"{Math.Round(_robot.Battery, 0)}%";
     }
 }

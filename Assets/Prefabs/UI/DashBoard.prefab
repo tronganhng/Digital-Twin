@@ -673,6 +673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dashboard
   tabs: {fileID: 7100639108761202560}
+  taskListUI: {fileID: 8669910451794391081}
   robotListUI: {fileID: 4867634468984893534}
 --- !u!114 &7100639108761202560
 MonoBehaviour:

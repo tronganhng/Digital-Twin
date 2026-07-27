@@ -30,7 +30,7 @@ public class RobotManager : SimulationBaseService
     {
         foreach (var robot in _robots)
         {
-            if (robot.StatModule.RobotId == robotId) return robot;
+            if (robot.StatModule.StateDto.RobotId == robotId) return robot;
         }
         return null;
     }
@@ -39,7 +39,7 @@ public class RobotManager : SimulationBaseService
     {
         foreach (var robot in _robots)
         {
-            if (robot.StatModule.TaskId == taskId) return robot;
+            if (robot.StatModule.StateDto.CurrentTaskId == taskId) return robot;
         }
         return null;
     }

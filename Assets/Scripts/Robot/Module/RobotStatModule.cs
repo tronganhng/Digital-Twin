@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Threading.Tasks;
+using Sigtrap.Relays;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -15,9 +16,7 @@ public class RobotStatModule : RobotBaseModule
     private bool _disable;
     private Coroutine _sendDataCrt;
 
-    public string RobotId => _robotState.RobotId;
-    public RobotStatus Status => _robotState.Status;
-    public string TaskId => _robotState.CurrentTaskId;
+    public RobotStateDto StateDto => _robotState;
     public double Battery { get { return _robotState.Battery; } set { _robotState.Battery = value; } }
     public bool IsRegistered { get; private set; }
 
