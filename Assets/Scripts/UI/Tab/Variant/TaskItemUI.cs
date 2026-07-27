@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class TaskItemUI : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI statusTmp, assignedRobot, locationTmp;
+    [SerializeField] private TextMeshProUGUI statusTmp, priorityTmp, assignedRobot, locationTmp;
     [SerializeField] private Button cancelBtn;
 
     private DeliveryTask _task;
@@ -23,6 +23,7 @@ public class TaskItemUI : MonoBehaviour
     {
         cancelBtn.interactable = _task.Status != TaskStatus.Cancelled && _task.Status != TaskStatus.Completed;
         statusTmp.text = _task.Status.ToString();
+        priorityTmp.text = $"Priority: {_task.Priority}";
         assignedRobot.text = _task.AssignedRobotId;
         locationTmp.text = $"{_task.PickupLocation} to {_task.Destination}";
     }

@@ -9,6 +9,7 @@ public class Dashboard : MonoBehaviour
     public void Init()
     {
         tabs.Init();
+        taskListUI.Init();
         robotListUI.Init();
         tabs.SetTab(0, true);
     }

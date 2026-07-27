@@ -7,6 +7,7 @@ public class TaskManager : SimulationBaseService
 {
     [SerializeField, ReadOnly] private List<DeliveryTask> tasks;
 
+    #region Test
     [SerializeField, TabGroup("Create")] private MapManager map;
     [SerializeField, TabGroup("Create"), ValueDropdown(nameof(GetPointNames))] string pickupPoint;
     [SerializeField, TabGroup("Create"), ValueDropdown(nameof(GetPointNames))] string destinationPoint;
@@ -88,6 +89,7 @@ public class TaskManager : SimulationBaseService
             UpdateTaskInfo(res);
         }
     }
+    #endregion
 
     public void UpdateTaskInfo(DeliveryTask newTaskInfo)
     {
@@ -109,7 +111,7 @@ public class TaskManager : SimulationBaseService
         if (task == null || !tasks.Contains(task)) return;
 
         var res = await manager.WebSocket.SendRequestAsync<DeliveryTask, DeliveryTask>(SocketMessageType.CancelTask, task);
-        
+
         if (res == null) return;
 
         var robot = manager.RobotManager.GetRobotByTask(res.TaskId);
@@ -120,6 +122,28 @@ public class TaskManager : SimulationBaseService
         else
         {
             UpdateTaskInfo(res);
+        }
+    }
+
+    public async void CreateTask(string pickPoint, string destination, int priority)
+    {
+        var task = new DeliveryTask
+        {
+            PickupLocation = pickPoint,
+            Destination = destination,
+            Priority = priority,
+        };
+
+        var res = await manager.WebSocket.SendRequestAsync<DeliveryTask, DeliveryTask>(SocketMessageType.CreateTask, task);
+        if (string.IsNullOrEmpty(res.TaskId))
+        {
+            ExtraLog.LogWithColor("Invalid Pickup & Destination", Color.yellow);
+            return;
+        }
+        if (res != null && !tasks.Any(t => t.TaskId == res.TaskId))
+        {
+            manager.GUI.Dashboard.AddTask(res);
+            tasks.Add(res);
         }
     }
 }
