@@ -11,6 +11,8 @@ public class TaskItemUI : MonoBehaviour
     {
         _task = task;
 
+        _task.OnDataChanged.AddListener(UpdateUI);
+
         UpdateUI();
     }
 

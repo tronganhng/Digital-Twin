@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
+using Sigtrap.Relays;
 
 [Serializable]
 public class DeliveryTask
@@ -13,6 +14,8 @@ public class DeliveryTask
     [field: SerializeField] public string AssignedRobotId { get; set; }
     [field: SerializeField] public TaskStatus Status { get; set; } = TaskStatus.Pending;
     [field: SerializeField] public DateTime CreatedAt { get; set; }
+
+    public Relay OnDataChanged = new();
 
 
     [JsonIgnore, SerializeField] private string createdAtString;

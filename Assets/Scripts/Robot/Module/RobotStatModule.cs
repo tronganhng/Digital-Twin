@@ -17,8 +17,10 @@ public class RobotStatModule : RobotBaseModule
     private Coroutine _sendDataCrt;
 
     public RobotStateDto StateDto => _robotState;
-    public double Battery { get { return _robotState.Battery; } set { _robotState.Battery = value; } }
+    public double Battery { get { return _robotState.Battery; } set { _robotState.Battery = value; OnStatChanged.Dispatch(); } }
     public bool IsRegistered { get; private set; }
+
+    public Relay OnStatChanged = new();
 
     public async Task InitStat(Robot robot)
     {
@@ -69,6 +71,8 @@ public class RobotStatModule : RobotBaseModule
         _robotState.Status = status;
         UpdateState();
         _ = SendStateAsync();
+
+        OnStatChanged.Dispatch();
     }
 
     public void SetTaskId(string id)
