@@ -3699,7 +3699,7 @@ GameObject:
   - component: {fileID: 1547344365}
   - component: {fileID: 1547344364}
   - component: {fileID: 1547344367}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5296,6 +5296,10 @@ PrefabInstance:
     - target: {fileID: 811302955425104826, guid: d7bdcfa5c88ef98478f8bfb113842184, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 811302955425104826, guid: d7bdcfa5c88ef98478f8bfb113842184, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 328.66193
       objectReference: {fileID: 0}
     - target: {fileID: 2488625560197445532, guid: d7bdcfa5c88ef98478f8bfb113842184, type: 3}
       propertyPath: m_SizeDelta.y

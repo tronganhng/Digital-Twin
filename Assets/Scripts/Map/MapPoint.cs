@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MapPoint : MonoBehaviour
 {
+    [SerializeField] private Collider triggerZone;
     [SerializeField] private TextMeshPro label;
     [SerializeField] private string pointName;
 

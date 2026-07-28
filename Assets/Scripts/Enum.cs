@@ -26,4 +26,5 @@ public enum SocketMessageType
     TaskAssigned,
     UpdateTask,
     CancelTask,
+    ResourceAccess,
 }
