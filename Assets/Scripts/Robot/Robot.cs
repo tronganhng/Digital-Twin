@@ -8,6 +8,7 @@ public class Robot : MonoBehaviour
     [field: SerializeField] public RobotStatModule StatModule { get; private set; }
     [field: SerializeField] public RobotTaskModule TaskModule { get; private set; }
     [field: SerializeField] public RobotFuelModule FuelModule { get; private set; }
+    [field: SerializeField] public RobotSensorModule SensorModule { get; private set; }
 
     private bool _isInited;
 
@@ -18,6 +19,7 @@ public class Robot : MonoBehaviour
         TaskModule.Init(this);
         FuelModule.Init(this);
         StateMachine.Init(this);
+        SensorModule.Init(this);
 
         _isInited = true;
     }

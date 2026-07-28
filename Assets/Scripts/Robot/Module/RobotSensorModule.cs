@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -6,8 +7,7 @@ public class RobotSensorModule : RobotBaseModule
     void OnTriggerEnter(Collider other)
     {
         var mapPoint = other.GetComponentInParent<MapPoint>();
-        Debug.Log("Try Access", other.gameObject);
-        if (mapPoint)
+        if (mapPoint != null)
         {
             _ = TryAccessPoint(mapPoint);
         }
@@ -22,5 +22,6 @@ public class RobotSensorModule : RobotBaseModule
         };
         var canAccess = await SimulationManager.Instance.WebSocket.SendRequestAsync<ResourceAccessRequest, bool>(SocketMessageType.ResourceAccess, req);
         if (!canAccess) ExtraLog.LogWithColor("Can not access this point", Color.yellow);
+        else mapPoint.SetLock(true);
     }
 }

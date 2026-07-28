@@ -321,6 +321,10 @@ MonoBehaviour:
   triggerZone: {fileID: 4382547217317780565}
   label: {fileID: 7062169437767304132}
   pointName: 
+  pointMeshs:
+  - {fileID: 6327803856644345418}
+  availableColor: {r: 0, g: 1, b: 0, a: 1}
+  occupiedColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &9087022250229792774
 GameObject:
   m_ObjectHideFlags: 0

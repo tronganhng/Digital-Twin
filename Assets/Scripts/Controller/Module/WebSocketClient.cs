@@ -41,7 +41,7 @@ public class WebSocketClient : SimulationBaseService
 
             try
             {
-                var message = JsonConvert.DeserializeObject<SocketMessage<JObject>>(json);
+                var message = JsonConvert.DeserializeObject<SocketMessage<JToken>>(json);
                 if (message == null)
                     continue;
 

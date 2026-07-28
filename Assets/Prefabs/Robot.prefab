@@ -714,6 +714,7 @@ MonoBehaviour:
   <StatModule>k__BackingField: {fileID: 2053839858729314878}
   <TaskModule>k__BackingField: {fileID: 7361335647768366212}
   <FuelModule>k__BackingField: {fileID: 666597020984300591}
+  <SensorModule>k__BackingField: {fileID: 2216656087788908282}
 --- !u!195 &2700367765720274895
 NavMeshAgent:
   m_ObjectHideFlags: 0

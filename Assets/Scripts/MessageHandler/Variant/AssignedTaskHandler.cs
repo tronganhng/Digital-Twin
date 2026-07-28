@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AssignedTaskHandler : BaseMessageHandler
 {
-    public override void Handle(SocketMessage<JObject> message)
+    public override void Handle(SocketMessage<JToken> message)
     {
         var task = message.Payload?.ToObject<DeliveryTask>();
         if (task == null)
