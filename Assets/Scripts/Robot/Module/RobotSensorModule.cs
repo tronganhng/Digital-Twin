@@ -31,8 +31,12 @@ public class RobotSensorModule : RobotBaseModule
             RobotId = robot.StatModule.StateDto.RobotId,
             PointName = _mapPoint.PointName
         };
-        var canAccess = await SimulationManager.Instance.WebSocket.SendRequestAsync<ResourceAccessRequest, bool>(SocketMessageType.ResourceAccess, req);
-        if (!canAccess) ExtraLog.LogWithColor("Can not access this point", Color.yellow);
+        bool canAccess = await SimulationManager.Instance.WebSocket.SendRequestAsync<ResourceAccessRequest, bool>(SocketMessageType.ResourceAccess, req);
+        if (!canAccess)
+        {
+            // Start Waiting
+            ExtraLog.LogWithColor("Can not access this point", Color.yellow);
+        }
         else _mapPoint.SetLock(true);
     }
 
@@ -43,7 +47,7 @@ public class RobotSensorModule : RobotBaseModule
             RobotId = robot.StatModule.StateDto.RobotId,
             PointName = _mapPoint.PointName
         };
-        var isReleased = await SimulationManager.Instance.WebSocket.SendRequestAsync<ResourceAccessRequest, bool>(SocketMessageType.ResourceRelease, req);
+        bool isReleased = await SimulationManager.Instance.WebSocket.SendRequestAsync<ResourceAccessRequest, bool>(SocketMessageType.ResourceRelease, req);
         if (isReleased)
         {
             _mapPoint.SetLock(false);
