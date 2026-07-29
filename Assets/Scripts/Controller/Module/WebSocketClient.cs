@@ -25,8 +25,6 @@ public class WebSocketClient : SimulationBaseService
 
         await socket.ConnectAsync(new Uri("ws://localhost:5055/ws"), CancellationToken.None);
 
-        ExtraLog.LogWithColor("Websocket Connected!", Color.turquoise);
-
         _ = ReceiveLoop(receiveCts.Token);
     }
 

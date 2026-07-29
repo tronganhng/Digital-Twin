@@ -12,6 +12,5 @@ public class AssignedTaskHandler : BaseMessageHandler
         SimulationManager.Instance.TaskManager.UpdateTaskInfo(task);
         var robot = SimulationManager.Instance.RobotManager.GetRobotBy(task.AssignedRobotId);
         robot.TaskModule.DoTask(task);
-        ExtraLog.LogWithColor($"Task assigned to: {task.AssignedRobotId}", Color.cyan);
     }
 }
