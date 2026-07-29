@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Sirenix.Utilities;
 using UnityEngine;
 
 public class RobotSensorModule : RobotBaseModule
@@ -34,8 +35,7 @@ public class RobotSensorModule : RobotBaseModule
         bool canAccess = await SimulationManager.Instance.WebSocket.SendRequestAsync<ResourceAccessRequest, bool>(SocketMessageType.ResourceAccess, req);
         if (!canAccess)
         {
-            // Start Waiting
-            ExtraLog.LogWithColor("Can not access this point", Color.yellow);
+            robot.MoveModule.Pause();
         }
         else _mapPoint.SetLock(true);
     }
@@ -47,11 +47,19 @@ public class RobotSensorModule : RobotBaseModule
             RobotId = robot.StatModule.StateDto.RobotId,
             PointName = _mapPoint.PointName
         };
-        bool isReleased = await SimulationManager.Instance.WebSocket.SendRequestAsync<ResourceAccessRequest, bool>(SocketMessageType.ResourceRelease, req);
-        if (isReleased)
+
+        string nextRobotId = await SimulationManager.Instance.WebSocket.SendRequestAsync<ResourceAccessRequest, string>(SocketMessageType.ResourceRelease, req);
+
+        if (nextRobotId == string.Empty)
         {
             _mapPoint.SetLock(false);
-            _mapPoint = null;
         }
+        else
+        {
+            var nextRobot = SimulationManager.Instance.RobotManager.GetRobotBy(nextRobotId);
+            nextRobot.MoveModule.Resume();
+        }
+
+        _mapPoint = null;
     }
 }

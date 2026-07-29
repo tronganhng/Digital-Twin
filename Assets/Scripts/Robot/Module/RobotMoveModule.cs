@@ -42,7 +42,8 @@ public class RobotMoveModule : RobotBaseModule
         if (!agent.isOnNavMesh)
             return false;
 
-        Resume();
+        agent.isStopped = false;
+
         onReachCallback = onReach;
 
         bool success = agent.SetDestination(destination);
@@ -56,29 +57,35 @@ public class RobotMoveModule : RobotBaseModule
     }
 
     /// <summary>
-    /// Dừng tại chỗ.
+    /// Hủy
     /// </summary>
     public void Stop()
     {
         isMoving = false;
         agent.isStopped = true;
+        agent.ResetPath();
+        onReachCallback = null;
     }
 
-    /// <summary>
-    /// Tiếp tục di chuyển.
-    /// </summary>
+    public void Pause()
+    {
+        if (!agent.hasPath)
+            return;
+
+        isMoving = false;
+        agent.isStopped = true;
+    }
+
     public void Resume()
     {
-        agent.isStopped = false;
-    }
+        if (!agent.isOnNavMesh)
+            return;
 
-    /// <summary>
-    /// Hủy đường đi hiện tại.
-    /// </summary>
-    public void ResetPath()
-    {
-        isMoving = false;
-        agent.ResetPath();
+        if (!agent.hasPath || agent.pathPending)
+            return;
+
+        isMoving = true;
+        agent.isStopped = false;
     }
 
     #endregion
