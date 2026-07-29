@@ -12,17 +12,15 @@ public class ChargingPole : MonoBehaviour
     [SerializeField, ReadOnly]
     private bool isOccupied;
 
-    public bool IsOccupied
-    {
-        get => isOccupied;
-        set
-        {
-            if (isOccupied == value)
-                return;
+    public bool IsOccupied => isOccupied;
 
-            isOccupied = value;
-            UpdateColor();
-        }
+    public void SetOccupied(bool value)
+    {
+        if (isOccupied == value)
+            return;
+
+        isOccupied = value;
+        UpdateColor();
     }
 
     public Transform ChargePoint => chargePoint;

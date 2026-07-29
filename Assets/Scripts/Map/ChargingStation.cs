@@ -41,7 +41,7 @@ public class ChargingStation : MonoBehaviour
         {
             if (!pole.IsOccupied)
             {
-                pole.IsOccupied = true;
+                pole.SetOccupied(true);
                 return pole;
             }
         }

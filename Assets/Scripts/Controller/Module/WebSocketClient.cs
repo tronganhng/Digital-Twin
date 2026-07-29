@@ -8,30 +8,33 @@ using UnityEngine;
 using Newtonsoft.Json;
 using Sirenix.OdinInspector;
 using Newtonsoft.Json.Linq;
+using System.Collections.Concurrent;
 
 public class WebSocketClient : SimulationBaseService
 {
-    ClientWebSocket socket;
-    readonly Dictionary<string, TaskCompletionSource<string>> pendingResponses = new Dictionary<string, TaskCompletionSource<string>>();
+    private ClientWebSocket socket;
+    private CancellationTokenSource receiveCts;
+    private readonly ConcurrentDictionary<string, TaskCompletionSource<string>> pendingResponses = new();
 
     public async Task InitWebSocket(SimulationManager manager)
     {
         base.Init(manager);
 
         socket = new ClientWebSocket();
+        receiveCts = new CancellationTokenSource();
 
         await socket.ConnectAsync(new Uri("ws://localhost:5055/ws"), CancellationToken.None);
 
         ExtraLog.LogWithColor("Websocket Connected!", Color.turquoise);
 
-        ReceiveLoop();
+        _ = ReceiveLoop(receiveCts.Token);
     }
 
-    async void ReceiveLoop()
+    private async Task ReceiveLoop(CancellationToken token)
     {
         byte[] buffer = new byte[4096];
 
-        while (socket.State == WebSocketState.Open)
+        while (!token.IsCancellationRequested && socket.State == WebSocketState.Open)
         {
             var result = await socket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
             string json = Encoding.UTF8.GetString(buffer, 0, result.Count);
@@ -49,7 +52,7 @@ public class WebSocketClient : SimulationBaseService
                     pendingResponses.TryGetValue(message.RequestId, out var tcs))
                 {
                     tcs.TrySetResult(json);
-                    pendingResponses.Remove(message.RequestId);
+                    pendingResponses.TryRemove(message.RequestId, out _);
                     continue;
                 }
 
@@ -137,15 +140,21 @@ public class WebSocketClient : SimulationBaseService
         }
         finally
         {
-            pendingResponses.Remove(requestId, out _);
+            pendingResponses.TryRemove(requestId, out _);
         }
     }
 
-    [Button]
-    private async void TestSend()
+    public async Task Disconnect()
     {
-        var robot = new RobotStateDto { RobotId = "latgoto" };
-        var response = await SendRequestAsync<RobotStateDto, RobotStateDto>(SocketMessageType.RegisterRobot, robot);
-        Debug.Log("Get RobotID from Server: " + response.RobotId);
+        receiveCts?.Cancel();
+
+        if (socket != null && socket.State == WebSocketState.Open)
+        {
+            await socket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Unity Exit", CancellationToken.None);
+        }
+
+        socket?.Dispose();
+        receiveCts?.Dispose();
+        ExtraLog.LogWithColor("Disconected", Color.softRed);
     }
 }

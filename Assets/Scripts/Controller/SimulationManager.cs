@@ -20,4 +20,9 @@ public class SimulationManager : MonoSingleton<SimulationManager>
         GUI.Init(this);
         ExtraLog.LogWithColor("All service init success!", Color.green);
     }
+
+    private async void OnApplicationQuit()
+    {
+        await WebSocket.Disconnect();
+    }
 }

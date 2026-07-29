@@ -28,6 +28,6 @@ public class ChargingState : RobotState
     {
         base.Exit();
         Robot.FuelModule.StopCharging();
-        _chargingPole.IsOccupied = false;
+        _chargingPole.SetOccupied(false);
     }
 }
