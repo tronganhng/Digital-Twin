@@ -6,5 +6,6 @@ public static class ExtraLog
     {
         string hex = ColorUtility.ToHtmlStringRGB(color);
         Debug.Log($"<color=#{hex}>{message}</color>");
+        if (Application.isPlaying) SimulationManager.Instance.GUI.LoggerUI.LogWithColor(message, color);
     }
 }
