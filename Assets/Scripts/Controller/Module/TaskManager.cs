@@ -16,13 +16,13 @@ public class TaskManager : SimulationBaseService
 
     private IEnumerable<string> GetPointNames()
     {
-        return map.GetPointNames();
+        return map.GetNodeNames();
     }
 
     [Button(ButtonSizes.Medium), TabGroup("Create")]
     private void PickRandom()
     {
-        var names = map.GetPointNames().ToList();
+        var names = map.GetNodeNames().ToList();
 
         if (names.Count < 2)
         {

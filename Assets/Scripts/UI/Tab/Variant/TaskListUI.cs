@@ -13,7 +13,7 @@ public class TaskListUI : TabContent
 
     public void Init()
     {
-        var pointNames = SimulationManager.Instance.MapManager.GetPointNames().ToList();
+        var pointNames = SimulationManager.Instance.MapManager.GetNodeNames().ToList();
 
         startPointDrop.ClearOptions();
         endPointDrop.ClearOptions();

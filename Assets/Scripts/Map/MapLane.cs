@@ -4,8 +4,8 @@ using UnityEngine;
 public class MapLane : MonoBehaviour
 {
     [SerializeField] private LineRenderer lineRenderer;
-    [SerializeField] private MapPoint startPoint;
-    [SerializeField] private MapPoint endPoint;
+    [SerializeField] private MapNode startNode;
+    [SerializeField] private MapNode endNode;
 
     [SerializeField, ReadOnly] private float distance;
 
@@ -13,8 +13,8 @@ public class MapLane : MonoBehaviour
     {
         return new MapLaneDto
         {
-            StartPoint = startPoint.PointName,
-            EndPoint = endPoint.PointName,
+            StartNode = startNode.NodeName,
+            EndNode = endNode.NodeName,
             Distance = distance,
         };
     }
@@ -22,13 +22,13 @@ public class MapLane : MonoBehaviour
     [Button]
     private void UpdateLane()
     {
-        if (startPoint == null || endPoint == null)
+        if (startNode == null || endNode == null)
             return;
 
-        distance = Vector3.Distance(startPoint.Position, endPoint.Position);
+        distance = Vector3.Distance(startNode.Position, endNode.Position);
 
         lineRenderer.positionCount = 2;
-        lineRenderer.SetPosition(0, startPoint.Position);
-        lineRenderer.SetPosition(1, endPoint.Position);
+        lineRenderer.SetPosition(0, startNode.Position);
+        lineRenderer.SetPosition(1, endNode.Position);
     }
 }

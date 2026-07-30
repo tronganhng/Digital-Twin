@@ -9,7 +9,7 @@ public class MapManager : SimulationBaseService
     [SerializeField] private ChargingStation chargingStation;
     [SerializeField] private Transform mapRoot;
 
-    [SerializeField, ReadOnly] private SerializedDictionary<string, MapPoint> _points = new();
+    [SerializeField, ReadOnly] private SerializedDictionary<string, MapNode> _nodes = new();
     [SerializeField, ReadOnly] private List<MapLane> _lanes = new();
 
     public override void Init(SimulationManager fleetManager)
@@ -21,21 +21,21 @@ public class MapManager : SimulationBaseService
     [Button(ButtonSizes.Large)]
     private void SetupData()
     {
-        _points.Clear();
+        _nodes.Clear();
         _lanes.Clear();
 
-        MapPoint[] points = mapRoot.GetComponentsInChildren<MapPoint>(true);
+        MapNode[] points = mapRoot.GetComponentsInChildren<MapNode>(true);
         MapLane[] lanes = mapRoot.GetComponentsInChildren<MapLane>(true);
 
-        foreach (MapPoint point in points)
+        foreach (MapNode point in points)
         {
-            if (_points.ContainsKey(point.PointName))
+            if (_nodes.ContainsKey(point.NodeName))
             {
-                Debug.LogWarning($"Duplicate MapPoint: {point.PointName}");
+                Debug.LogWarning($"Duplicate MapPoint: {point.NodeName}");
                 continue;
             }
 
-            _points.Add(point.PointName, point);
+            _nodes.Add(point.NodeName, point);
         }
 
         foreach (var lane in lanes)
@@ -44,9 +44,9 @@ public class MapManager : SimulationBaseService
         }
     }
 
-    public bool TryGetPoint(string pointName, out MapPoint position)
+    public bool TryGetNode(string nodeName, out MapNode position)
     {
-        if (_points.TryGetValue(pointName, out MapPoint point))
+        if (_nodes.TryGetValue(nodeName, out MapNode point))
         {
             position = point;
             return true;
@@ -63,13 +63,13 @@ public class MapManager : SimulationBaseService
     {
         SaveLoad.Save("Map", new MapDto
         {
-            Points = _points.Values.Select(p => p.ToData()).ToList(),
+            Nodes = _nodes.Values.Select(p => p.ToData()).ToList(),
             Lanes = _lanes.Select(p => p.ToData()).ToList()
         });
     }
 
-    public IEnumerable<string> GetPointNames()
+    public IEnumerable<string> GetNodeNames()
     {
-        return _points.Keys;
+        return _nodes.Keys;
     }
 }

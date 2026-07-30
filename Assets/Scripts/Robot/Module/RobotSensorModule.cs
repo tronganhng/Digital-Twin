@@ -5,18 +5,18 @@ using UnityEngine;
 public class RobotSensorModule : RobotBaseModule
 {
     [SerializeField, ReadOnly] private bool _disable;
-    private MapPoint _mapPoint;
+    private MapNode _mapPoint;
 
     void OnTriggerEnter(Collider other)
     {
         if (_disable) return;
 
         if (_mapPoint) return;
-        var mapPoint = other.GetComponentInParent<MapPoint>();
+        var mapPoint = other.GetComponentInParent<MapNode>();
         if (mapPoint)
         {
             _mapPoint = mapPoint;
-            _ = TryAccessPoint();
+            _ = TryAccessNode();
         }
     }
 
@@ -26,15 +26,15 @@ public class RobotSensorModule : RobotBaseModule
 
         if (!_mapPoint) return;
 
-        _ = TryReleasePoint();
+        _ = TryReleaseNode();
     }
 
-    private async Task TryAccessPoint()
+    private async Task TryAccessNode()
     {
         var req = new ResourceAccessRequest
         {
             RobotId = robot.StatModule.StateDto.RobotId,
-            PointName = _mapPoint.PointName
+            PointName = _mapPoint.NodeName
         };
         bool canAccess = await SimulationManager.Instance.WebSocket.SendRequestAsync<ResourceAccessRequest, bool>(SocketMessageType.ResourceAccess, req);
         if (!canAccess)
@@ -44,12 +44,12 @@ public class RobotSensorModule : RobotBaseModule
         else _mapPoint.SetLock(true);
     }
 
-    private async Task TryReleasePoint()
+    private async Task TryReleaseNode()
     {
         var req = new ResourceAccessRequest
         {
             RobotId = robot.StatModule.StateDto.RobotId,
-            PointName = _mapPoint.PointName
+            PointName = _mapPoint.NodeName
         };
 
         string nextRobotId = await SimulationManager.Instance.WebSocket.SendRequestAsync<ResourceAccessRequest, string>(SocketMessageType.ResourceRelease, req);
@@ -81,6 +81,6 @@ public class RobotSensorModule : RobotBaseModule
     {
         if (!_mapPoint) return;
 
-        _ = TryReleasePoint();
+        _ = TryReleaseNode();
     }
 }

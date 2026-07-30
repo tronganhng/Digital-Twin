@@ -3,8 +3,15 @@ using System;
 
 public class MapDto
 {
-    public List<MapPointDto> Points = new();
+    public List<MapNodeDto> Nodes = new();
     public List<MapLaneDto> Lanes = new();
+}
+
+public class MapNodeDto
+{
+    public string NodeName { get; set; } = string.Empty;
+    public float[] Position { get; set; } = Array.Empty<float>();
+    public List<MapPointDto> MapPoints { get; set; } = new();
 }
 
 public class MapPointDto
@@ -15,7 +22,7 @@ public class MapPointDto
 
 public class MapLaneDto
 {
-    public string StartPoint { get; set; } = string.Empty;
-    public string EndPoint { get; set; } = string.Empty;
+    public string StartNode { get; set; } = string.Empty;
+    public string EndNode { get; set; } = string.Empty;
     public float Distance { get; set; }
 }

@@ -7,8 +7,8 @@ public class RobotTaskModule : RobotBaseModule
 {
     [field: SerializeField, ReadOnly] public DeliveryTask CurrentTask { get; private set; }
 
-    [ReadOnly] public MapPoint PickupPoint;
-    [ReadOnly] public MapPoint DesPoint;
+    [ReadOnly] public MapNode PickupNode;
+    [ReadOnly] public MapNode DesNode;
 
     public Relay OnTaskStart = new();
 
@@ -18,7 +18,7 @@ public class RobotTaskModule : RobotBaseModule
         robot.StatModule.SetTaskId(task.TaskId);
 
         var mapManager = SimulationManager.Instance.MapManager;
-        if (mapManager.TryGetPoint(task.PickupLocation, out PickupPoint) && mapManager.TryGetPoint(task.Destination, out DesPoint))
+        if (mapManager.TryGetNode(task.PickupLocation, out PickupNode) && mapManager.TryGetNode(task.Destination, out DesNode))
         {
             OnTaskStart.Dispatch();
         }
@@ -40,8 +40,8 @@ public class RobotTaskModule : RobotBaseModule
         {
             robot.StatModule.SetTaskId(null);
             CurrentTask = null;
-            PickupPoint = null;
-            DesPoint = null;
+            PickupNode = null;
+            DesNode = null;
             robot.StateMachine.ChangeState(new IdleState(robot.StateMachine));
         }
     }
