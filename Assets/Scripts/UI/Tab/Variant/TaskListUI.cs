@@ -71,4 +71,38 @@ public class TaskListUI : TabContent
 
         SimulationManager.Instance.TaskManager.CreateTask(pickupPoint, destination, priority);
     }
+
+    public void PickRandom()
+    {
+        void RandomDropdown(TMP_Dropdown dropdown)
+        {
+            if (dropdown == null || dropdown.options.Count == 0)
+                return;
+
+            dropdown.value = Random.Range(0, dropdown.options.Count);
+            dropdown.RefreshShownValue();
+        }
+
+        RandomDropdown(priorityDrop);
+
+        if (startPointDrop == null || endPointDrop == null ||
+            startPointDrop.options.Count == 0 || endPointDrop.options.Count == 0)
+            return;
+
+        int start = Random.Range(0, startPointDrop.options.Count);
+        startPointDrop.value = start;
+        startPointDrop.RefreshShownValue();
+
+        int end = start;
+        if (endPointDrop.options.Count > 1)
+        {
+            while (end == start)
+            {
+                end = Random.Range(0, endPointDrop.options.Count);
+            }
+        }
+
+        endPointDrop.value = end;
+        endPointDrop.RefreshShownValue();
+    }
 }

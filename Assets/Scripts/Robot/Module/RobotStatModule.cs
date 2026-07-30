@@ -21,6 +21,7 @@ public class RobotStatModule : RobotBaseModule
     public bool IsRegistered { get; private set; }
 
     public Relay OnStatChanged = new();
+    public Relay OnRobotOffline = new();
 
     public async Task InitStat(Robot robot)
     {

@@ -88,6 +88,24 @@ public class RobotMoveModule : RobotBaseModule
         agent.isStopped = false;
     }
 
+    public bool SetPosition(Vector3 position)
+    {
+        if (!agent.isOnNavMesh)
+            return false;
+
+        Stop();
+
+        // Teleport NavMeshAgent
+        bool success = agent.Warp(position);
+
+        if (success)
+        {
+            transform.position = position;
+        }
+
+        return success;
+    }
+
     #endregion
 
     #region Speed

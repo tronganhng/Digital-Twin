@@ -57,6 +57,7 @@ public class RobotFuelModule : RobotBaseModule
 
     public void StartCharging()
     {
+        robot.StatModule.Battery += 0.001f;
         _isCharging = true;
     }
 

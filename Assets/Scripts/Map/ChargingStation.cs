@@ -35,13 +35,13 @@ public class ChargingStation : MonoBehaviour
 #endif
     }
 
-    public ChargingPole GetFreePole()
+    public ChargingPole GetFreePole(Robot owner)
     {
         foreach (var pole in _poles)
         {
             if (!pole.IsOccupied)
             {
-                pole.SetOccupied(true);
+                pole.Occupy(owner);
                 return pole;
             }
         }

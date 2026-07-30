@@ -56,7 +56,7 @@ public class MapManager : SimulationBaseService
         return false;
     }
 
-    public ChargingPole GetFreeChargingPole() => chargingStation.GetFreePole();
+    public ChargingPole GetFreeChargingPole(Robot owner) => chargingStation.GetFreePole(owner);
 
     [Button]
     private void Save()

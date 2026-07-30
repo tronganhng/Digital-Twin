@@ -6,6 +6,7 @@ public class OfflineState : RobotState
 
     public override void Enter()
     {
+        Robot.StatModule.OnRobotOffline.Dispatch();
         Robot.StatModule.Disable();
         base.Enter();
         Robot.MoveModule.Stop();

@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5369285435795787545}
@@ -205,8 +205,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 3087007743
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0.7176471}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -323,8 +323,8 @@ MonoBehaviour:
   pointName: 
   pointMeshs:
   - {fileID: 6327803856644345418}
-  availableColor: {r: 0, g: 1, b: 0, a: 1}
-  occupiedColor: {r: 1, g: 0, b: 0, a: 1}
+  availableColor: {r: 0.16135636, g: 0.9245283, b: 0.16135636, a: 0.3882353}
+  occupiedColor: {r: 0.9056604, g: 0.18369527, b: 0.18369527, a: 0.3882353}
 --- !u!1 &9087022250229792774
 GameObject:
   m_ObjectHideFlags: 0
