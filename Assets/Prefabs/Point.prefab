@@ -196,7 +196,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: room
+  m_text: Point
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1789fe794c1ac4ce89f189a37342d7ef, type: 2}
   m_sharedMaterial: {fileID: -3815791607483727697, guid: 1789fe794c1ac4ce89f189a37342d7ef, type: 2}
@@ -320,9 +320,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HospitalPoint
   triggerZone: {fileID: 4382547217317780565}
   label: {fileID: 7062169437767304132}
-  pointName: 
+  pointName: Point
   pointMeshs:
   - {fileID: 6327803856644345418}
+  hasTriggerZone: 1
   availableColor: {r: 0.16135636, g: 0.9245283, b: 0.16135636, a: 0.3882353}
   occupiedColor: {r: 0.9056604, g: 0.18369527, b: 0.18369527, a: 0.3882353}
 --- !u!1 &9087022250229792774

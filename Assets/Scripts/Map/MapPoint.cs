@@ -8,8 +8,9 @@ public class MapPoint : MonoBehaviour
     [SerializeField] private TextMeshPro label;
     [SerializeField] private string pointName;
     [SerializeField] private MeshRenderer[] pointMeshs;
-    [SerializeField] private Color availableColor = Color.green;
-    [SerializeField] private Color occupiedColor = Color.red;
+    [SerializeField] private bool hasTriggerZone;
+    [SerializeField, ShowIf(nameof(hasTriggerZone))] private Color availableColor = Color.green;
+    [SerializeField, ShowIf(nameof(hasTriggerZone))] private Color occupiedColor = Color.red;
 
     public string PointName => pointName;
     public Vector3 Position => transform.position;
@@ -40,6 +41,11 @@ public class MapPoint : MonoBehaviour
     {
         gameObject.name = pointName;
         label.text = pointName;
+        triggerZone.gameObject.SetActive(hasTriggerZone);
+        foreach (var item in pointMeshs)
+        {
+            item.gameObject.SetActive(hasTriggerZone);
+        }
     }
 
     public void SetLock(bool isLock)
