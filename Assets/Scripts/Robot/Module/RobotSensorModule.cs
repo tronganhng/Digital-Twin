@@ -1,14 +1,16 @@
-using System;
 using System.Threading.Tasks;
-using Sirenix.Utilities;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class RobotSensorModule : RobotBaseModule
 {
+    [SerializeField, ReadOnly] private bool _disable;
     private MapPoint _mapPoint;
 
     void OnTriggerEnter(Collider other)
     {
+        if (_disable) return;
+
         if (_mapPoint) return;
         var mapPoint = other.GetComponentInParent<MapPoint>();
         if (mapPoint)
@@ -20,6 +22,8 @@ public class RobotSensorModule : RobotBaseModule
 
     void OnTriggerExit(Collider other)
     {
+        if (_disable) return;
+
         if (!_mapPoint) return;
 
         _ = TryReleasePoint();
@@ -61,5 +65,22 @@ public class RobotSensorModule : RobotBaseModule
         }
 
         _mapPoint = null;
+    }
+
+    public void Disable()
+    {
+        _disable = true;
+    }
+
+    public void Enable()
+    {
+        _disable = false;
+    }
+
+    public void ReleaseResource()
+    {
+        if (!_mapPoint) return;
+
+        _ = TryReleasePoint();
     }
 }

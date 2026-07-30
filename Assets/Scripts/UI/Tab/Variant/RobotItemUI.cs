@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,6 +36,7 @@ public class RobotItemUI : MonoBehaviour
 
         var des = pole.ChargePoint.position;
         _robot.MoveModule.SetPosition(des);
-        _robot.StateMachine.ChangeState(new ChargingState(_robot.StateMachine, pole));
+        _robot.SensorModule.ReleaseResource();
+        DOVirtual.DelayedCall(0.1f, () => _robot.StateMachine.ChangeState(new ChargingState(_robot.StateMachine, pole)));
     }
 }

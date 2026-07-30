@@ -18,7 +18,7 @@ public class MapManager : SimulationBaseService
         SetupData();
     }
 
-    [Button]
+    [Button(ButtonSizes.Large)]
     private void SetupData()
     {
         _points.Clear();
@@ -58,7 +58,7 @@ public class MapManager : SimulationBaseService
 
     public ChargingPole GetFreeChargingPole(Robot owner) => chargingStation.GetFreePole(owner);
 
-    [Button]
+    [Button(ButtonSizes.Large)]
     private void Save()
     {
         SaveLoad.Save("Map", new MapDto

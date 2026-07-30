@@ -10,11 +10,13 @@ public class OfflineState : RobotState
         Robot.StatModule.Disable();
         base.Enter();
         Robot.MoveModule.Stop();
+        Robot.SensorModule.Disable();
     }
 
     public override void Exit()
     {
         base.Exit();
         Robot.StatModule.Enable();
+        Robot.SensorModule.Enable();
     }
 }

@@ -8,4 +8,9 @@ public static class ExtraLog
         Debug.Log($"<color=#{hex}>{message}</color>");
         if (Application.isPlaying) SimulationManager.Instance.GUI.LoggerUI.LogWithColor(message, color);
     }
+
+    public static void Log(object message)
+    {
+        Debug.Log($"{message}");
+    }
 }
