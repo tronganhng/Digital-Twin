@@ -81,7 +81,7 @@ public class WebSocketClient : SimulationBaseService
         await socket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, CancellationToken.None);
     }
 
-    public async Task<TResponse> SendRequestAsync<TRequest, TResponse>(SocketMessageType type, TRequest payload, CancellationToken cancellationToken = default, int timeoutMilliseconds = 10000)
+    public async Task<TResponse> SendRequestAsync<TRequest, TResponse>(SocketMessageType type, TRequest payload, CancellationToken cancellationToken = default, int timeoutMilliseconds = 5000)
     {
         // Kiểm tra trạng thái socket an toàn
         if (socket == null || socket.State != WebSocketState.Open)
@@ -134,6 +134,7 @@ public class WebSocketClient : SimulationBaseService
         }
         catch (TaskCanceledException)
         {
+            Debug.LogError("Socket Req Timeout");
             throw new TimeoutException($"Yêu cầu loại {type} (ID: {requestId}) đã quá hạn {timeoutMilliseconds}ms hoặc bị hủy.");
         }
         finally

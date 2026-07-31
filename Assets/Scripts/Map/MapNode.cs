@@ -13,7 +13,7 @@ public class MapNode : MonoBehaviour
     [SerializeField] private Transform pointRoot;
     [SerializeField] private MeshRenderer mesh;
     [SerializeField] private string nodeName;
-    [SerializeField] private List<MapPoint> points;
+    [SerializeField, ReadOnly] private List<MapPoint> points;
     [SerializeField] private bool hasTriggerZone;
     [SerializeField, ShowIf(nameof(hasTriggerZone))] private Color availableColor = Color.green;
     [SerializeField, ShowIf(nameof(hasTriggerZone))] private Color occupiedColor = Color.red;
@@ -53,6 +53,17 @@ public class MapNode : MonoBehaviour
         newPoint.transform.localPosition = Vector3.zero;
         newPoint.transform.localRotation = Quaternion.identity;
         points.Add(newPoint);
+    }
+
+    [Button(ButtonSizes.Medium)]
+    private void ClearPoints()
+    {
+        for (int i = pointRoot.childCount - 1; i >= 0; i--)
+        {
+            DestroyImmediate(pointRoot.GetChild(i).gameObject);
+        }
+
+        points.Clear();
     }
 
     public void SetLock(bool isLock)

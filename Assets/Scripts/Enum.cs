@@ -28,4 +28,5 @@ public enum SocketMessageType
     CancelTask,
     ResourceAccess,
     ResourceRelease,
+    AcquireDockPoint,
 }

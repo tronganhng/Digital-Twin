@@ -28,7 +28,9 @@ public class IdleState : RobotState
     private void OnTaskStart()
     {
         Robot.TaskModule.SetTaskStatus(TaskStatus.Running);
-        var des = Robot.TaskModule.PickupNode.Position;
-        StateMachine.ChangeState(new MoveState(StateMachine, des, () => StateMachine.ChangeState(new WaitingState(StateMachine))));
+        var pickupNode = Robot.TaskModule.PickupNode;
+        StateMachine.ChangeState(new MoveState(StateMachine, pickupNode.Position, () => 
+            StateMachine.ChangeState(new AcquireDockPointState(StateMachine, pickupNode, () =>
+                StateMachine.ChangeState(new WaitingState(StateMachine))))));
     }
 }
