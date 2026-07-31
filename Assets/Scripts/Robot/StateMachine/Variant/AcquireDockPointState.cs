@@ -25,12 +25,19 @@ public class AcquireDockPointState : RobotState
     {
         var nodeDto = _targetNode.ToData();
         var pointDto = await SimulationManager.Instance.WebSocket.SendRequestAsync<string, MapPointDto>(SocketMessageType.AcquireDockPoint, nodeDto.NodeName);
-        var targetPoint = _targetNode.GetPoint(pointDto.PointName);
 
-        StateMachine.ChangeState(new MoveState(StateMachine, targetPoint.Position, () =>
+        if (pointDto.PointName == string.Empty)
         {
-            _onAcquired?.Invoke();
-            Robot.StatModule.CurrentMapPoint = targetPoint;
-        }));
+            _targetNode.OnHasFreePoint.AddOnce(() => _ = SendReq());
+        }
+        else
+        {
+            var targetPoint = _targetNode.GetPoint(pointDto.PointName);
+            StateMachine.ChangeState(new MoveState(StateMachine, targetPoint.Position, () =>
+            {
+                _onAcquired?.Invoke();
+                Robot.StatModule.CurrentMapPoint = targetPoint;
+            }));
+        }
     }
 }

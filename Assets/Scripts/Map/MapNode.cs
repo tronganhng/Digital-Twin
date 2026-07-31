@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Sigtrap.Relays;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEditor;
@@ -20,6 +21,8 @@ public class MapNode : MonoBehaviour
 
     public string NodeName => nodeName;
     public Vector3 Position => transform.position;
+
+    public Relay OnHasFreePoint = new();
 
     void Start()
     {

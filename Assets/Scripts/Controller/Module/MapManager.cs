@@ -44,15 +44,15 @@ public class MapManager : SimulationBaseService
         }
     }
 
-    public bool TryGetNode(string nodeName, out MapNode position)
+    public bool TryGetNode(string nodeName, out MapNode outNode)
     {
-        if (_nodes.TryGetValue(nodeName, out MapNode point))
+        if (_nodes.TryGetValue(nodeName, out MapNode node))
         {
-            position = point;
+            outNode = node;
             return true;
         }
 
-        position = default;
+        outNode = default;
         return false;
     }
 

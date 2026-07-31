@@ -33,10 +33,11 @@ public class MoveState : RobotState
         var req = new ReleasePointRequest
         {
             NodeName = currentNode.NodeName,
-            PointName = currentPoint.PointName  
+            PointName = currentPoint.PointName
         };
 
         Robot.StatModule.CurrentMapPoint = null;
-        await SimulationManager.Instance.WebSocket.SendMessageAsync(SocketMessageType.ReleaseDockPoint, req);
+        bool isReleased = await SimulationManager.Instance.WebSocket.SendRequestAsync<ReleasePointRequest, bool>(SocketMessageType.ReleaseDockPoint, req);
+        if (isReleased) currentNode.OnHasFreePoint.Dispatch();
     }
 }
