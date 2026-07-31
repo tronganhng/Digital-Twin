@@ -352,9 +352,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HospitalPoint
   triggerZone: {fileID: 4382547217317780565}
   label: {fileID: 7062169437767304132}
+  pointPrefab: {fileID: 65041576594990828, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+  pointRoot: {fileID: 584020606225442107}
+  mesh: {fileID: 6327803856644345418}
   nodeName: Node
-  meshs:
-  - {fileID: 6327803856644345418}
   points: []
   hasTriggerZone: 1
   availableColor: {r: 0.16135636, g: 0.9245283, b: 0.16135636, a: 0.3882353}

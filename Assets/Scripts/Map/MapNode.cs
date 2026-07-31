@@ -2,14 +2,17 @@ using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class MapNode : MonoBehaviour
 {
     [SerializeField] private Collider triggerZone;
     [SerializeField] private TextMeshPro label;
+    [SerializeField] private MapPoint pointPrefab;
+    [SerializeField] private Transform pointRoot;
+    [SerializeField] private MeshRenderer mesh;
     [SerializeField] private string nodeName;
-    [SerializeField] private List<MeshRenderer> meshs;
     [SerializeField] private List<MapPoint> points;
     [SerializeField] private bool hasTriggerZone;
     [SerializeField, ShowIf(nameof(hasTriggerZone))] private Color availableColor = Color.green;
@@ -37,24 +40,24 @@ public class MapNode : MonoBehaviour
     private void SetName()
     {
         gameObject.name = $"node_{nodeName}";
-        label.text = $"node_{nodeName}";
+        label.text = nodeName;
         triggerZone.gameObject.SetActive(hasTriggerZone);
-        foreach (var item in meshs)
-        {
-            item.gameObject.SetActive(hasTriggerZone);
-        }
+        mesh.gameObject.SetActive(hasTriggerZone);
+
+    }
+
+    [Button(ButtonSizes.Medium)]
+    private void GetPoint()
+    {
+        var newPoint = (MapPoint)PrefabUtility.InstantiatePrefab(pointPrefab, pointRoot);
+        newPoint.transform.localPosition = Vector3.zero;
+        newPoint.transform.localRotation = Quaternion.identity;
+        points.Add(newPoint);
     }
 
     public void SetLock(bool isLock)
     {
         Color color = isLock ? occupiedColor : availableColor;
-
-        foreach (var mesh in meshs)
-        {
-            if (mesh == null)
-                continue;
-
-            mesh.material.color = color;
-        }
+        mesh.material.color = color;
     }
 }
