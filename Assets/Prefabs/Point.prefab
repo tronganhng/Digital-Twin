@@ -228,6 +228,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapPoint
   label: {fileID: 7062169437767304132}
+  mesh: {fileID: 3292340122185298155}
+  availableColor: {r: 0.2509804, g: 0.8784314, b: 0.8156863, a: 1}
+  occupiedColor: {r: 1, g: 0, b: 0, a: 1}
   pointName: 
 --- !u!1 &8518880931939225954
 GameObject:

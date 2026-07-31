@@ -38,6 +38,10 @@ public class MoveState : RobotState
 
         Robot.StatModule.CurrentMapPoint = null;
         bool isReleased = await SimulationManager.Instance.WebSocket.SendRequestAsync<ReleasePointRequest, bool>(SocketMessageType.ReleaseDockPoint, req);
-        if (isReleased) currentNode.OnHasFreePoint.Dispatch();
+        if (isReleased)
+        {
+            currentNode.OnHasFreePoint.Dispatch();
+            currentPoint.SetLock(false);
+        }
     }
 }

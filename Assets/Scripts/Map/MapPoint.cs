@@ -5,6 +5,9 @@ using TMPro;
 public class MapPoint : MonoBehaviour
 {
     [SerializeField] private TextMeshPro label;
+    [SerializeField] private MeshRenderer mesh;
+    [SerializeField] private Color availableColor = Color.turquoise;
+    [SerializeField] private Color occupiedColor = Color.red;
     [SerializeField] private string pointName;
 
     public string PointName => pointName;
@@ -17,6 +20,13 @@ public class MapPoint : MonoBehaviour
             PointName = pointName,
             Position = new float[] { Position.x, Position.z }
         };
+    }
+
+    public void SetLock(bool isLock)
+    {
+        Color color = isLock ? occupiedColor : availableColor;
+        mesh.material.color = color;
+        label.color = color;
     }
 
     [Button]

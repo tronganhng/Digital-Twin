@@ -33,6 +33,7 @@ public class AcquireDockPointState : RobotState
         else
         {
             var targetPoint = _targetNode.GetPoint(pointDto.PointName);
+            targetPoint.SetLock(true);
             StateMachine.ChangeState(new MoveState(StateMachine, targetPoint.Position, () =>
             {
                 _onAcquired?.Invoke();
