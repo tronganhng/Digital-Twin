@@ -19,6 +19,7 @@ public class RobotStatModule : RobotBaseModule
     public RobotStateDto StateDto => _robotState;
     public double Battery { get { return _robotState.Battery; } set { _robotState.Battery = value; OnStatChanged.Dispatch(); } }
     public bool IsRegistered { get; private set; }
+    public MapPoint CurrentMapPoint { get; set; }
 
     public Relay OnStatChanged = new();
     public Relay OnRobotOffline = new();

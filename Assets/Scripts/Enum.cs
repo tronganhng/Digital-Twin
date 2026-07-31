@@ -29,4 +29,5 @@ public enum SocketMessageType
     ResourceAccess,
     ResourceRelease,
     AcquireDockPoint,
+    ReleaseDockPoint,
 }

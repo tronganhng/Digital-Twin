@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class MoveState : RobotState
@@ -18,5 +19,24 @@ public class MoveState : RobotState
     {
         base.Enter();
         Robot.MoveModule.MoveTo(_des, _onReach);
+        _ = TryReleasePoint();
+    }
+
+    private async Task TryReleasePoint()
+    {
+        var currentPoint = Robot.StatModule.CurrentMapPoint;
+        if (currentPoint == null) return;
+
+        var currentNode = currentPoint.GetComponentInParent<MapNode>();
+
+        if (currentNode == null) return;
+        var req = new ReleasePointRequest
+        {
+            NodeName = currentNode.NodeName,
+            PointName = currentPoint.PointName  
+        };
+
+        Robot.StatModule.CurrentMapPoint = null;
+        await SimulationManager.Instance.WebSocket.SendMessageAsync(SocketMessageType.ReleaseDockPoint, req);
     }
 }

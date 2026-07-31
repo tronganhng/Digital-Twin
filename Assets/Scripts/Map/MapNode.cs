@@ -71,4 +71,9 @@ public class MapNode : MonoBehaviour
         Color color = isLock ? occupiedColor : availableColor;
         mesh.material.color = color;
     }
+
+    public MapPoint GetPoint(string pointName)
+    {
+        return points.FirstOrDefault(p => p.PointName == pointName);
+    }
 }
