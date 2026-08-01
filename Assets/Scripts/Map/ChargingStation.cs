@@ -21,6 +21,7 @@ public class ChargingStation : MonoBehaviour
         {
             DestroyImmediate(poleContainer.GetChild(i).gameObject);
         }
+        _poles.Clear();
 
         var positions = grid.GetAllPositions();
         if (positions.Count == 0)
