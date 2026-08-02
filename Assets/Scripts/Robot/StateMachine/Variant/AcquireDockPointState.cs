@@ -18,27 +18,38 @@ public class AcquireDockPointState : RobotState
     public override void Enter()
     {
         base.Enter();
-        _ = SendReq();
+        SendReq();
     }
 
-    private async Task SendReq()
+    public override void Exit()
     {
-        var nodeDto = _targetNode.ToData();
-        var pointDto = await SimulationManager.Instance.WebSocket.SendRequestAsync<string, MapPointDto>(SocketMessageType.AcquireDockPoint, nodeDto.NodeName);
+        base.Exit();
+        _targetNode.OnHasFreePoint.RemoveOnce(SendReq);
+    }
 
-        if (pointDto.PointName == string.Empty)
+    private void SendReq()
+    {
+        _ = SendReqTask();
+        async Task SendReqTask()
         {
-            _targetNode.OnHasFreePoint.AddOnce(() => _ = SendReq());
-        }
-        else
-        {
-            var targetPoint = _targetNode.GetPoint(pointDto.PointName);
-            targetPoint.SetLock(true);
-            StateMachine.ChangeState(new MoveState(StateMachine, targetPoint.Position, () =>
+            var nodeDto = _targetNode.ToData();
+            var pointDto = await SimulationManager.Instance.WebSocket.SendRequestAsync<string, MapPointDto>(SocketMessageType.AcquireDockPoint, nodeDto.NodeName);
+
+            if (pointDto.PointName == string.Empty)
             {
-                _onAcquired?.Invoke();
-                Robot.StatModule.CurrentMapPoint = targetPoint;
-            }));
+                _targetNode.OnHasFreePoint.AddOnce(SendReq);
+            }
+            else
+            {
+                var targetPoint = _targetNode.GetPoint(pointDto.PointName);
+                targetPoint.SetLock(true);
+                StateMachine.ChangeState(new MoveState(StateMachine, targetPoint.Position, () =>
+                {
+                    _onAcquired?.Invoke();
+                    Robot.StatModule.CurrentMapPoint = targetPoint;
+                }));
+            }
         }
     }
+
 }
