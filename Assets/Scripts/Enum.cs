@@ -30,4 +30,5 @@ public enum SocketMessageType
     ResourceRelease,
     AcquireDockPoint,
     ReleaseDockPoint,
+    CheckNodeFull,
 }

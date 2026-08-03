@@ -12,6 +12,12 @@ public class MapPoint : MonoBehaviour
 
     public string PointName => pointName;
     public Vector3 Position => transform.position;
+    public MapNode Node { get; private set; }
+
+    void Start()
+    {
+        Node = GetComponentInParent<MapNode>();
+    }
 
     public MapPointDto ToData()
     {

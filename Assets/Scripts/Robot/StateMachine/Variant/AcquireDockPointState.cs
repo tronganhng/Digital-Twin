@@ -45,8 +45,8 @@ public class AcquireDockPointState : RobotState
                 targetPoint.SetLock(true);
                 StateMachine.ChangeState(new MoveState(StateMachine, targetPoint.Position, () =>
                 {
-                    _onAcquired?.Invoke();
                     Robot.StatModule.CurrentMapPoint = targetPoint;
+                    _onAcquired?.Invoke();
                 }));
             }
         }

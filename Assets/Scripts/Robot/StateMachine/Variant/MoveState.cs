@@ -27,7 +27,7 @@ public class MoveState : RobotState
         var currentPoint = Robot.StatModule.CurrentMapPoint;
         if (currentPoint == null) return;
 
-        var currentNode = currentPoint.GetComponentInParent<MapNode>();
+        var currentNode = currentPoint.Node;
 
         if (currentNode == null) return;
         var req = new ReleasePointRequest
