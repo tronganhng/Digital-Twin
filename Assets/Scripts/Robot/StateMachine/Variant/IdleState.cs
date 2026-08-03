@@ -54,15 +54,11 @@ public class IdleState : RobotState
             var isFull = await SimulationManager.Instance.WebSocket.SendRequestAsync<string, bool>(SocketMessageType.CheckNodeFull, currentNode.NodeName);
             if (isFull)
             {
-                var pole = SimulationManager.Instance.MapManager.GetFreeChargingPole(Robot);
-                if (!pole) return;
-                var des = pole.ChargePoint.position;
-                StateMachine.ChangeState(new MoveState(StateMachine, des, () => StateMachine.ChangeState(new ChargingState(StateMachine, pole))));
+                var waitingNode = SimulationManager.Instance.MapManager.WaitingNode;
+                StateMachine.ChangeState(new MoveToWaitingZoneState(StateMachine, waitingNode.Position, () =>
+                    StateMachine.ChangeState(new AcquireDockPointState(StateMachine, waitingNode, () =>
+                        StateMachine.ChangeState(new IdleState(StateMachine))))));
             }
-            // if (SimulationManager.Instance.MapManager.TryGetNode(targetNodeDto.NodeName, out var targetNode))
-            // {
-            //     // Move to waiting zone
-            // }
         }
     }
 }

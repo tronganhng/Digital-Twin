@@ -92,7 +92,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.72680473
+        value: 0.36832392
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -188,6 +188,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapLane
   lineRenderer: {fileID: 4057582850705813167}
-  startPoint: {fileID: 0}
-  endPoint: {fileID: 0}
+  startNode: {fileID: 0}
+  endNode: {fileID: 0}
   distance: 0

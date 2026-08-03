@@ -7,10 +7,13 @@ using UnityEngine.Rendering;
 public class MapManager : SimulationBaseService
 {
     [SerializeField] private ChargingStation chargingStation;
+    [SerializeField] private MapNode waitingNode;
     [SerializeField] private Transform mapRoot;
 
     [SerializeField, ReadOnly] private SerializedDictionary<string, MapNode> _nodes = new();
     [SerializeField, ReadOnly] private List<MapLane> _lanes = new();
+
+    public MapNode WaitingNode => waitingNode;
 
     public override void Init(SimulationManager fleetManager)
     {
