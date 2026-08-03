@@ -44,6 +44,7 @@ public class IdleState : RobotState
 
     private void CheckNodeFull()
     {
+        if (Robot.FuelModule.NeedCharge) return;
         var currentPoint = Robot.StatModule.CurrentMapPoint;
         if (currentPoint == null) return;
 
