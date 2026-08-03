@@ -37,4 +37,5 @@ public enum SocketMessageType
     AcquireDockPoint,
     ReleaseDockPoint,
     CheckNodeFull,
+    MoveRobot,
 }
