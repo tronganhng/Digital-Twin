@@ -17,6 +17,12 @@ public enum TaskStatus
     Cancelled
 }
 
+public enum NodeType
+{
+    Room,
+    SharedResource,
+}
+
 public enum SocketMessageType
 {
     ServerResponse,

@@ -73,6 +73,8 @@ public class MapManager : SimulationBaseService
 
     public IEnumerable<string> GetNodeNames()
     {
-        return _nodes.Keys;
+        return _nodes
+        .Where(pair => pair.Value.nodeType == NodeType.Room)
+        .Select(pair => pair.Key);
     }
 }

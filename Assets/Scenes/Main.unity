@@ -303,6 +303,10 @@ PrefabInstance:
       value: junction1
       objectReference: {fileID: 0}
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+      propertyPath: nodeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: pointName
       value: junction_1
       objectReference: {fileID: 0}
@@ -3289,6 +3293,10 @@ PrefabInstance:
       value: junction3
       objectReference: {fileID: 0}
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+      propertyPath: nodeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: pointName
       value: junction_3
       objectReference: {fileID: 0}
@@ -3379,6 +3387,10 @@ PrefabInstance:
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: nodeName
       value: junction4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+      propertyPath: nodeType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: pointName
@@ -3727,6 +3739,10 @@ PrefabInstance:
       value: charging_station
       objectReference: {fileID: 0}
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+      propertyPath: nodeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: pointName
       value: charging_station
       objectReference: {fileID: 0}
@@ -4049,6 +4065,10 @@ PrefabInstance:
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: nodeName
       value: waiting_zone
+      objectReference: {fileID: 0}
+    - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+      propertyPath: nodeType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: points.Array.size
@@ -7114,6 +7134,10 @@ PrefabInstance:
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: nodeName
       value: junction2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+      propertyPath: nodeType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: pointName

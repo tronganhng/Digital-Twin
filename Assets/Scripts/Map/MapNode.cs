@@ -14,6 +14,7 @@ public class MapNode : MonoBehaviour
     [SerializeField] private Transform pointRoot;
     [SerializeField] private MeshRenderer mesh;
     [SerializeField] private string nodeName;
+    [SerializeField] public NodeType nodeType;
     [SerializeField, ReadOnly] private List<MapPoint> points;
     [SerializeField] private bool hasTriggerZone;
     [SerializeField, ShowIf(nameof(hasTriggerZone))] private Color availableColor = Color.green;
