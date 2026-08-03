@@ -74,7 +74,7 @@ public class MapManager : SimulationBaseService
     public IEnumerable<string> GetNodeNames()
     {
         return _nodes
-        .Where(pair => pair.Value.nodeType == NodeType.Room)
+        .Where(pair => pair.Value.NodeType == NodeType.Room)
         .Select(pair => pair.Key);
     }
 }

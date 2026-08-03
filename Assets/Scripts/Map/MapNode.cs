@@ -14,7 +14,7 @@ public class MapNode : MonoBehaviour
     [SerializeField] private Transform pointRoot;
     [SerializeField] private MeshRenderer mesh;
     [SerializeField] private string nodeName;
-    [SerializeField] public NodeType nodeType;
+    [SerializeField] private NodeType nodeType;
     [SerializeField, ReadOnly] private List<MapPoint> points;
     [SerializeField] private bool hasTriggerZone;
     [SerializeField, ShowIf(nameof(hasTriggerZone))] private Color availableColor = Color.green;
@@ -22,6 +22,7 @@ public class MapNode : MonoBehaviour
 
     public string NodeName => nodeName;
     public Vector3 Position => transform.position;
+    public NodeType NodeType => nodeType;
 
     public Relay OnHasFreePoint = new();
 
