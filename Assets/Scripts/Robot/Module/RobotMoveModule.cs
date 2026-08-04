@@ -32,7 +32,13 @@ public class RobotMoveModule : RobotBaseModule
             isMoving = false;
             onReachCallback?.Invoke();
             onReachCallback = null;
+            Send();
         }
+    }
+
+    private async void Send()
+    {
+        await SimulationManager.Instance.WebSocket.SendMessageAsync(SocketMessageType.RobotArrived, true, robot.StatModule.StateDto.RobotId);
     }
 
     #region Move

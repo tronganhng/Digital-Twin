@@ -63,7 +63,7 @@ public class WebSocketClient : SimulationBaseService
         }
     }
 
-    public async Task SendMessageAsync<T>(SocketMessageType type, T payload)
+    public async Task SendMessageAsync<T>(SocketMessageType type, T payload, string robotId = null)
     {
         if (socket == null || socket.State != WebSocketState.Open)
             return;
@@ -72,6 +72,7 @@ public class WebSocketClient : SimulationBaseService
         {
             Type = type,
             RequestId = Guid.NewGuid().ToString(),
+            RobotId = robotId,
             Payload = payload
         };
 

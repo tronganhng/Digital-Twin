@@ -38,4 +38,5 @@ public enum SocketMessageType
     ReleaseDockPoint,
     CheckNodeFull,
     MoveRobot,
+    RobotArrived,
 }

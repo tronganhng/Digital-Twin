@@ -5,14 +5,13 @@ using UnityEngine;
 
 public class RobotTaskModule : RobotBaseModule
 {
-    [field: SerializeField, ReadOnly] public DeliveryTask CurrentTask { get; private set; }
+    [SerializeField, ReadOnly] private DeliveryTask currentTask;
+    [SerializeField, ReadOnly] private MapNode PickupNode;
+    [SerializeField, ReadOnly] private MapNode DesNode;
 
-    [ReadOnly] public MapNode PickupNode;
-    [ReadOnly] public MapNode DesNode;
-
-    public void DoTask(DeliveryTask task)
+    public void SetTask(DeliveryTask task)
     {
-        CurrentTask = task;
+        currentTask = task;
         robot.StatModule.SetTaskId(task.TaskId);
 
         var mapManager = SimulationManager.Instance.MapManager;
