@@ -15,18 +15,28 @@ public class TaskManager : SimulationBaseService
         {
             manager.GUI.Dashboard.AddTask(newTaskInfo);
             tasks.Add(newTaskInfo);
-            return;
         }
-
-        manager.GUI.Dashboard.ReplaceTask(newTaskInfo);
-        tasks[index] = newTaskInfo;
+        else
+        {
+            manager.GUI.Dashboard.ReplaceTask(newTaskInfo);
+            tasks[index] = newTaskInfo;
+        }
+        newTaskInfo.OnDataChanged.Dispatch();
     }
 
     public async void CancelTask(DeliveryTask task)
     {
         if (task == null || !tasks.Contains(task)) return;
 
-        await manager.WebSocket.SendMessageAsync(SocketMessageType.CancelTask, task);
+        var res = await manager.WebSocket.SendRequestAsync<DeliveryTask, DeliveryTask>(SocketMessageType.CancelTask, task);
+
+        if (res == null) return;
+
+        var robot = manager.RobotManager.GetRobotByTask(res.TaskId);
+        if (robot != null)
+            robot.StateMachine.ChangeState(new IdleState(robot.StateMachine));
+
+        UpdateTaskInfo(res);
     }
 
     public async void CreateTask(string pickPoint, string destination, int priority)
