@@ -11,14 +11,12 @@ public class IdleState : RobotState
     {
         base.Enter();
         Robot.MoveModule.Stop();
-        Robot.TaskModule.OnTaskStart.AddOnce(OnTaskStart);
         CheckNodeFull();
     }
 
     public override void Exit()
     {
         base.Exit();
-        Robot.TaskModule.OnTaskStart.RemoveOnce(OnTaskStart);
     }
 
     public override void Update()
@@ -31,15 +29,6 @@ public class IdleState : RobotState
             var des = pole.ChargePoint.position;
             StateMachine.ChangeState(new MoveState(StateMachine, des, () => StateMachine.ChangeState(new ChargingState(StateMachine, pole))));
         }
-    }
-
-    private void OnTaskStart()
-    {
-        Robot.TaskModule.SetTaskStatus(TaskStatus.Running);
-        var pickupNode = Robot.TaskModule.PickupNode;
-        StateMachine.ChangeState(new MoveState(StateMachine, pickupNode.Position, () =>
-            StateMachine.ChangeState(new AcquireDockPointState(StateMachine, pickupNode, () =>
-                StateMachine.ChangeState(new WaitingState(StateMachine))))));
     }
 
     private void CheckNodeFull()

@@ -23,22 +23,11 @@ public class MoveToWaitingZoneState : RobotState
         base.Enter();
         Robot.MoveModule.MoveTo(_des, _onReach);
         _ = TryReleasePoint();
-        Robot.TaskModule.OnTaskStart.AddOnce(OnTaskStart);
     }
 
     public override void Exit()
     {
         base.Exit();
-        Robot.TaskModule.OnTaskStart.RemoveOnce(OnTaskStart);
-    }
-
-    private void OnTaskStart()
-    {
-        Robot.TaskModule.SetTaskStatus(TaskStatus.Running);
-        var pickupNode = Robot.TaskModule.PickupNode;
-        StateMachine.ChangeState(new MoveState(StateMachine, pickupNode.Position, () =>
-            StateMachine.ChangeState(new AcquireDockPointState(StateMachine, pickupNode, () =>
-                StateMachine.ChangeState(new WaitingState(StateMachine))))));
     }
 
     private async Task TryReleasePoint()

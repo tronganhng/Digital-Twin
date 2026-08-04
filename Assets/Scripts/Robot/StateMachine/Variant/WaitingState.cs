@@ -22,10 +22,7 @@ public class WaitingState : RobotState
 
         if (_timer >= WAIT_TIME)
         {
-            var desNode = Robot.TaskModule.DesNode;
-            StateMachine.ChangeState(new MoveState(StateMachine, desNode.Position, () =>
-                StateMachine.ChangeState(new AcquireDockPointState(StateMachine, desNode, () =>
-                    Robot.TaskModule.SetTaskStatus(TaskStatus.Completed)))));
+            
         }
     }
 }

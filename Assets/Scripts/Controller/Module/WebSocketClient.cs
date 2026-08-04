@@ -134,7 +134,6 @@ public class WebSocketClient : SimulationBaseService
         }
         catch (TaskCanceledException)
         {
-            Debug.LogError("Socket Req Timeout");
             throw new TimeoutException($"Yêu cầu loại {type} (ID: {requestId}) đã quá hạn {timeoutMilliseconds}ms hoặc bị hủy.");
         }
         finally
