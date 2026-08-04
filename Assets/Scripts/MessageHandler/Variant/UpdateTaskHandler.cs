@@ -1,7 +1,7 @@
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 
-public class AssignedTaskHandler : BaseMessageHandler
+public class UpdateTaskHandler : BaseMessageHandler
 {
     public override void Handle(SocketMessage<JToken> message)
     {

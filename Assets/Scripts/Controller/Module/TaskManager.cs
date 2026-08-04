@@ -35,8 +35,6 @@ public class TaskManager : SimulationBaseService
         var robot = manager.RobotManager.GetRobotByTask(res.TaskId);
         if (robot != null)
             robot.StateMachine.ChangeState(new IdleState(robot.StateMachine));
-
-        UpdateTaskInfo(res);
     }
 
     public async void CreateTask(string pickPoint, string destination, int priority)

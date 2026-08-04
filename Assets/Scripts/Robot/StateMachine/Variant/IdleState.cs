@@ -11,7 +11,6 @@ public class IdleState : RobotState
     {
         base.Enter();
         Robot.MoveModule.Stop();
-        CheckNodeFull();
     }
 
     public override void Exit()
@@ -28,27 +27,6 @@ public class IdleState : RobotState
             if (!pole) return;
             var des = pole.ChargePoint.position;
             StateMachine.ChangeState(new MoveState(StateMachine, des, () => StateMachine.ChangeState(new ChargingState(StateMachine, pole))));
-        }
-    }
-
-    private void CheckNodeFull()
-    {
-        if (Robot.FuelModule.NeedCharge) return;
-        var currentPoint = Robot.StatModule.CurrentMapPoint;
-        if (currentPoint == null) return;
-
-        var currentNode = currentPoint.Node;
-        _ = SendReq();
-        async Task SendReq()
-        {
-            var isFull = await SimulationManager.Instance.WebSocket.SendRequestAsync<string, bool>(SocketMessageType.CheckNodeFull, currentNode.NodeName);
-            if (isFull)
-            {
-                // var waitingNode = SimulationManager.Instance.MapManager.WaitingNode;
-                // StateMachine.ChangeState(new MoveToWaitingZoneState(StateMachine, waitingNode.Position, () =>
-                //     StateMachine.ChangeState(new AcquireDockPointState(StateMachine, waitingNode, () =>
-                //         StateMachine.ChangeState(new IdleState(StateMachine))))));
-            }
         }
     }
 }

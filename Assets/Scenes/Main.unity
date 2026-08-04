@@ -5377,11 +5377,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TaskManager
   tasks: []
-  map: {fileID: 622929324}
-  pickupPoint: junction_4
-  destinationPoint: room_2
-  priority: 0
-  cancelTaskId: 
 --- !u!1001 &1429078508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8279,7 +8274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MessageRouter
   _handlers:
-    m_Keys: 040000000c000000
+    m_Keys: 050000000c000000
     m_Values:
     - {fileID: 2084462759}
     - {fileID: 363529580}
@@ -8571,7 +8566,7 @@ GameObject:
   - component: {fileID: 2084462758}
   - component: {fileID: 2084462759}
   m_Layer: 0
-  m_Name: Assigned Task
+  m_Name: Update Task
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

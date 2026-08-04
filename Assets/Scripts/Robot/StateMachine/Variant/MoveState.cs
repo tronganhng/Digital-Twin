@@ -19,29 +19,5 @@ public class MoveState : RobotState
     {
         base.Enter();
         Robot.MoveModule.MoveTo(_des, _onReach);
-        _ = TryReleasePoint();
-    }
-
-    private async Task TryReleasePoint()
-    {
-        var currentPoint = Robot.StatModule.CurrentMapPoint;
-        if (currentPoint == null) return;
-
-        var currentNode = currentPoint.Node;
-
-        if (currentNode == null) return;
-        var req = new ReleasePointRequest
-        {
-            NodeName = currentNode.NodeName,
-            PointName = currentPoint.PointName
-        };
-
-        bool isReleased = await SimulationManager.Instance.WebSocket.SendRequestAsync<ReleasePointRequest, bool>(SocketMessageType.ReleaseDockPoint, req);
-        if (isReleased)
-        {
-            currentNode.OnHasFreePoint.Dispatch();
-            currentPoint.SetLock(false);
-            Robot.StatModule.CurrentMapPoint = null;
-        }
     }
 }
