@@ -10,6 +10,8 @@ public class UpdateTaskHandler : BaseMessageHandler
             return;
 
         SimulationManager.Instance.TaskManager.UpdateTaskInfo(task);
+        if (task.AssignedRobotId == null)
+            return;
         var robot = SimulationManager.Instance.RobotManager.GetRobotBy(task.AssignedRobotId);
         robot.StatModule.SetTaskId(task.TaskId);
     }
