@@ -1,7 +1,7 @@
 public enum RobotStatus
 {
     Idle,
-    Moving,
+    DoingTask,
     Charging,
     Error,
     Offline

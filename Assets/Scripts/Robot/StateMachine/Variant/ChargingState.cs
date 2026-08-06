@@ -1,7 +1,5 @@
 public class ChargingState : RobotState
 {
-    protected override RobotStatus Status => RobotStatus.Charging;
-
     private ChargingPole _chargingPole;
 
     public ChargingState(RobotStateMachineModule stateMachine, ChargingPole chargingPole) : base(stateMachine)

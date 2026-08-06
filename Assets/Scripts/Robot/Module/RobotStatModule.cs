@@ -71,8 +71,6 @@ public class RobotStatModule : RobotBaseModule
     {
         statusTmp.text = status.ToString();
         _robotState.Status = status;
-        UpdateState();
-        _ = SendStateAsync();
 
         OnStatChanged.Dispatch();
     }

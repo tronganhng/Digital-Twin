@@ -5,7 +5,6 @@ public abstract class RobotState : IState
     protected readonly RobotStateMachineModule StateMachine;
     protected readonly Robot Robot;
 
-    protected abstract RobotStatus Status { get; }
 
     protected RobotState(RobotStateMachineModule stateMachine)
     {
@@ -13,10 +12,7 @@ public abstract class RobotState : IState
         Robot = stateMachine.Robot;
     }
 
-    public virtual void Enter()
-    {
-        Robot.StatModule.SetStatus(Status);
-    }
+    public virtual void Enter() { }
 
     public virtual void Update() { }
 
