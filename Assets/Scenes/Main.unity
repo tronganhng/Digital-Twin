@@ -2397,6 +2397,7 @@ MonoBehaviour:
   _nodes:
     m_Keys:
     - waiting_zone
+    - charging_station
     - room1
     - room2
     - room3
@@ -2404,13 +2405,13 @@ MonoBehaviour:
     - room5
     - room6
     - room7
-    - charging_station
     - junction1
     - junction2
     - junction3
     - junction4
     m_Values:
     - {fileID: 925959540}
+    - {fileID: 896439043}
     - {fileID: 1519493264}
     - {fileID: 1126813940}
     - {fileID: 1646722460}
@@ -2418,7 +2419,6 @@ MonoBehaviour:
     - {fileID: 1937434515}
     - {fileID: 597065066}
     - {fileID: 438585400}
-    - {fileID: 896439043}
     - {fileID: 82148458}
     - {fileID: 1792256400}
     - {fileID: 827477843}
@@ -4156,7 +4156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: nodeType
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: points.Array.size

@@ -36,6 +36,7 @@ public class MapNode : MonoBehaviour
         return new MapNodeDto
         {
             NodeName = nodeName,
+            NodeType = nodeType,
             Position = new float[] { Position.x, Position.z },
             MapPoints = points.Select(p => p.ToData()).ToList()
         };
