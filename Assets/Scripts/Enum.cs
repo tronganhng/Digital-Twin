@@ -22,6 +22,7 @@ public enum NodeType
     Room,
     SharedResource,
     WaitingArea,
+    ChargingArea,
 }
 
 public enum SocketMessageType

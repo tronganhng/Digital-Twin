@@ -1,10 +1,10 @@
 public class ChargingState : RobotState
 {
-    private ChargingPole _chargingPole;
+    // private ChargingPole _chargingPole;
 
-    public ChargingState(RobotStateMachineModule stateMachine, ChargingPole chargingPole) : base(stateMachine)
+    public ChargingState(RobotStateMachineModule stateMachine) : base(stateMachine)
     {
-        _chargingPole = chargingPole;
+        // _chargingPole = chargingPole;
     }
 
     public override void Enter()
@@ -26,6 +26,6 @@ public class ChargingState : RobotState
     {
         base.Exit();
         Robot.FuelModule.StopCharging();
-        _chargingPole.Release();
+        // _chargingPole.Release();
     }
 }
