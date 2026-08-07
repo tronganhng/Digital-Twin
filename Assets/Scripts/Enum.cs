@@ -35,7 +35,6 @@ public enum SocketMessageType
     CancelTask,
     ResourceAccess,
     ResourceRelease,
-    CheckNodeFull,
     MoveRobot,
     RobotArrived,
     ChangeRobotStatus,
