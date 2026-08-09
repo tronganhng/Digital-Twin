@@ -8601,7 +8601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MessageRouter
   _handlers:
-    m_Keys: 04000000090000000b000000
+    m_Keys: 04000000080000000a000000
     m_Values:
     - {fileID: 2084462759}
     - {fileID: 363529580}
