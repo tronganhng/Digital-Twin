@@ -6,14 +6,10 @@ using UnityEngine.Rendering;
 
 public class MapManager : SimulationBaseService
 {
-    [SerializeField] private ChargingStation chargingStation;
-    [SerializeField] private MapNode waitingNode;
     [SerializeField] private Transform mapRoot;
 
     [SerializeField, ReadOnly] private SerializedDictionary<string, MapNode> _nodes = new();
     [SerializeField, ReadOnly] private List<MapLane> _lanes = new();
-
-    public MapNode WaitingNode => waitingNode;
 
     public override void Init(SimulationManager fleetManager)
     {
@@ -46,20 +42,6 @@ public class MapManager : SimulationBaseService
             _lanes.Add(lane);
         }
     }
-
-    public bool TryGetNode(string nodeName, out MapNode outNode)
-    {
-        if (_nodes.TryGetValue(nodeName, out MapNode node))
-        {
-            outNode = node;
-            return true;
-        }
-
-        outNode = default;
-        return false;
-    }
-
-    public ChargingPole GetFreeChargingPole(Robot owner) => chargingStation.GetFreePole(owner);
 
     [Button(ButtonSizes.Large)]
     private void Save()

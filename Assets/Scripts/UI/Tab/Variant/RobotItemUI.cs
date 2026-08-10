@@ -31,12 +31,9 @@ public class RobotItemUI : MonoBehaviour
 
     public void MoveRobotToChargingPole()
     {
-        var pole = SimulationManager.Instance.MapManager.GetFreeChargingPole(_robot);
-        if (!pole) return;
-
-        var des = pole.ChargePoint.position;
-        _robot.MoveModule.SetPosition(des);
-        _robot.SensorModule.ReleaseResource();
-        DOVirtual.DelayedCall(0.1f, () => _robot.StateMachine.ChangeState(new ChargingState(_robot.StateMachine)));
+        // var des = pole.ChargePoint.position;
+        // _robot.MoveModule.SetPosition(des);
+        // _robot.SensorModule.ReleaseResource();
+        // DOVirtual.DelayedCall(0.1f, () => _robot.StateMachine.ChangeState(new ChargingState(_robot.StateMachine)));
     }
 }

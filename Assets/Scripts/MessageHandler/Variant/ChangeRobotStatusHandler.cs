@@ -13,10 +13,10 @@ public class ChangeRobotStatusHandler : BaseMessageHandler
         if (robot != null)
         {
             robot.StatModule.SetStatus(status);
-            if (status == RobotStatus.Charging)
-            {
-                robot.StateMachine.ChangeState(new ChargingState(robot.StateMachine));
-            }
+            // if (status == RobotStatus.Charging)
+            // {
+            //     robot.StateMachine.ChangeState(new ChargingState(robot.StateMachine));
+            // }
         }
     }
 }
