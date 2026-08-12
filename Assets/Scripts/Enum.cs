@@ -1,3 +1,15 @@
+public enum ClientType
+{
+    Unity,
+    Robot
+}
+
+public enum SystemMode
+{
+    Operation,
+    Simulation
+}
+
 public enum RobotStatus
 {
     Idle,
@@ -27,6 +39,7 @@ public enum NodeType
 
 public enum SocketMessageType
 {
+    RegisterClient,
     ServerResponse,
     RegisterRobot,
     RobotState,

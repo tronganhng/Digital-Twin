@@ -2475,8 +2475,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d9a673424430e47afed5e8738c0adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapManager
-  chargingStation: {fileID: 629418246}
-  waitingNode: {fileID: 925959540}
   mapRoot: {fileID: 1507638917}
   _nodes:
     m_Keys:
@@ -2527,17 +2525,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3814226170712912361, guid: ae9647ac2a59a054ea68b4c6d2fc5912, type: 3}
   m_PrefabInstance: {fileID: 881917196121464436}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &629418246 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4685478858235361496, guid: ae9647ac2a59a054ea68b4c6d2fc5912, type: 3}
-  m_PrefabInstance: {fileID: 881917196121464436}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42c6c0de573cc2f4495e4fc635c70ea5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChargingStation
 --- !u!1 &647107467
 GameObject:
   m_ObjectHideFlags: 0
@@ -8601,7 +8588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MessageRouter
   _handlers:
-    m_Keys: 04000000080000000a000000
+    m_Keys: 05000000090000000b000000
     m_Values:
     - {fileID: 2084462759}
     - {fileID: 363529580}

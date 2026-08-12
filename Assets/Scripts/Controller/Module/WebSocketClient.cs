@@ -25,6 +25,8 @@ public class WebSocketClient : SimulationBaseService
 
         await socket.ConnectAsync(new Uri("ws://localhost:5055/ws"), CancellationToken.None);
 
+        await SendMessageAsync(SocketMessageType.RegisterClient, ClientType.Unity);
+
         _ = ReceiveLoop(receiveCts.Token);
     }
 
