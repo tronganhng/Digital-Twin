@@ -28,13 +28,13 @@ public class TaskManager : SimulationBaseService
     {
         if (task == null || !tasks.Contains(task)) return;
 
-        var res = await manager.WebSocket.SendRequestAsync<DeliveryTask, DeliveryTask>(SocketMessageType.CancelTask, task);
+        await manager.WebSocket.SendMessageAsync(SocketMessageType.CancelTask, task);
 
-        if (res == null) return;
+        // if (res == null) return;
 
-        var robot = manager.RobotManager.GetRobotByTask(res.TaskId);
-        if (robot != null)
-            robot.StateMachine.ChangeState(new IdleState(robot.StateMachine));
+        // var robot = manager.RobotManager.GetRobotByTask(res.TaskId);
+        // if (robot != null)
+        //     robot.StateMachine.ChangeState(new IdleState(robot.StateMachine));
     }
 
     public async void CreateTask(string pickPoint, string destination, int priority)

@@ -14,5 +14,6 @@ public class UpdateTaskHandler : BaseMessageHandler
             return;
         var robot = SimulationManager.Instance.RobotManager.GetRobotBy(task.AssignedRobotId);
         robot.StatModule.SetTaskId(task.TaskId);
+        if (task.Status == TaskStatus.Cancelled) robot.StateMachine.ChangeState(new IdleState(robot.StateMachine));
     }
 }

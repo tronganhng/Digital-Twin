@@ -158,4 +158,10 @@ public class WebSocketClient : SimulationBaseService
         receiveCts?.Dispose();
         ExtraLog.LogWithColor("Disconected", Color.softRed);
     }
+
+    [Button]
+    private async void SetSystemMode(SystemMode mode)
+    {
+        await SendMessageAsync(SocketMessageType.SetSystemMode, mode);
+    }
 }

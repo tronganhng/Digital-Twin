@@ -40,6 +40,7 @@ public enum NodeType
 public enum SocketMessageType
 {
     RegisterClient,
+    SetSystemMode,
     ServerResponse,
     RegisterRobot,
     RobotState,
