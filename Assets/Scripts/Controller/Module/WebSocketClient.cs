@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using Sirenix.OdinInspector;
 using Newtonsoft.Json.Linq;
 using System.Collections.Concurrent;
+using Newtonsoft.Json.Converters;
 
 public class WebSocketClient : SimulationBaseService
 {
@@ -78,7 +79,10 @@ public class WebSocketClient : SimulationBaseService
             Payload = payload
         };
 
-        string json = JsonConvert.SerializeObject(message);
+        string json = JsonConvert.SerializeObject(message, new JsonSerializerSettings
+        {
+            Converters = { new StringEnumConverter() }
+        });
         byte[] bytes = Encoding.UTF8.GetBytes(json);
 
         await socket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, CancellationToken.None);
@@ -105,7 +109,10 @@ public class WebSocketClient : SimulationBaseService
 
         try
         {
-            string json = JsonConvert.SerializeObject(request);
+            string json = JsonConvert.SerializeObject(request, new JsonSerializerSettings
+            {
+                Converters = { new StringEnumConverter() }
+            });
             byte[] bytes = Encoding.UTF8.GetBytes(json);
 
             // 2. Đồng bộ hóa việc gửi tin nhắn (Bảo vệ luồng nếu cần)
