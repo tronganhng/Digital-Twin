@@ -50,6 +50,7 @@ public enum SocketMessageType
     ResourceAccess,
     ResourceRelease,
     MoveRobot,
+    StopRobot,
     RobotArrived,
     ChangeRobotStatus,
 }
