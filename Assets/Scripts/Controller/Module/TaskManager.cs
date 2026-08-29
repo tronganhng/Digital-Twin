@@ -29,12 +29,6 @@ public class TaskManager : SimulationBaseService
         if (task == null || !tasks.Contains(task)) return;
 
         await manager.WebSocket.SendMessageAsync(SocketMessageType.CancelTask, task);
-
-        // if (res == null) return;
-
-        // var robot = manager.RobotManager.GetRobotByTask(res.TaskId);
-        // if (robot != null)
-        //     robot.StateMachine.ChangeState(new IdleState(robot.StateMachine));
     }
 
     public async void CreateTask(string pickPoint, string destination, int priority)
