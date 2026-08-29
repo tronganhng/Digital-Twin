@@ -32,7 +32,9 @@ public class RobotManager : SimulationBaseService
         {
             if (robot.StatModule.StateDto.RobotId == robotId) return robot;
         }
-        return null;
+        var newRobot = Instantiate(robotPrefab, robotRoot);
+        _robots.Add(newRobot);
+        return newRobot;
     }
 
     public Robot GetRobotByTask(string taskId)

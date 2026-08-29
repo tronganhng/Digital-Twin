@@ -101,4 +101,10 @@ public class RobotStatModule : RobotBaseModule
         _disable = false;
         _sendDataCrt = StartCoroutine(SendDataCrt());
     }
+
+    public void SyncData(RobotStateDto newDto)
+    {
+        _robotState = newDto;
+        robot.transform.position = new Vector3((float)newDto.X, 0, (float)newDto.Y);
+    }
 }

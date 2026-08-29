@@ -5605,6 +5605,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 584020606225442107, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
   m_PrefabInstance: {fileID: 359690957}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1390241787
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1390241788}
+  - component: {fileID: 1390241789}
+  m_Layer: 0
+  m_Name: Sync Robot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1390241788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390241787}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2009817380}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1390241789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390241787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6baed068f80734e2e83f424093ae8fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SyncRobotStateHandler
 --- !u!1 &1406964230
 GameObject:
   m_ObjectHideFlags: 0
@@ -8618,6 +8662,7 @@ Transform:
   - {fileID: 363529579}
   - {fileID: 1103907691}
   - {fileID: 535278600}
+  - {fileID: 1390241788}
   m_Father: {fileID: 880135401}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2009817381
@@ -8633,12 +8678,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MessageRouter
   _handlers:
-    m_Keys: 060000000a0000000d0000000b000000
+    m_Keys: 060000000a0000000d0000000b00000004000000
     m_Values:
     - {fileID: 2084462759}
     - {fileID: 363529580}
     - {fileID: 535278601}
     - {fileID: 1103907692}
+    - {fileID: 1390241789}
 --- !u!1001 &2051021363
 PrefabInstance:
   m_ObjectHideFlags: 0
