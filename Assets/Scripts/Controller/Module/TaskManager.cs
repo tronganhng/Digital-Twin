@@ -48,4 +48,10 @@ public class TaskManager : SimulationBaseService
 
         await manager.WebSocket.SendMessageAsync(SocketMessageType.CreateTask, task);
     }
+
+    public void ClearAllTask()
+    {
+        tasks.Clear();
+        manager.GUI.Dashboard.ClearAllTask();
+    }
 }

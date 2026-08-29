@@ -105,4 +105,14 @@ public class TaskListUI : TabContent
         endPointDrop.value = end;
         endPointDrop.RefreshShownValue();
     }
+
+    public void ClearAll()
+    {
+        for (int i = container.childCount - 1; i >= 0; i--)
+        {
+            DestroyImmediate(container.GetChild(i).gameObject);
+        }
+
+        _taskItems.Clear();
+    }
 }

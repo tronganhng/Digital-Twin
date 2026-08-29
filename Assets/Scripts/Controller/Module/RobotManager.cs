@@ -49,7 +49,7 @@ public class RobotManager : SimulationBaseService
         return _robots;
     }
 
-    private void ClearAllRobots()
+    public void ClearAllRobots()
     {
         for (int i = robotRoot.childCount - 1; i >= 0; i--)
         {

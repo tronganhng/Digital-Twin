@@ -169,6 +169,11 @@ public class WebSocketClient : SimulationBaseService
     [Button]
     private async void SetSystemMode(SystemMode mode)
     {
+        if (mode == SystemMode.Operation)
+        {
+            manager.TaskManager.ClearAllTask();
+            manager.RobotManager.ClearAllRobots();
+        }
         await SendMessageAsync(SocketMessageType.SetSystemMode, mode);
     }
 }
