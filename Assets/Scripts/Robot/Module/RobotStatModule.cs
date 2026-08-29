@@ -43,7 +43,7 @@ public class RobotStatModule : RobotBaseModule
         _robotState.X = robot.transform.position.x;
         _robotState.Y = robot.transform.position.z;
         _robotState.Rotation = robot.transform.eulerAngles.y;
-        _robotState.LastHeartbeat = DateTime.UtcNow;
+        _robotState.LastHeartbeat = DateTime.Now;
     }
 
     private async Task TryRegister()
