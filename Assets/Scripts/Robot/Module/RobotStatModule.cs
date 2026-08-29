@@ -105,6 +105,5 @@ public class RobotStatModule : RobotBaseModule
     public void SyncData(RobotStateDto newDto)
     {
         _robotState = newDto;
-        robot.transform.position = new Vector3((float)newDto.X, 0, (float)newDto.Y);
     }
 }

@@ -10,14 +10,6 @@ public class RobotMoveModule : RobotBaseModule
 
     private bool isMoving;
 
-    public override void Init(Robot robot)
-    {
-        base.Init(robot);
-
-        if (agent == null)
-            agent = GetComponent<NavMeshAgent>();
-    }
-
     public override void Tick()
     {
         base.Tick();

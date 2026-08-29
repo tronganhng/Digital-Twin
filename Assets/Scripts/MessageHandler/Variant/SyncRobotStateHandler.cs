@@ -10,5 +10,6 @@ public class SyncRobotStateHandler : BaseMessageHandler
 
         var robot = SimulationManager.Instance.RobotManager.GetRobotBy(message.RobotId);
         robot.StatModule.SyncData(robotDto);
+        robot.MoveModule.SetPosition(new Vector3((float)robotDto.X, 0, (float)robotDto.Y));
     }
 }
