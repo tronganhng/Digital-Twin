@@ -28,6 +28,8 @@ public class WebSocketClient : SimulationBaseService
 
         await SendMessageAsync(SocketMessageType.RegisterClient, ClientType.Unity);
 
+        await SetSystemMode(SystemMode.Simulation);
+
         _ = ReceiveLoop(receiveCts.Token);
     }
 
@@ -167,7 +169,7 @@ public class WebSocketClient : SimulationBaseService
     }
 
     [Button]
-    private async void SetSystemMode(SystemMode mode)
+    private async Task SetSystemMode(SystemMode mode)
     {
         if (mode == SystemMode.Operation)
         {

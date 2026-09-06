@@ -19,6 +19,7 @@ public class MapPointDto
 {
     public string PointName { get; set; } = string.Empty;
     public float[] Position { get; set; } = Array.Empty<float>();
+    public float Yaw { get; set; } = 0f;
 }
 
 public class MapLaneDto

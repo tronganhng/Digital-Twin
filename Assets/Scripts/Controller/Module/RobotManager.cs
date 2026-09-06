@@ -37,15 +37,6 @@ public class RobotManager : SimulationBaseService
         return newRobot;
     }
 
-    public Robot GetRobotByTask(string taskId)
-    {
-        foreach (var robot in _robots)
-        {
-            if (robot.StatModule.StateDto.CurrentTaskId == taskId) return robot;
-        }
-        return null;
-    }
-
     public List<Robot> GetAllRobot()
     {
         return _robots;
