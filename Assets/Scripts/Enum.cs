@@ -34,7 +34,6 @@ public enum NodeType
     Room,
     SharedResource,
     WaitingArea,
-    ChargingArea,
 }
 
 public enum SocketMessageType
@@ -53,4 +52,5 @@ public enum SocketMessageType
     StopRobot,
     RobotArrived,
     ChangeRobotStatus,
+    ChargeRobot,
 }

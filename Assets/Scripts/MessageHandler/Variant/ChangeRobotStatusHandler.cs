@@ -1,6 +1,9 @@
 using UnityEngine;
 using Newtonsoft.Json.Linq;
 
+/// <summary>
+/// JUST FOR VISUALIZE
+/// </summary>
 public class ChangeRobotStatusHandler : BaseMessageHandler
 {
     public override void Handle(SocketMessage<JToken> message)

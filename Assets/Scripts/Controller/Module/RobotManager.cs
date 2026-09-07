@@ -11,7 +11,7 @@ using UnityEditor;
 public class RobotManager : SimulationBaseService
 {
     [Header("References")]
-    [SerializeField] private Robot robotPrefab;
+    [SerializeField] private RobotRoot robotRootPrefab;
     [SerializeField] private Transform robotRoot;
 
     [SerializeField, ReadOnly] private List<Robot> _robots = new();
@@ -32,9 +32,9 @@ public class RobotManager : SimulationBaseService
         {
             if (robot.StatModule.StateDto.RobotId == robotId) return robot;
         }
-        var newRobot = Instantiate(robotPrefab, robotRoot);
-        _robots.Add(newRobot);
-        return newRobot;
+        var newRobotRoot = Instantiate(robotRootPrefab, robotRoot);
+        _robots.Add(newRobotRoot.Robot);
+        return newRobotRoot.Robot;
     }
 
     public List<Robot> GetAllRobot()
@@ -52,16 +52,16 @@ public class RobotManager : SimulationBaseService
         _robots.Clear();
     }
 
-    private Robot GetRobot()
+    private RobotRoot GetRobotRoot()
     {
-        Robot robot = null;
+        RobotRoot robotRoot = null;
 #if UNITY_EDITOR
-        robot = (Robot)PrefabUtility.InstantiatePrefab(robotPrefab, robotRoot);
-        robot.transform.localPosition = Vector3.zero;
-        robot.transform.localRotation = Quaternion.identity;
-        _robots.Add(robot);
+        robotRoot = (RobotRoot)PrefabUtility.InstantiatePrefab(robotRootPrefab, this.robotRoot);
+        robotRoot.transform.localPosition = Vector3.zero;
+        robotRoot.transform.localRotation = Quaternion.identity;
+        _robots.Add(robotRoot.Robot);
 #endif
-        return robot;
+        return robotRoot;
     }
 
     [Button, PropertySpace(5, 10)]
@@ -75,7 +75,7 @@ public class RobotManager : SimulationBaseService
 
         for (int i = 0; i < positions.Count; i++)
         {
-            GetRobot().transform.position = positions[i];
+            GetRobotRoot().transform.position = positions[i];
         }
     }
 }
