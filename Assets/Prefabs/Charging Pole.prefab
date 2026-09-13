@@ -52,7 +52,6 @@ MonoBehaviour:
   - {fileID: 6656596226014201769}
   availableColor: {r: 0, g: 1, b: 0, a: 1}
   occupiedColor: {r: 1, g: 0, b: 0, a: 1}
-  isOccupied: 0
 --- !u!1 &4720126997657984426
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,12 +124,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 8715079266148045912}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.08
+      value: 0.53
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -163,6 +174,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8009679049956632881, guid: 6f68f3e2ae6831141b3b896e410d12f7, type: 3}
       propertyPath: m_Layer
