@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 44688937690438358}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.66, z: -0.08}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalPosition: {x: 0, y: 0.485, z: -0.08}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8627759682285393482}
@@ -723,8 +723,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 3192773503860658194}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 0.33
-  m_Speed: 3
+  m_Radius: 0.17
+  m_Speed: 1.12
   m_Acceleration: 15
   avoidancePriority: 50
   m_AngularSpeed: 180
@@ -1158,11 +1158,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9061f7fc98aa14d5b83c65897c2d56dd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.076
+      value: 0.034
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9061f7fc98aa14d5b83c65897c2d56dd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9061f7fc98aa14d5b83c65897c2d56dd, type: 3}
       propertyPath: m_LocalRotation.w

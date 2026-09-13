@@ -4,31 +4,31 @@
       "NodeName": "waiting_zone",
       "NodeType": 2,
       "Position": [
-        6.68,
-        -0.84
+        2.645,
+        -0.31
       ],
       "MapPoints": [
         {
           "PointName": "point1",
           "Position": [
-            10.5599995,
-            0.92
+            4.055,
+            0.26
           ],
           "Yaw": 0.0
         },
         {
           "PointName": "point2",
           "Position": [
-            10.5499992,
-            -1.01
+            4.055,
+            -0.49
           ],
           "Yaw": 0.0
         },
         {
           "PointName": "point3",
           "Position": [
-            10.41,
-            -2.83
+            4.035,
+            -1.1
           ],
           "Yaw": 0.0
         }
@@ -38,23 +38,23 @@
       "NodeName": "room1",
       "NodeType": 0,
       "Position": [
-        6.6,
-        9.96
+        2.634,
+        3.96
       ],
       "MapPoints": [
         {
           "PointName": "point1",
           "Position": [
-            10.01,
-            11.5
+            4.034,
+            4.58
           ],
           "Yaw": 0.0
         },
         {
           "PointName": "point2",
           "Position": [
-            10.07,
-            8.78
+            4.024,
+            3.53
           ],
           "Yaw": 0.0
         }
@@ -64,23 +64,23 @@
       "NodeName": "room2",
       "NodeType": 0,
       "Position": [
-        6.58,
-        4.78
+        2.651,
+        1.886
       ],
       "MapPoints": [
         {
           "PointName": "point1",
           "Position": [
-            9.65,
-            6.15
+            4.041,
+            2.506
           ],
           "Yaw": 0.0
         },
         {
           "PointName": "point2",
           "Position": [
-            9.68,
-            3.35000038
+            3.99100018,
+            1.346
           ],
           "Yaw": 0.0
         }
@@ -90,23 +90,23 @@
       "NodeName": "room3",
       "NodeType": 0,
       "Position": [
-        6.62,
-        -5.84
+        2.646,
+        -2.309
       ],
       "MapPoints": [
         {
           "PointName": "point1",
           "Position": [
-            10.1,
-            -4.96
+            4.006,
+            -1.909
           ],
           "Yaw": 0.0
         },
         {
           "PointName": "point2",
           "Position": [
-            10.16,
-            -6.86
+            4.006,
+            -2.699
           ],
           "Yaw": 0.0
         }
@@ -116,23 +116,23 @@
       "NodeName": "room4",
       "NodeType": 0,
       "Position": [
-        6.59,
-        -10.34
+        2.641,
+        -4.14
       ],
       "MapPoints": [
         {
           "PointName": "point1",
           "Position": [
-            10.2800007,
-            -9.190001
+            4.011,
+            -3.71999979
           ],
           "Yaw": 0.0
         },
         {
           "PointName": "point2",
           "Position": [
-            10.2,
-            -11.64
+            4.02200031,
+            -4.574
           ],
           "Yaw": 0.0
         }
@@ -142,23 +142,23 @@
       "NodeName": "room5",
       "NodeType": 0,
       "Position": [
-        -6.57,
-        10.09
+        -2.616,
+        4.06
       ],
       "MapPoints": [
         {
           "PointName": "point1",
           "Position": [
-            -9.93,
-            11.38
+            -4.036,
+            4.58
           ],
           "Yaw": 0.0
         },
         {
           "PointName": "point2",
           "Position": [
-            -9.84,
-            8.63
+            -4.006,
+            3.51
           ],
           "Yaw": 0.0
         }
@@ -168,23 +168,23 @@
       "NodeName": "room6",
       "NodeType": 0,
       "Position": [
-        -6.58,
-        4.81
+        -2.619,
+        1.918
       ],
       "MapPoints": [
         {
           "PointName": "point1",
           "Position": [
-            -10.37,
-            6.19
+            -3.98899984,
+            2.488
           ],
           "Yaw": 0.0
         },
         {
           "PointName": "point2",
           "Position": [
-            -10.21,
-            3.67999983
+            -4.019,
+            1.458
           ],
           "Yaw": 0.0
         }
@@ -194,23 +194,23 @@
       "NodeName": "room7",
       "NodeType": 0,
       "Position": [
-        -6.59,
-        -5.94
+        -2.616,
+        -2.388
       ],
       "MapPoints": [
         {
           "PointName": "point1",
           "Position": [
-            -10.1,
-            -4.78
+            -4.076,
+            -1.81800008
           ],
           "Yaw": 0.0
         },
         {
           "PointName": "point2",
           "Position": [
-            -10.15,
-            -7.1
+            -4.066,
+            -2.74800014
           ],
           "Yaw": 0.0
         }
@@ -220,8 +220,8 @@
       "NodeName": "junction1",
       "NodeType": 1,
       "Position": [
-        3.53,
-        7.49
+        1.47,
+        2.89
       ],
       "MapPoints": []
     },
@@ -229,8 +229,8 @@
       "NodeName": "junction2",
       "NodeType": 1,
       "Position": [
-        -3.96,
-        7.34
+        -1.53,
+        2.83
       ],
       "MapPoints": []
     },
@@ -238,8 +238,8 @@
       "NodeName": "junction3",
       "NodeType": 1,
       "Position": [
-        -3.73,
-        -5.31
+        -1.68,
+        -1.962
       ],
       "MapPoints": []
     },
@@ -247,8 +247,8 @@
       "NodeName": "junction4",
       "NodeType": 1,
       "Position": [
-        3.67,
-        -5.27
+        1.51,
+        -1.969
       ],
       "MapPoints": []
     }
@@ -257,67 +257,67 @@
     {
       "StartNode": "junction3",
       "EndNode": "room7",
-      "Distance": 2.92856646
+      "Distance": 1.02838314
     },
     {
       "StartNode": "junction3",
       "EndNode": "junction4",
-      "Distance": 7.40010834
+      "Distance": 3.19000769
     },
     {
       "StartNode": "junction4",
       "EndNode": "room3",
-      "Distance": 3.004563
+      "Distance": 1.18578911
     },
     {
       "StartNode": "junction4",
       "EndNode": "room4",
-      "Distance": 5.85075235
+      "Distance": 2.44793844
     },
     {
       "StartNode": "junction3",
       "EndNode": "junction2",
-      "Distance": 12.65209
+      "Distance": 4.794347
     },
     {
       "StartNode": "junction2",
       "EndNode": "room5",
-      "Distance": 3.79138517
+      "Distance": 1.6408217
     },
     {
       "StartNode": "junction2",
       "EndNode": "room6",
-      "Distance": 3.64215612
+      "Distance": 1.42044532
     },
     {
       "StartNode": "junction2",
       "EndNode": "junction1",
-      "Distance": 7.491502
+      "Distance": 3.00059986
     },
     {
       "StartNode": "junction1",
       "EndNode": "junction4",
-      "Distance": 12.7607679
+      "Distance": 4.85916471
     },
     {
       "StartNode": "junction1",
       "EndNode": "room1",
-      "Distance": 3.94027925
+      "Distance": 1.58107436
     },
     {
       "StartNode": "junction1",
       "EndNode": "room2",
-      "Distance": 4.08002424
+      "Distance": 1.55008936
     },
     {
       "StartNode": "waiting_zone",
       "EndNode": "junction4",
-      "Distance": 5.355838
+      "Distance": 2.01010084
     },
     {
       "StartNode": "waiting_zone",
       "EndNode": "junction1",
-      "Distance": 8.905695
+      "Distance": 3.40890384
     }
   ]
 }
