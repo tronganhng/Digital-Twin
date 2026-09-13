@@ -23,4 +23,10 @@ public class RobotListUI : TabContent
             DestroyImmediate(container.GetChild(i).gameObject);
         }
     }
+
+    public void AddRobotItem(Robot robot)
+    {
+        var itemUI = Instantiate(itemPrefab, container);
+        itemUI.Init(robot);
+    }
 }

@@ -105,5 +105,6 @@ public class RobotStatModule : RobotBaseModule
     public void SyncData(RobotStateDto newDto)
     {
         _robotState = newDto;
+        OnStatChanged.Dispatch();
     }
 }

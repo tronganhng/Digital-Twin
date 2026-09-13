@@ -33,6 +33,7 @@ public class RobotManager : SimulationBaseService
             if (robot.StatModule.StateDto.RobotId == robotId) return robot;
         }
         var newRobotRoot = Instantiate(robotRootPrefab, robotRoot);
+        manager.GUI.Dashboard.AddRobot(newRobotRoot.Robot);
         _robots.Add(newRobotRoot.Robot);
         return newRobotRoot.Robot;
     }
