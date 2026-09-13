@@ -230,7 +230,7 @@
       "NodeType": 1,
       "Position": [
         -1.53,
-        2.83
+        2.89
       ],
       "MapPoints": []
     },
@@ -238,8 +238,8 @@
       "NodeName": "junction3",
       "NodeType": 1,
       "Position": [
-        -1.68,
-        -1.962
+        -1.53,
+        -1.969
       ],
       "MapPoints": []
     },
@@ -247,7 +247,7 @@
       "NodeName": "junction4",
       "NodeType": 1,
       "Position": [
-        1.51,
+        1.47,
         -1.969
       ],
       "MapPoints": []
@@ -257,47 +257,47 @@
     {
       "StartNode": "junction3",
       "EndNode": "room7",
-      "Distance": 1.02838314
+      "Distance": 1.16402614
     },
     {
       "StartNode": "junction3",
       "EndNode": "junction4",
-      "Distance": 3.19000769
+      "Distance": 3.0
     },
     {
       "StartNode": "junction4",
       "EndNode": "room3",
-      "Distance": 1.18578911
+      "Distance": 1.22416329
     },
     {
       "StartNode": "junction4",
       "EndNode": "room4",
-      "Distance": 2.44793844
+      "Distance": 2.46667433
     },
     {
       "StartNode": "junction3",
       "EndNode": "junction2",
-      "Distance": 4.794347
+      "Distance": 4.859
     },
     {
       "StartNode": "junction2",
       "EndNode": "room5",
-      "Distance": 1.6408217
+      "Distance": 1.59633815
     },
     {
       "StartNode": "junction2",
       "EndNode": "room6",
-      "Distance": 1.42044532
+      "Distance": 1.45969355
     },
     {
       "StartNode": "junction2",
       "EndNode": "junction1",
-      "Distance": 3.00059986
+      "Distance": 3.0
     },
     {
       "StartNode": "junction1",
       "EndNode": "junction4",
-      "Distance": 4.85916471
+      "Distance": 4.859
     },
     {
       "StartNode": "junction1",
@@ -312,7 +312,7 @@
     {
       "StartNode": "waiting_zone",
       "EndNode": "junction4",
-      "Distance": 2.01010084
+      "Distance": 2.032955
     },
     {
       "StartNode": "waiting_zone",
