@@ -50,6 +50,8 @@ public class RobotManager : SimulationBaseService
         }
 
         _robots.Clear();
+
+        manager.GUI.Dashboard.ClearAllRobot();
     }
 
     private RobotRoot GetRobotRoot()

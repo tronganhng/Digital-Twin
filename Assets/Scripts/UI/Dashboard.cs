@@ -18,5 +18,7 @@ public class Dashboard : MonoBehaviour
 
     public void ClearAllTask() => taskListUI.ClearAll();
 
+    public void ClearAllRobot() => robotListUI.ClearAll();
+
     public void ReplaceTask(DeliveryTask task) => taskListUI.ReplaceTaskItem(task);
 }
