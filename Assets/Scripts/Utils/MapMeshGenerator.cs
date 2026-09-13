@@ -9,6 +9,7 @@ public class MapMeshGenerator : MonoBehaviour
     [Header("Map")]
     [SerializeField] private float resolution = 0.05f;
     [SerializeField] private float wallHeight = 2f;
+    [SerializeField] private Vector2 origin = new Vector2(-14.3f, -22f);
 
     [Header("Occupancy")]
     [SerializeField, Range(0f, 1f)]
@@ -27,6 +28,8 @@ public class MapMeshGenerator : MonoBehaviour
 
         var meshFilter = GetComponent<MeshFilter>();
         meshFilter.sharedMesh = mesh;
+
+        transform.position = new Vector3(origin.x, 0f, origin.y);
 
         var meshCollider = GetComponent<MeshCollider>();
         if (meshCollider != null)
