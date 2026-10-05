@@ -13,6 +13,7 @@ using Newtonsoft.Json.Converters;
 
 public class WebSocketClient : SimulationBaseService
 {
+    [SerializeField] private string serverIp = "localhost";
     private ClientWebSocket socket;
     private CancellationTokenSource receiveCts;
     private readonly ConcurrentDictionary<string, TaskCompletionSource<string>> pendingResponses = new();
@@ -24,7 +25,7 @@ public class WebSocketClient : SimulationBaseService
         socket = new ClientWebSocket();
         receiveCts = new CancellationTokenSource();
 
-        await socket.ConnectAsync(new Uri("ws://192.168.1.19:5055/ws"), CancellationToken.None);
+        await socket.ConnectAsync(new Uri($"ws://{serverIp}:5055/ws"), CancellationToken.None);
 
         await SendMessageAsync(SocketMessageType.RegisterClient, ClientType.Unity);
 
