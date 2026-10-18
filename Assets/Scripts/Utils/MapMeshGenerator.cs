@@ -1,22 +1,21 @@
 using System.Collections.Generic;
+using System.Globalization;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class MapMeshGenerator : MonoBehaviour
 {
     [SerializeField] private Texture2D mapTexture;
+    [SerializeField, Required] private TextAsset mapConfig;
 
     [Header("Map Settings")]
-    [SerializeField] private float resolution = 0.05f;
+    private float resolution;
     [SerializeField] private float wallHeight = 2f;
-    [SerializeField] private Vector2 origin = new Vector2(-14.3f, -22f);
+    private Vector2 origin;
 
     [Header("Occupancy")]
-    [SerializeField, Range(0f, 1f)]
-    private float occupiedThreshold = 0.2f;
-
-    [Tooltip("Check if dark pixels represent occupied walls")]
-    [SerializeField] private bool darkIsOccupied = true;
+    private float occupiedThreshold;
+    private int negate;
 
     [Header("Mesh Options")]
     [SerializeField] private bool generateTop = true;
@@ -31,6 +30,12 @@ public class MapMeshGenerator : MonoBehaviour
     [Button(ButtonSizes.Medium), GUIColor(0.3f, 0.8f, 0.3f)]
     public void Generate()
     {
+        if (!TryLoadMapConfig(out string configError))
+        {
+            Debug.LogError($"[MapMeshGenerator] {configError}");
+            return;
+        }
+
         if (mapTexture == null)
         {
             Debug.LogError("[MapMeshGenerator] Map texture is null.");
@@ -97,10 +102,9 @@ public class MapMeshGenerator : MonoBehaviour
             {
                 Color32 pixel = pixels[y * width + x];
                 float brightness = pixel.r / 255f;
+                float occupancy = negate == 0 ? 1f - brightness : brightness;
 
-                occupied[x, y] = darkIsOccupied
-                    ? brightness <= occupiedThreshold
-                    : brightness > occupiedThreshold;
+                occupied[x, y] = occupancy > occupiedThreshold;
             }
         }
 
@@ -308,6 +312,93 @@ public class MapMeshGenerator : MonoBehaviour
         return mesh;
     }
 
+    private bool TryLoadMapConfig(out string error)
+    {
+        error = null;
+        if (mapConfig == null)
+        {
+            error = "Map config YAML is not assigned.";
+            return false;
+        }
+
+        float parsedResolution = 0f;
+        float parsedOccupiedThreshold = 0f;
+        float parsedFreeThreshold = 0f;
+        int parsedNegate = -1;
+        Vector2 parsedOrigin = Vector2.zero;
+        bool hasResolution = false;
+        bool hasOrigin = false;
+        bool hasOccupiedThreshold = false;
+        bool hasFreeThreshold = false;
+        bool hasNegate = false;
+        bool hasTrinaryMode = false;
+
+        foreach (string rawLine in mapConfig.text.Split('\n'))
+        {
+            string line = rawLine.Trim();
+            int separator = line.IndexOf(':');
+            if (separator < 0)
+                continue;
+
+            string key = line.Substring(0, separator).Trim();
+            string value = line.Substring(separator + 1).Trim();
+            switch (key)
+            {
+                case "mode":
+                    hasTrinaryMode = value == "trinary";
+                    break;
+                case "resolution":
+                    hasResolution = TryParseFloat(value, out parsedResolution);
+                    break;
+                case "origin":
+                    string trimmedOrigin = value.Trim('[', ']');
+                    string[] coordinates = trimmedOrigin.Split(',');
+                    float originX = 0f;
+                    float originY = 0f;
+                    hasOrigin = coordinates.Length == 3
+                        && TryParseFloat(coordinates[0], out originX)
+                        && TryParseFloat(coordinates[1], out originY)
+                        && TryParseFloat(coordinates[2], out _);
+                    if (hasOrigin)
+                    {
+                        parsedOrigin = new Vector2(originX, originY);
+                    }
+                    break;
+                case "negate":
+                    hasNegate = int.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out parsedNegate);
+                    break;
+                case "occupied_thresh":
+                    hasOccupiedThreshold = TryParseFloat(value, out parsedOccupiedThreshold);
+                    break;
+                case "free_thresh":
+                    hasFreeThreshold = TryParseFloat(value, out parsedFreeThreshold);
+                    break;
+            }
+        }
+
+        if (!hasTrinaryMode || !hasResolution || !hasOrigin || !hasNegate
+            || !hasOccupiedThreshold || !hasFreeThreshold
+            || parsedResolution <= 0f || parsedNegate < 0 || parsedNegate > 1
+            || parsedFreeThreshold < 0f || parsedFreeThreshold > 1f
+            || parsedOccupiedThreshold < 0f || parsedOccupiedThreshold > 1f
+            || parsedFreeThreshold >= parsedOccupiedThreshold)
+        {
+            error = "Map config YAML is invalid or uses unsupported values. Expected trinary mode, positive resolution, a 3-value origin, negate 0/1, and 0 <= free_thresh < occupied_thresh <= 1.";
+            return false;
+        }
+
+        resolution = parsedResolution;
+        origin = parsedOrigin;
+        negate = parsedNegate;
+        occupiedThreshold = parsedOccupiedThreshold;
+        return true;
+    }
+
+    private static bool TryParseFloat(string value, out float parsed)
+    {
+        return float.TryParse(value.Trim(), NumberStyles.Float, CultureInfo.InvariantCulture, out parsed);
+    }
+
     private void AddSouthWall(List<Vector3> verts, List<Vector3> norms, List<Vector2> uvs, List<int> tris, int startX, int endX, int y)
     {
         float x0 = startX * resolution;
@@ -466,4 +557,4 @@ public class MapMeshGenerator : MonoBehaviour
         }
         return result;
     }
-}
+}
