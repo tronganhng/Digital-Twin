@@ -34,6 +34,7 @@ public enum NodeType
     Room,
     SharedResource,
     WaitingArea,
+    Elevator,
 }
 
 public enum SocketMessageType
