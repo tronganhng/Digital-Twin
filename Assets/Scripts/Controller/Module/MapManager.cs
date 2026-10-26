@@ -8,6 +8,8 @@ public class MapManager : SimulationBaseService
 {
     [SerializeField] private Transform mapRoot;
 
+    [SerializeField] private List<Elevator> elevators;
+
     [SerializeField, ReadOnly] private SerializedDictionary<string, MapNode> _nodes = new();
     [SerializeField, ReadOnly] private List<MapLane> _lanes = new();
 

@@ -682,6 +682,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WebSocketClient
   serverIp: 192.168.1.49
+--- !u!114 &329735737 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7590913173701823020, guid: c9b69262f5ea5a04db2ba7fe714b4a4c, type: 3}
+  m_PrefabInstance: {fileID: 5255487249329760796}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcaea75db290348c6864203eaaf2d66c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Elevator
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,6 +1567,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapManager
   mapRoot: {fileID: 1507638917}
+  elevators:
+  - {fileID: 329735737}
   _nodes:
     m_Keys:
     - room1
