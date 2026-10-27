@@ -296,9 +296,20 @@ PrefabInstance:
       propertyPath: nodeType
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+      propertyPath: points.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+      propertyPath: 'points.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1441952977}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 584020606225442107, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1441952978}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2744809862891313048, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       insertIndex: -1
@@ -320,6 +331,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5eb951bd422de4c9088d5eaee6fc72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HospitalPoint
+--- !u!4 &100446620 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 584020606225442107, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+  m_PrefabInstance: {fileID: 100446617}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &180345987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -974,6 +990,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c3bed19eadd254c909c2bdafee42a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dashboard
+--- !u!1001 &386651877
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2051670512}
+    m_Modifications:
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.493
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708767882417113025, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_Name
+      value: Point
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2744809862891313048, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+--- !u!114 &386651878 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 65041576594990828, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+  m_PrefabInstance: {fileID: 386651877}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c2ae77a3727114598106c049cace57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapPoint
+--- !u!4 &386651879 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+  m_PrefabInstance: {fileID: 386651877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1211,6 +1303,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5888988661966232231, guid: 6e66248299397fa4c8e4b80e56ee3c9a, type: 3}
   m_PrefabInstance: {fileID: 454140031}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &454140033 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6655454302282234855, guid: 6e66248299397fa4c8e4b80e56ee3c9a, type: 3}
+  m_PrefabInstance: {fileID: 454140031}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 046ebeaf7e408074099f3eb4c8100ad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapLane
 --- !u!1 &535278599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1574,19 +1677,28 @@ MonoBehaviour:
     - room1
     - room2
     - room3
+    - room4
     - waitarea
     - junction1
+    - elevator
+    - elevator1
     m_Values:
     - {fileID: 1519493264}
     - {fileID: 1126813940}
     - {fileID: 1646722460}
+    - {fileID: 1243793497}
     - {fileID: 2077095326}
     - {fileID: 2083609164}
+    - {fileID: 100446619}
+    - {fileID: 2051670511}
   _lanes:
   - {fileID: 1995385618}
   - {fileID: 894021315}
   - {fileID: 26454247}
   - {fileID: 888756032}
+  - {fileID: 1894380323}
+  - {fileID: 1203637575}
+  - {fileID: 454140033}
 --- !u!1 &686530454
 GameObject:
   m_ObjectHideFlags: 0
@@ -2574,6 +2686,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5888988661966232231, guid: 6e66248299397fa4c8e4b80e56ee3c9a, type: 3}
   m_PrefabInstance: {fileID: 1203637573}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1203637575 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6655454302282234855, guid: 6e66248299397fa4c8e4b80e56ee3c9a, type: 3}
+  m_PrefabInstance: {fileID: 1203637573}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 046ebeaf7e408074099f3eb4c8100ad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapLane
 --- !u!1001 &1243793496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3071,6 +3194,82 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TaskManager
   tasks: []
+--- !u!1001 &1441952976
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 100446620}
+    m_Modifications:
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.141
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708767882417113025, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      propertyPath: m_Name
+      value: Point
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2744809862891313048, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+--- !u!114 &1441952977 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 65041576594990828, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+  m_PrefabInstance: {fileID: 1441952976}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c2ae77a3727114598106c049cace57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapPoint
+--- !u!4 &1441952978 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5369285435795787545, guid: 08ced247401c79c4cb64ff60d3854e78, type: 3}
+  m_PrefabInstance: {fileID: 1441952976}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1465700156
 GameObject:
   m_ObjectHideFlags: 0
@@ -4510,6 +4709,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5888988661966232231, guid: 6e66248299397fa4c8e4b80e56ee3c9a, type: 3}
   m_PrefabInstance: {fileID: 1894380321}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1894380323 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6655454302282234855, guid: 6e66248299397fa4c8e4b80e56ee3c9a, type: 3}
+  m_PrefabInstance: {fileID: 1894380321}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 046ebeaf7e408074099f3eb4c8100ad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapLane
 --- !u!1 &1903921341
 GameObject:
   m_ObjectHideFlags: 0
@@ -4927,9 +5137,20 @@ PrefabInstance:
       propertyPath: nodeType
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+      propertyPath: points.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+      propertyPath: 'points.Array.data[0]'
+      value: 
+      objectReference: {fileID: 386651878}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 584020606225442107, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 386651879}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2744809862891313048, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       insertIndex: -1
@@ -4951,6 +5172,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5eb951bd422de4c9088d5eaee6fc72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HospitalPoint
+--- !u!4 &2051670512 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 584020606225442107, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+  m_PrefabInstance: {fileID: 2051670509}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2077095325
 PrefabInstance:
   m_ObjectHideFlags: 0

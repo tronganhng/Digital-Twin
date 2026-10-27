@@ -15,7 +15,7 @@ public class SimulationManager : MonoSingleton<SimulationManager>
     {
         await WebSocket.InitWebSocket(this);
         Router.Init(this);
-        MapManager.Init(this);
+        await MapManager.InitMap(this);
         await RobotManager.InitRobot(this);
         TaskManager.Init(this);
         GUI.Init(this);

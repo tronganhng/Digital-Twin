@@ -19,6 +19,12 @@ public enum RobotStatus
     Offline
 }
 
+public enum ElevatorStatus
+{
+    Idle,
+    Moving,
+}
+
 public enum TaskStatus
 {
     Pending,
@@ -54,4 +60,5 @@ public enum SocketMessageType
     RobotArrived,
     ChangeRobotStatus,
     ChargeRobot,
+    RegisterElevator,
 }

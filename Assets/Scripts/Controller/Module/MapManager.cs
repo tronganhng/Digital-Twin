@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -13,10 +14,15 @@ public class MapManager : SimulationBaseService
     [SerializeField, ReadOnly] private SerializedDictionary<string, MapNode> _nodes = new();
     [SerializeField, ReadOnly] private List<MapLane> _lanes = new();
 
-    public override void Init(SimulationManager fleetManager)
+    public async Task InitMap(SimulationManager fleet)
     {
-        base.Init(fleetManager);
+        base.Init(fleet);
         SetupData();
+
+        foreach (var item in elevators)
+        {
+            await item.Init();
+        }
     }
 
     [Button(ButtonSizes.Large)]
@@ -60,5 +66,14 @@ public class MapManager : SimulationBaseService
         return _nodes
         .Where(pair => pair.Value.NodeType == NodeType.Room)
         .Select(pair => pair.Key);
+    }
+
+    public Elevator GetElevatorBy(string elevatorId)
+    {
+        foreach (var item in elevators)
+        {
+            if (item.StateDto.ElevatorId == elevatorId) return item;
+        }
+        return null;
     }
 }
