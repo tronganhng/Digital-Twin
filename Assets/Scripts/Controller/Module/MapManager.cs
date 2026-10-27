@@ -9,7 +9,7 @@ public class MapManager : SimulationBaseService
 {
     [SerializeField] private Transform mapRoot;
 
-    [SerializeField] private List<Elevator> elevators;
+    [SerializeField, ReadOnly] private List<Elevator> elevators;
 
     [SerializeField, ReadOnly] private SerializedDictionary<string, MapNode> _nodes = new();
     [SerializeField, ReadOnly] private List<MapLane> _lanes = new();
@@ -30,9 +30,11 @@ public class MapManager : SimulationBaseService
     {
         _nodes.Clear();
         _lanes.Clear();
+        elevators.Clear();
 
         MapNode[] points = mapRoot.GetComponentsInChildren<MapNode>(true);
         MapLane[] lanes = mapRoot.GetComponentsInChildren<MapLane>(true);
+        Elevator[] ele = mapRoot.GetComponentsInChildren<Elevator>(true);
 
         foreach (MapNode point in points)
         {
@@ -48,6 +50,11 @@ public class MapManager : SimulationBaseService
         foreach (var lane in lanes)
         {
             _lanes.Add(lane);
+        }
+
+        foreach (var e in ele)
+        {
+            elevators.Add(e);
         }
     }
 
