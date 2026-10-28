@@ -61,4 +61,6 @@ public enum SocketMessageType
     ChangeRobotStatus,
     ChargeRobot,
     RegisterElevator,
+    MoveElevator,
+    ElevatorArrived,
 }

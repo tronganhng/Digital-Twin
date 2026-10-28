@@ -14,6 +14,7 @@ public class MapNode : MonoBehaviour
     [SerializeField] private Transform pointRoot;
     [SerializeField] private MeshRenderer mesh;
     [SerializeField] private string nodeName;
+    [SerializeField] private int floor = 1;
     [SerializeField] private NodeType nodeType;
     [SerializeField, ReadOnly] private List<MapPoint> points;
     [SerializeField] private bool hasTriggerZone;
@@ -37,6 +38,7 @@ public class MapNode : MonoBehaviour
         {
             NodeName = nodeName,
             NodeType = nodeType,
+            Floor = floor,
             Position = new float[] { Position.x, Position.z },
             MapPoints = points.Select(p => p.ToData()).ToList()
         };

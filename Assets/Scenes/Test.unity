@@ -697,7 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac97e691534e47418876b993e7dc056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WebSocketClient
-  serverIp: 192.168.1.19
+  serverIp: 192.168.1.49
 --- !u!114 &329735737 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7590913173701823020, guid: c9b69262f5ea5a04db2ba7fe714b4a4c, type: 3}
@@ -1625,6 +1625,50 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &616107244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 616107245}
+  - component: {fileID: 616107246}
+  m_Layer: 0
+  m_Name: Move Elevator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &616107245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616107244}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2009817380}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &616107246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616107244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96688744fd85a31439989cbeacfefebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveElevatorHandler
 --- !u!1 &622929322
 GameObject:
   m_ObjectHideFlags: 0
@@ -2764,6 +2808,10 @@ PrefabInstance:
     - target: {fileID: 7062169437767304132, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: m_fontSize
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+      propertyPath: floor
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: nodeName
@@ -5051,6 +5099,7 @@ Transform:
   - {fileID: 535278600}
   - {fileID: 1390241788}
   - {fileID: 907203274}
+  - {fileID: 616107245}
   m_Father: {fileID: 880135401}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2009817381
@@ -5066,7 +5115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MessageRouter
   _handlers:
-    m_Keys: 060000000a0000000d0000000b000000040000000e000000
+    m_Keys: 060000000a0000000d0000000b000000040000000e00000010000000
     m_Values:
     - {fileID: 2084462759}
     - {fileID: 363529580}
@@ -5074,6 +5123,7 @@ MonoBehaviour:
     - {fileID: 1103907692}
     - {fileID: 1390241789}
     - {fileID: 907203275}
+    - {fileID: 616107246}
 --- !u!1 &2029985843
 GameObject:
   m_ObjectHideFlags: 0
@@ -5161,6 +5211,10 @@ PrefabInstance:
     - target: {fileID: 7062169437767304132, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: m_text
       value: elevator1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
+      propertyPath: floor
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8501239312193278701, guid: 7dcac949560a2bb4a85eb9cb63ab7b5d, type: 3}
       propertyPath: nodeName

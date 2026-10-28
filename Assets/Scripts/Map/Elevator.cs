@@ -21,6 +21,7 @@ public class Elevator : MonoBehaviour
         if (floor < 1 || floor > stops.Count)
             return;
 
+        _elevatorDto.CurrentFloor = floor;
         _target = stops[floor - 1];
     }
 
@@ -38,7 +39,7 @@ public class Elevator : MonoBehaviour
         if (cabin.position == _target.position)
         {
             _target = null;
-            // Arrived
+            SendArrived();
         }
     }
 
@@ -57,5 +58,10 @@ public class Elevator : MonoBehaviour
     {
         var res = await SimulationManager.Instance.WebSocket.SendRequestAsync<ElevatorDto, ElevatorDto>(SocketMessageType.RegisterElevator, _elevatorDto);
         _elevatorDto.ElevatorId = res.ElevatorId;
+    }
+
+    private async void SendArrived()
+    {
+        await SimulationManager.Instance.WebSocket.SendMessageAsync(SocketMessageType.ElevatorArrived, _elevatorDto);
     }
 }
