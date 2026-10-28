@@ -6,12 +6,17 @@ using UnityEngine;
 
 public class Elevator : MonoBehaviour
 {
+    [Header("Robot Scan")]
+    public float detectionRadius = 5f;          // Bán kính quét
+    public LayerMask robotLayer;
+
     [SerializeField] private Transform cabin;
     [SerializeField] private List<Transform> stops = new();
     [SerializeField] private float speed = 2f;
 
     [SerializeField, ReadOnly] private ElevatorDto _elevatorDto;
     private Transform _target;
+    private readonly Dictionary<Robot, Transform> _robotParents = new();
 
     public ElevatorDto StateDto => _elevatorDto;
 
@@ -22,6 +27,7 @@ public class Elevator : MonoBehaviour
             return;
 
         _elevatorDto.CurrentFloor = floor;
+        LockRobot();
         _target = stops[floor - 1];
     }
 
@@ -39,6 +45,7 @@ public class Elevator : MonoBehaviour
         if (cabin.position == _target.position)
         {
             _target = null;
+            UnlockRobot();
             SendArrived();
         }
     }
@@ -63,5 +70,43 @@ public class Elevator : MonoBehaviour
     private async void SendArrived()
     {
         await SimulationManager.Instance.WebSocket.SendMessageAsync(SocketMessageType.ElevatorArrived, _elevatorDto);
+    }
+
+
+    private void LockRobot()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(cabin.position, detectionRadius, robotLayer);
+
+        foreach (var hitCollider in hitColliders)
+        {
+            var robot = hitCollider.GetComponentInParent<Robot>();
+            if (!robot || _robotParents.ContainsKey(robot))
+                continue;
+
+            _robotParents.Add(robot, robot.transform.parent);
+            robot.MoveModule.SetAgentActive(false);
+            robot.transform.SetParent(cabin);
+        }
+    }
+
+    private void UnlockRobot()
+    {
+        foreach (var robotParent in _robotParents)
+        {
+            var robot = robotParent.Key;
+            if (!robot)
+                continue;
+
+            robot.transform.SetParent(robotParent.Value);
+            robot.MoveModule.SetAgentActive(true);
+        }
+
+        _robotParents.Clear();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 }

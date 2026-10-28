@@ -77,11 +77,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcaea75db290348c6864203eaaf2d66c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Elevator
+  detectionRadius: 1
+  robotLayer:
+    serializedVersion: 2
+    m_Bits: 64
   cabin: {fileID: 6322906834001562595}
   stops:
   - {fileID: 1576222008752850194}
   - {fileID: 6365471306176731424}
   speed: 2
+  _elevatorDto:
+    <ElevatorId>k__BackingField: 
+    <CurrentFloor>k__BackingField: 1
+    <Status>k__BackingField: 0
 --- !u!1 &6031167014379016808
 GameObject:
   m_ObjectHideFlags: 0

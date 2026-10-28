@@ -10,6 +10,11 @@ public class RobotMoveModule : RobotBaseModule
 
     private bool isMoving;
 
+    public void SetAgentActive(bool value)
+    {
+        agent.enabled = value;
+    }
+
     public override void Tick()
     {
         base.Tick();
