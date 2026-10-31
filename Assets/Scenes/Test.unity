@@ -697,7 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac97e691534e47418876b993e7dc056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WebSocketClient
-  serverIp: 192.168.1.49
+  serverIp: 10.11.56.183
 --- !u!114 &329735737 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7590913173701823020, guid: c9b69262f5ea5a04db2ba7fe714b4a4c, type: 3}

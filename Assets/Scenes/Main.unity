@@ -687,7 +687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac97e691534e47418876b993e7dc056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WebSocketClient
-  serverIp: 10.11.57.180
+  serverIp: 10.11.57.194
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,6 +1274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapManager
   mapRoot: {fileID: 1507638917}
+  elevators: []
   _nodes:
     m_Keys:
     - room1
