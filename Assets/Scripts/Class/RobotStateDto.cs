@@ -6,6 +6,7 @@ using UnityEngine;
 public class RobotStateDto
 {
     [field: SerializeField] public string RobotId { get; set; } = string.Empty;
+    [field: SerializeField] public int Floor { get; set; }
     [field: SerializeField] public double X { get; set; }
     [field: SerializeField] public double Y { get; set; }
     [field: SerializeField] public double Rotation { get; set; }
