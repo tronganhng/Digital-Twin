@@ -1025,6 +1025,7 @@ MonoBehaviour:
   sendDataInterval: 0.5
   _robotState:
     <RobotId>k__BackingField: 
+    <Floor>k__BackingField: 0
     <X>k__BackingField: 0
     <Y>k__BackingField: 0
     <Rotation>k__BackingField: 0
@@ -1043,7 +1044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c48fc25c76cc3c647b31f933531f2a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RobotFuelModule
-  drainPerSecond: 0.5
+  drainPerSecond: 0.1
   chargePerSecond: 5
   needChargeThreshold: 20
   fullChargeThreshold: 100

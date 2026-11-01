@@ -12,7 +12,7 @@ public class MoveRobotHandler : BaseMessageHandler
         var robot = SimulationManager.Instance.RobotManager.GetRobotBy(message.RobotId);
         if (robot != null)
         {
-            robot.StateMachine.ChangeState(new MoveState(robot.StateMachine, new Vector3(pos[0], 0, pos[1])));
+            robot.StateMachine.ChangeState(new MoveState(robot.StateMachine, new Vector3(pos[0], robot.transform.position.y, pos[1])));
         }
     }
 }
