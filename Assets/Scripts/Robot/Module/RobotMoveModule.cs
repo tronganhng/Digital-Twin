@@ -1,4 +1,5 @@
 using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -91,6 +92,7 @@ public class RobotMoveModule : RobotBaseModule
         agent.isStopped = false;
     }
 
+    [Button]
     public bool SetPosition(Vector3 position)
     {
         if (!agent.isOnNavMesh)

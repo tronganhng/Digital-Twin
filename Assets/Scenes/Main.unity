@@ -5090,11 +5090,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4057582850705813167, guid: 6e66248299397fa4c8e4b80e56ee3c9a, type: 3}
       propertyPath: m_Positions.Array.data[1].x
-      value: -3.09
+      value: -2.4299998
       objectReference: {fileID: 0}
     - target: {fileID: 4057582850705813167, guid: 6e66248299397fa4c8e4b80e56ee3c9a, type: 3}
       propertyPath: m_Positions.Array.data[1].z
-      value: -5.34
+      value: -5.29
       objectReference: {fileID: 0}
     - target: {fileID: 4307891916677301823, guid: 6e66248299397fa4c8e4b80e56ee3c9a, type: 3}
       propertyPath: m_Name
@@ -5150,7 +5150,7 @@ PrefabInstance:
       objectReference: {fileID: 1519493264}
     - target: {fileID: 6655454302282234855, guid: 6e66248299397fa4c8e4b80e56ee3c9a, type: 3}
       propertyPath: distance
-      value: 3.5413275
+      value: 3.2228093
       objectReference: {fileID: 0}
     - target: {fileID: 6655454302282234855, guid: 6e66248299397fa4c8e4b80e56ee3c9a, type: 3}
       propertyPath: endPoint
