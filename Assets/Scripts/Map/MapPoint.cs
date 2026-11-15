@@ -9,6 +9,7 @@ public class MapPoint : MonoBehaviour
     [SerializeField] private Color availableColor = Color.turquoise;
     [SerializeField] private Color occupiedColor = Color.red;
     [SerializeField] private string pointName;
+    [SerializeField] private float yaw;
 
     public string PointName => pointName;
     public Vector3 Position => transform.position;
@@ -24,7 +25,8 @@ public class MapPoint : MonoBehaviour
         return new MapPointDto
         {
             PointName = pointName,
-            Position = new float[] { Position.x, Position.z }
+            Position = new float[] { Position.x, Position.z },
+            Yaw = yaw
         };
     }
 
