@@ -66,9 +66,11 @@ public class RobotMoveModule : RobotBaseModule
     public void Stop()
     {
         isMoving = false;
+        onReachCallback = null;
+        // isStopped/ResetPath throw on a disabled agent (synced robots, elevator ride).
+        if (!agent.isOnNavMesh) return;
         agent.isStopped = true;
         agent.ResetPath();
-        onReachCallback = null;
     }
 
     public void Pause()
@@ -93,22 +95,13 @@ public class RobotMoveModule : RobotBaseModule
     }
 
     [Button]
-    public bool SetPosition(Vector3 position)
+    public void SetPosition(Vector3 position)
     {
-        if (!agent.isOnNavMesh)
-            return false;
-
         Stop();
-
-        // Teleport NavMeshAgent
-        bool success = agent.Warp(position);
-
-        if (success)
-        {
-            transform.position = position;
-        }
-
-        return success;
+        // Synced poses come from the real robot; an enabled agent would snap the transform back onto the NavMesh.
+        agent.enabled = false;
+        if (robot == null) robot = GetComponentInParent<Robot>();
+        robot.transform.position = position;
     }
 
     #endregion
