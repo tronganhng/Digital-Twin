@@ -163,6 +163,33 @@
       ]
     },
     {
+      "NodeName": "waitarea2",
+      "NodeType": 2,
+      "Floor": 2,
+      "Position": [
+        -0.68,
+        5.41
+      ],
+      "MapPoints": [
+        {
+          "PointName": "point1",
+          "Position": [
+            -0.36,
+            6.08
+          ],
+          "Yaw": 0.0
+        },
+        {
+          "PointName": "point2",
+          "Position": [
+            -0.3269999,
+            4.81299973
+          ],
+          "Yaw": 0.0
+        }
+      ]
+    },
+    {
       "NodeName": "junction1",
       "NodeType": 1,
       "Floor": 1,
@@ -251,6 +278,11 @@
       "StartNode": "junction1",
       "EndNode": "room3",
       "Distance": 1.81664526
+    },
+    {
+      "StartNode": "room4",
+      "EndNode": "waitarea2",
+      "Distance": 2.04240036
     }
   ]
 }
